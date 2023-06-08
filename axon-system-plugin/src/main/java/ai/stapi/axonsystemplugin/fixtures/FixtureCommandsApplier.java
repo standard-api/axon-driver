@@ -4,16 +4,12 @@ import ai.stapi.graphsystem.fixtures.fixtureCommandsGenerator.FixtureCommandsGen
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
 public class FixtureCommandsApplier {
 
   private final CommandGateway commandGateway;
   private final Logger logger;
 
-  @Autowired
   public FixtureCommandsApplier(
       CommandGateway commandGateway
   ) {

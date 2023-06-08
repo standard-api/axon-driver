@@ -9,9 +9,7 @@ import ai.stapi.schema.structuredefinition.StructureDefinitionId;
 import java.util.stream.Collectors;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventhandling.gateway.EventGateway;
-import org.springframework.stereotype.Service;
 
-@Service
 public class ConfigureStructureDefinitionHandler {
 
   private final EventGateway eventGateway;

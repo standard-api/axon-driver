@@ -15,10 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.axonframework.eventhandling.EventHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
 public class DefaultGraphProjection {
 
     private static final AtomicInteger lastEventIteration = new AtomicInteger(0);
@@ -28,7 +25,6 @@ public class DefaultGraphProjection {
     private final Logger logger;
     private Temporal lastEventTime;
 
-    @Autowired
     public DefaultGraphProjection(
         NodeRepository nodeRepository,
         EdgeRepository edgeRepository,

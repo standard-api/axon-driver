@@ -3,35 +3,29 @@ package ai.stapi.axonsystemplugin.fixtures;
 import ai.stapi.axonsystemplugin.DefaultGraphProjection;
 import java.time.Duration;
 import java.util.List;
-import java.util.logging.Logger;
 import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
 
-@Service
-@Profile("generate-fixtures")
 public class GenerateFixturesCommandLineRunner implements CommandLineRunner {
 
   private final CommandGateway commandGateway;
   private final DefaultGraphProjection graphProjection;
-
   private final ApplicationContext applicationContext;
-
   private final Logger logger;
 
   public GenerateFixturesCommandLineRunner(
       CommandGateway commandGateway,
       DefaultGraphProjection graphProjection,
-      ApplicationContext applicationContext,
-      Logger logger
+      ApplicationContext applicationContext
   ) {
     this.commandGateway = commandGateway;
     this.graphProjection = graphProjection;
     this.applicationContext = applicationContext;
-    this.logger = logger;
+    this.logger = LoggerFactory.getLogger(GenerateFixturesCommandLineRunner.class);
   }
 
   @Override

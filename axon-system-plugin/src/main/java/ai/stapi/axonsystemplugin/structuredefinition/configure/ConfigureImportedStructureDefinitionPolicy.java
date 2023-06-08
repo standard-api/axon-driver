@@ -17,11 +17,8 @@ import java.util.List;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.eventhandling.EventHandler;
 import org.jetbrains.annotations.Nullable;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
 
-@Service
-@Profile("dev")
+
 public class ConfigureImportedStructureDefinitionPolicy {
 
   private final GenericGraphToObjectDeserializer genericGraphToObjectDeserializer;

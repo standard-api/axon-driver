@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  ai.stapi.axonsystemplugin.configuration.AxonSystemPluginConfiguration,\
+  ai.stapi.axonsystemplugin.configuration.DevAxonSystemPluginConfiguration
