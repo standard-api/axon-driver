@@ -1,0 +1,51 @@
+{
+  "kind": "complex-type",
+  "name": "ExampleNodeType",
+  "description": "An example node type with quantity, name, and string attribute",
+  "abstract": false,
+  "id": "ExampleNodeType",
+  "type": "ExampleNodeType",
+  "version": "1.0.0",
+  "url": "http://example.com/StructureDefinition/ExampleNodeType",
+  "differential": {
+    "element": [
+      {
+        "path": "ExampleNodeType.exampleQuantity",
+        "min": 1,
+        "max": "1",
+        "short": "Example quantity",
+        "definition": "An example quantity field",
+        "type": [
+          {
+            "code": "integer"
+          }
+        ]
+      },
+      {
+        "path": "ExampleNodeType.exampleName",
+        "min": 1,
+        "max": "1",
+        "short": "Example name",
+        "definition": "An example name field",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      },
+      {
+        "path": "ExampleNodeType.exampleStringAttribute",
+        "min": 0,
+        "max": "1",
+        "short": "Example string attribute",
+        "definition": "An example string attribute field",
+        "type": [
+          {
+            "code": "string"
+          }
+        ]
+      }
+    ]
+  },
+  "status": "active"
+}

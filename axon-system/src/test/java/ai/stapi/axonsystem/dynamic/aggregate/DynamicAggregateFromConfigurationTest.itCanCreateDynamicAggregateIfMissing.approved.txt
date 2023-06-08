@@ -1,0 +1,8 @@
+nodes:
+	node_type: ExampleDynamicAggregateType
+	node_hash: 22688
+	node_edges:
+	attributes:
+		exampleCreateIfMissingAttribute -> Example If Missing Attribute Value
+
+edges:
