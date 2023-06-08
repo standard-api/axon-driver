@@ -1,0 +1,52 @@
+[ {
+  "targetAggregateIdentifier" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+  "commandName" : "ai.stapi.axonsystem.commandpersisting.exampleimplementation.CreateNewExampleNodeCommand",
+  "commandMetaData" : {
+    "dispatchedAt" : hidden_date
+  },
+  "commandPayload" : {
+    "serializationType" : "CreateNewExampleNodeCommand",
+    "targetIdentifier" : {
+      "id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+    },
+    "exampleNodeName" : "Example Name",
+    "exampleNodeType" : "ExampleNodeType",
+    "exampleQuantity" : 0,
+    "exampleStringAttribute" : "default",
+    "exampleListAttribute" : [ ]
+  }
+}, {
+  "targetAggregateIdentifier" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+  "commandName" : "ai.stapi.axonsystem.commandpersisting.exampleimplementation.CreateNewExampleNodeCommand",
+  "commandMetaData" : {
+    "dispatchedAt" : hidden_date
+  },
+  "commandPayload" : {
+    "serializationType" : "CreateNewExampleNodeCommand",
+    "targetIdentifier" : {
+      "id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+    },
+    "exampleNodeName" : "Example Name 2",
+    "exampleNodeType" : "ExampleNodeType",
+    "exampleQuantity" : 0,
+    "exampleStringAttribute" : "default",
+    "exampleListAttribute" : [ ]
+  }
+}, {
+  "targetAggregateIdentifier" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+  "commandName" : "ai.stapi.axonsystem.commandpersisting.exampleimplementation.CreateNewExampleNodeCommand",
+  "commandMetaData" : {
+    "dispatchedAt" : hidden_date
+  },
+  "commandPayload" : {
+    "serializationType" : "CreateNewExampleNodeCommand",
+    "targetIdentifier" : {
+      "id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+    },
+    "exampleNodeName" : "Example Name 3",
+    "exampleNodeType" : "ExampleNodeType2",
+    "exampleQuantity" : 0,
+    "exampleStringAttribute" : "default",
+    "exampleListAttribute" : [ ]
+  }
+} ]

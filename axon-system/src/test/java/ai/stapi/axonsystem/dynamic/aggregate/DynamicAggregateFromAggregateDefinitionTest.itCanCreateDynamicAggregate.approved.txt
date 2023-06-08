@@ -1,0 +1,8 @@
+nodes:
+	node_type: ValueSet
+	node_hash: 0E714
+	node_edges:
+	attributes:
+		name -> ExampleValueSet
+
+edges:

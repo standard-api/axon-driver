@@ -1,0 +1,8 @@
+nodes:
+	node_type: ExampleDynamicAggregateType
+	node_hash: 9DAC7
+	node_edges:
+	attributes:
+		exampleConstructorAttribute -> Example Constructor Attribute Value
+
+edges:

@@ -1,0 +1,9 @@
+nodes:
+	node_type: ExampleDynamicAggregateType
+	node_hash: 00AD4
+	node_edges:
+	attributes:
+		exampleConstructorAttribute -> Example Constructor Attribute Value
+		exampleMethodAttribute -> Example Method Attribute Value
+
+edges:
