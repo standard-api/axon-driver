@@ -1,4 +1,4 @@
-package ai.stapi.axonsystem.configuration;
+package ai.stapi.axonsystem.configuration.implementations;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -9,9 +9,7 @@ import org.axonframework.messaging.MessageDispatchInterceptor;
 import org.springframework.stereotype.Service;
 import org.jetbrains.annotations.NotNull;
 
-@Service
-public class CommandDispatchedAtInterceptor
-    implements MessageDispatchInterceptor<CommandMessage<?>> {
+public class CommandDispatchedAtInterceptor implements MessageDispatchInterceptor<CommandMessage<?>> {
 
   public static final String DISPATCHED_AT_METADATA_KEY = "dispatchedAt";
 

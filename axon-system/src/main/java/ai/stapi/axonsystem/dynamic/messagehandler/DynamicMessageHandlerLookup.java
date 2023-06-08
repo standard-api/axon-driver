@@ -19,13 +19,9 @@ import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
-import org.springframework.context.annotation.Role;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.OrderUtils;
-import org.springframework.stereotype.Service;
 
-@Service
-@Role(BeanDefinition.ROLE_INFRASTRUCTURE)
 public class DynamicMessageHandlerLookup implements BeanDefinitionRegistryPostProcessor {
 
   private static final Logger logger = Logger.getLogger(

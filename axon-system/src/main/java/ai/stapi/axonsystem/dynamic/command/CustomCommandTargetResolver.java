@@ -6,14 +6,12 @@ import org.axonframework.modelling.command.AnnotationCommandTargetResolver;
 import org.axonframework.modelling.command.CommandTargetResolver;
 import org.axonframework.modelling.command.VersionedAggregateIdentifier;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.stereotype.Service;
 
-@Service
-public class AbstractCommandTargetResolver implements CommandTargetResolver {
+public class CustomCommandTargetResolver implements CommandTargetResolver {
   
   private final AnnotationCommandTargetResolver annotationCommandTargetResolver;
 
-  public AbstractCommandTargetResolver() {
+  public CustomCommandTargetResolver() {
     this.annotationCommandTargetResolver = AnnotationCommandTargetResolver.builder().build();
   }
 

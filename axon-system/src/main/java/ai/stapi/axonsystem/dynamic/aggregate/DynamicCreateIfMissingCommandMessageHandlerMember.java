@@ -9,8 +9,7 @@ import org.axonframework.messaging.Message;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class DynamicCreateIfMissingCommandMessageHandlerMember
-    extends DynamicCommandMessageHandlerMember {
+public class DynamicCreateIfMissingCommandMessageHandlerMember extends DynamicCommandMessageHandlerMember {
 
   public DynamicCreateIfMissingCommandMessageHandlerMember(
       DynamicCommandProcessor dynamicCommandProcessor,

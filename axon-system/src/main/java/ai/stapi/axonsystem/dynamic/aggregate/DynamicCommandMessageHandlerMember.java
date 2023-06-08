@@ -10,8 +10,7 @@ import org.axonframework.commandhandling.CommandMessageHandlingMember;
 import org.axonframework.messaging.Message;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class DynamicCommandMessageHandlerMember
-    implements CommandMessageHandlingMember<DynamicAggregate> {
+public abstract class DynamicCommandMessageHandlerMember implements CommandMessageHandlingMember<DynamicAggregate> {
 
   protected final DynamicCommandProcessor dynamicCommandProcessor;
   protected final String aggregateType;

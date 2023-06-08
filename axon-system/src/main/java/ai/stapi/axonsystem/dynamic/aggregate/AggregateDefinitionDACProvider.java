@@ -20,12 +20,8 @@ import org.axonframework.messaging.annotation.ParameterResolverFactory;
 import org.axonframework.modelling.command.CommandTargetResolver;
 import org.axonframework.tracing.SpanFactory;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Service;
 
-@Service
-public class AggregateDefinitionDynamicAggregateConfigurationsProvider
-    implements DynamicAggregateConfigurationsProvider {
+public class AggregateDefinitionDACProvider implements DynamicAggregateConfigurationsProvider {
 
   private final AggregateDefinitionProvider aggregateDefinitionProvider;
   private final DynamicCommandProcessor dynamicCommandProcessor;
@@ -36,12 +32,12 @@ public class AggregateDefinitionDynamicAggregateConfigurationsProvider
   
   private final CommandTargetResolver commandTargetResolver;
 
-  public AggregateDefinitionDynamicAggregateConfigurationsProvider(
+  public AggregateDefinitionDACProvider(
       AggregateDefinitionProvider aggregateDefinitionProvider,
       DynamicCommandProcessor dynamicCommandProcessor,
-      @Lazy EventStore eventStore,
+      EventStore eventStore,
       SpanFactory spanFactory,
-      @Lazy Configuration configuration,
+      Configuration configuration,
       ParameterResolverFactory parameterResolverFactory,
       CommandTargetResolver commandTargetResolver
   ) {

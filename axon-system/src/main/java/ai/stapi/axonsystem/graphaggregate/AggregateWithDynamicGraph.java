@@ -1,6 +1,5 @@
 package ai.stapi.axonsystem.graphaggregate;
 
-import ai.stapi.axonsystem.graphaggregate.AggregateWithGraph;
 import ai.stapi.identity.UniqueIdentifier;
 import ai.stapi.graphsystem.dynamiccommandprocessor.DynamicCommandProcessor;
 import ai.stapi.graphsystem.messaging.command.AbstractCommand;
@@ -9,7 +8,6 @@ import ai.stapi.graphsystem.messaging.event.AggregateGraphUpdatedEvent;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.modelling.command.AggregateVersion;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class AggregateWithDynamicGraph<T extends UniqueIdentifier>  extends AggregateWithGraph {
 
@@ -18,8 +16,7 @@ public abstract class AggregateWithDynamicGraph<T extends UniqueIdentifier>  ext
 
   @AggregateVersion
   protected long version;
-
-  @Autowired
+  
   protected DynamicCommandProcessor commandProcessor;
 
   protected AggregateWithDynamicGraph() {

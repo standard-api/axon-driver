@@ -9,10 +9,7 @@ import java.util.Map;
 import org.axonframework.config.Configurer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Service;
 
-@Service
 public class RuntimeDynamicAggregateConfigurer {
 
   private final DynamicAggregateConfigurationsProvider dynamicAggregateConfigurationsProvider;
@@ -22,7 +19,7 @@ public class RuntimeDynamicAggregateConfigurer {
 
   public RuntimeDynamicAggregateConfigurer(
       DynamicAggregateConfigurationsProvider dynamicAggregateConfigurationsProvider,
-      @Lazy Configurer configurer
+      Configurer configurer
   ) {
     this.dynamicAggregateConfigurationsProvider = dynamicAggregateConfigurationsProvider;
     this.configurer = configurer;

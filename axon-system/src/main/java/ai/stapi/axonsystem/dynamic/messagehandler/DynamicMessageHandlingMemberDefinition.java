@@ -9,9 +9,7 @@ import org.axonframework.messaging.Message;
 import org.axonframework.messaging.annotation.HandlerDefinition;
 import org.axonframework.messaging.annotation.MessageHandlingMember;
 import org.axonframework.messaging.annotation.ParameterResolverFactory;
-import org.springframework.stereotype.Service;
 
-@Service
 public class DynamicMessageHandlingMemberDefinition implements HandlerDefinition {
 
   @Override

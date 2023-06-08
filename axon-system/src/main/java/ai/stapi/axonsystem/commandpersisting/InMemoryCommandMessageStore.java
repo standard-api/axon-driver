@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.axonframework.commandhandling.CommandMessage;
-import org.springframework.stereotype.Service;
 
-@Service
 public class InMemoryCommandMessageStore implements CommandMessageStore {
 
   private final List<PersistedCommandMessage<?>> persistedCommandMessages;
