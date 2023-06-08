@@ -36,11 +36,7 @@ import org.axonframework.serialization.Serializer;
 import org.axonframework.serialization.upcasting.event.EventUpcaster;
 import org.axonframework.spring.config.SpringConfigurer;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Service;
 
-@Service
-@Primary
 public class DynamicAxonConfigurer implements Configurer {
 
   private final SpringConfigurer springConfigurer;

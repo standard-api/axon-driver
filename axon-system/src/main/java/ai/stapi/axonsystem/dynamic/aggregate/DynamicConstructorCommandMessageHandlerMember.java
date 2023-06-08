@@ -8,8 +8,7 @@ import org.axonframework.messaging.Message;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class DynamicConstructorCommandMessageHandlerMember
-    extends DynamicCommandMessageHandlerMember {
+public class DynamicConstructorCommandMessageHandlerMember extends DynamicCommandMessageHandlerMember {
 
   public DynamicConstructorCommandMessageHandlerMember(
       DynamicCommandProcessor dynamicCommandProcessor,

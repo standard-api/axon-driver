@@ -1,7 +1,6 @@
 package ai.stapi.axonsystem.commandpersisting;
 
 import ai.stapi.axonsystem.commandpersisting.configuration.ExampleModuleDefinitionsLoader;
-import ai.stapi.axonsystem.commandpersisting.configuration.PersistCommandInterceptorTestConfiguration;
 import ai.stapi.axonsystem.commandpersisting.exampleimplementation.ChangeExampleNodeExampleQuantity;
 import ai.stapi.axonsystem.commandpersisting.exampleimplementation.CreateNewExampleNodeCommand;
 import ai.stapi.identity.UniversallyUniqueIdentifier;
@@ -13,10 +12,10 @@ import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
 
-@Import(PersistCommandInterceptorTestConfiguration.class)
 @StructureDefinitionScope(ExampleModuleDefinitionsLoader.SCOPE)
+@ActiveProfiles("dev")
 class PersistCommandInterceptorTest extends DomainTestCase {
 
   @Autowired

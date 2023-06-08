@@ -1,4 +1,4 @@
-package ai.stapi.axonsystem.configuration;
+package ai.stapi.axonsystem.configuration.implementations;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,23 +15,6 @@ public class CustomFailureLoggingCallback<C, R> implements CommandCallback<C, R>
   public CustomFailureLoggingCallback(Logger logger) {
     this.logger = logger;
     this.delegate = null;
-  }
-
-  @Deprecated
-  public CustomFailureLoggingCallback(CommandCallback<C, R> delegate) {
-    this(
-        Logger.getLogger(
-            CustomFailureLoggingCallback.class.getSimpleName()
-        ),
-        delegate
-    );
-  }
-
-  @Deprecated
-  public CustomFailureLoggingCallback(@Nonnull Logger logger,
-      @Nonnull CommandCallback<C, R> delegate) {
-    this.logger = logger;
-    this.delegate = delegate;
   }
 
   @Override

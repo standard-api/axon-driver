@@ -8,9 +8,7 @@ import org.axonframework.commandhandling.GenericCommandMessage;
 import org.axonframework.messaging.GenericMessage;
 import org.axonframework.messaging.MessageDispatchInterceptor;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.stereotype.Service;
 
-@Service
 public class DynamicCommandDispatchInterceptor  implements MessageDispatchInterceptor<CommandMessage<?>> {
 
   @NotNull

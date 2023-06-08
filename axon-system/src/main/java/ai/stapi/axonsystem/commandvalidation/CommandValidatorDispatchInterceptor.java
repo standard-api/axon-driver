@@ -10,11 +10,8 @@ import java.util.function.BiFunction;
 import org.axonframework.commandhandling.CommandMessage;
 import org.axonframework.messaging.MessageDispatchInterceptor;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
 
-@Service
-@Profile("dev")
+
 public class CommandValidatorDispatchInterceptor implements MessageDispatchInterceptor<CommandMessage<?>> {
 
   private final CommandValidator commandValidator;
