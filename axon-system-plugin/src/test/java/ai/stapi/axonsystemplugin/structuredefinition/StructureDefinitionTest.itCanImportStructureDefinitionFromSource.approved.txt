@@ -1,0 +1,105 @@
+nodes:
+	node_type: ElementDefinition
+	node_hash: 1388F
+	node_edges:
+		ElementDefinition -> type -> ElementDefinitionType (1388F -> 29DBB -> FB86E)
+		StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 4E804 -> 1388F)
+	attributes:
+		definition -> Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
+		max -> 1
+		min -> 0
+		path -> Element.id
+		short -> Unique id for inter-element referencing
+
+	node_type: ElementDefinition
+	node_hash: AE262
+	node_edges:
+		ElementDefinition -> type -> ElementDefinitionType (AE262 -> 771A8 -> B3F79)
+		StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 77622 -> AE262)
+	attributes:
+		comment -> There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
+		definition -> May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
+		max -> *
+		min -> 0
+		path -> Element.extension
+		short -> Additional content defined by implementations
+
+	node_type: ElementDefinition
+	node_hash: DD3CE
+	node_edges:
+		StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 090EC -> DD3CE)
+	attributes:
+		definition -> Base definition for all elements in a resource.
+		max -> *
+		min -> 0
+		path -> Element
+		short -> Base for all elements
+
+	node_type: ElementDefinitionType
+	node_hash: B3F79
+	node_edges:
+		ElementDefinition -> type -> ElementDefinitionType (AE262 -> 771A8 -> B3F79)
+	attributes:
+		code -> Extension
+		targetProfile -> []
+
+	node_type: ElementDefinitionType
+	node_hash: FB86E
+	node_edges:
+		ElementDefinition -> type -> ElementDefinitionType (1388F -> 29DBB -> FB86E)
+	attributes:
+		code -> string
+		targetProfile -> []
+
+	node_type: StructureDefinition
+	node_hash: 955AE
+	node_edges:
+		StructureDefinition -> differential -> StructureDefinitionDifferential (955AE -> 378D2 -> B4114)
+	attributes:
+		abstract -> true
+		description -> Base StructureDefinition for Element Type: Base definition for all elements in a resource.
+		kind -> complex-type
+		status -> active
+		type -> Element
+		url -> http://hl7.org/fhir/StructureDefinition/Element
+
+	node_type: StructureDefinitionDifferential
+	node_hash: B4114
+	node_edges:
+		StructureDefinition -> differential -> StructureDefinitionDifferential (955AE -> 378D2 -> B4114)
+		StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 090EC -> DD3CE)
+		StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 4E804 -> 1388F)
+		StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 77622 -> AE262)
+	attributes:
+		parent -> Element
+
+edges:
+	edge_type: differential
+	edge_hash: 378D2
+	StructureDefinition -> differential -> StructureDefinitionDifferential (955AE -> 378D2 -> B4114)
+	attributes:
+
+	edge_type: element
+	edge_hash: 090EC
+	StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 090EC -> DD3CE)
+	attributes:
+
+	edge_type: element
+	edge_hash: 4E804
+	StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 4E804 -> 1388F)
+	attributes:
+
+	edge_type: element
+	edge_hash: 77622
+	StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 77622 -> AE262)
+	attributes:
+
+	edge_type: type
+	edge_hash: 29DBB
+	ElementDefinition -> type -> ElementDefinitionType (1388F -> 29DBB -> FB86E)
+	attributes:
+
+	edge_type: type
+	edge_hash: 771A8
+	ElementDefinition -> type -> ElementDefinitionType (AE262 -> 771A8 -> B3F79)
+	attributes:
