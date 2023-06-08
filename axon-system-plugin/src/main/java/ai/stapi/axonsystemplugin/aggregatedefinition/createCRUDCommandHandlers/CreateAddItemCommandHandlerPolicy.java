@@ -9,11 +9,7 @@ import ai.stapi.schema.structureSchemaMapper.StructureDefinitionToSSMapper;
 import ai.stapi.schema.structureSchemaProvider.StructureSchemaFinder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.axonframework.commandhandling.gateway.CommandGateway;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
 
-@Service
-@Profile("dev")
 public class CreateAddItemCommandHandlerPolicy extends AbstractCreateCRUDCommandHandlerPolicy {
 
   private final AddItemOnResourceOperationsMapper addItemOnResourceOperationsMapper;

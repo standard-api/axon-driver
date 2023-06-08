@@ -5,11 +5,7 @@ import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
 
-@Service
-@Profile("commit-command-fixtures")
 public class CommitCommandFixturesLineRunner implements CommandLineRunner {
 
   private final CommandGateway commandGateway;

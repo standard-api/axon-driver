@@ -22,9 +22,7 @@ import org.axonframework.eventhandling.gateway.EventGateway;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
-@Service
 public class CommitCommandFixturesHandler {
 
   private final SimpleDateFormat fileDateFormat = new SimpleDateFormat("yyMMddHHmmss");
