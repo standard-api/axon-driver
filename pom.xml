@@ -8,6 +8,8 @@
     <version>0.0.8</version>
     <modules>
         <module>axon-system</module>
+        <module>axon-system-plugin</module>
+        <module>axon-test</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -36,7 +38,7 @@
         <surefire-junit-platform.version>2.22.2</surefire-junit-platform.version>
         <junit.platform.version>1.9.2</junit.platform.version>
         <spring.boot.version>3.1.0</spring.boot.version>
-        <axon.version>4.7.1</axon.version>
+        <axon.version>4.7.5</axon.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 
 @AutoConfiguration
-@Profile("dev")
 public class CommandPersistingConfiguration {
   
   @Bean
@@ -21,6 +20,7 @@ public class CommandPersistingConfiguration {
   
   @Bean
   @ConditionalOnBean(CommandMessageStore.class)
+  @Profile("dev")
   public PersistCommandInterceptor persistCommandInterceptor(
       CommandMessageStore commandMessageStore
   ) {
