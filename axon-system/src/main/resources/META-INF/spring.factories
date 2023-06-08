@@ -1,4 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   ai.stapi.axonsystem.configuration.CommandGatewayConfiguration,\
   ai.stapi.axonsystem.configuration.CommandPersistingConfiguration,\
-  ai.stapi.axonsystem.configuration.DynamicAxonConfiguration
+  ai.stapi.axonsystem.configuration.DynamicAxonConfiguration,\
+  ai.stapi.axonsystem.configuration.SerializerConfiguration
