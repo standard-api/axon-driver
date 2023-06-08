@@ -1,0 +1,70 @@
+nodes:
+	node_type: ElementDefinition
+	node_hash: 847AF
+	node_edges:
+		ElementDefinition -> type -> ElementDefinitionType (847AF -> 1C8AA -> 5B9BD)
+		StructureDefinitionDifferential -> element -> ElementDefinition (DE40D -> 17632 -> 847AF)
+	attributes:
+		comment -> A newly added element
+		definition -> A newly added element
+		max -> 1
+		min -> 0
+		path -> Element.newField
+		short -> A newly added element
+
+	node_type: ElementDefinition
+	node_hash: E1D26
+	node_edges:
+		ElementDefinition -> type -> ElementDefinitionType (E1D26 -> C6AC8 -> 307CF)
+		StructureDefinitionDifferential -> element -> ElementDefinition (DE40D -> 9811E -> E1D26)
+	attributes:
+		comment -> A anotherField added element
+		definition -> A anotherField added element
+		max -> 1
+		min -> 0
+		path -> Element.anotherField
+		short -> A anotherField added element
+
+	node_type: ElementDefinitionType
+	node_hash: 307CF
+	node_edges:
+		ElementDefinition -> type -> ElementDefinitionType (E1D26 -> C6AC8 -> 307CF)
+	attributes:
+		code -> string
+		targetProfile -> []
+
+	node_type: ElementDefinitionType
+	node_hash: 5B9BD
+	node_edges:
+		ElementDefinition -> type -> ElementDefinitionType (847AF -> 1C8AA -> 5B9BD)
+	attributes:
+		code -> string
+		targetProfile -> []
+
+	node_type: StructureDefinitionDifferential
+	node_hash: DE40D
+	node_edges:
+		StructureDefinitionDifferential -> element -> ElementDefinition (DE40D -> 17632 -> 847AF)
+		StructureDefinitionDifferential -> element -> ElementDefinition (DE40D -> 9811E -> E1D26)
+	attributes:
+
+edges:
+	edge_type: element
+	edge_hash: 17632
+	StructureDefinitionDifferential -> element -> ElementDefinition (DE40D -> 17632 -> 847AF)
+	attributes:
+
+	edge_type: element
+	edge_hash: 9811E
+	StructureDefinitionDifferential -> element -> ElementDefinition (DE40D -> 9811E -> E1D26)
+	attributes:
+
+	edge_type: type
+	edge_hash: 1C8AA
+	ElementDefinition -> type -> ElementDefinitionType (847AF -> 1C8AA -> 5B9BD)
+	attributes:
+
+	edge_type: type
+	edge_hash: C6AC8
+	ElementDefinition -> type -> ElementDefinitionType (E1D26 -> C6AC8 -> 307CF)
+	attributes:

@@ -1,0 +1,20 @@
+nodes:
+	node_type: TestComplex
+	node_hash: A711C
+	node_edges:
+		TestResource -> someComplexField -> TestComplex (14E99 -> 027FF -> A711C)
+	attributes:
+		somePrimitiveField -> Example Primitive Value in Complex Value
+
+	node_type: TestResource
+	node_hash: 14E99
+	node_edges:
+		TestResource -> someComplexField -> TestComplex (14E99 -> 027FF -> A711C)
+	attributes:
+		somePrimitiveField -> Primitive Value
+
+edges:
+	edge_type: someComplexField
+	edge_hash: 027FF
+	TestResource -> someComplexField -> TestComplex (14E99 -> 027FF -> A711C)
+	attributes:

@@ -1,0 +1,20 @@
+nodes:
+	node_type: AggregateDefinition
+	node_hash: 15F74
+	node_edges:
+		AggregateDefinition -> structure -> StructureDefinition (15F74 -> 45F30 -> 7380B)
+	attributes:
+		description -> Example Description
+		name -> TestExampleResource
+
+	node_type: StructureDefinition
+	node_hash: 7380B
+	node_edges:
+		AggregateDefinition -> structure -> StructureDefinition (15F74 -> 45F30 -> 7380B)
+	attributes:
+
+edges:
+	edge_type: structure
+	edge_hash: 45F30
+	AggregateDefinition -> structure -> StructureDefinition (15F74 -> 45F30 -> 7380B)
+	attributes:
