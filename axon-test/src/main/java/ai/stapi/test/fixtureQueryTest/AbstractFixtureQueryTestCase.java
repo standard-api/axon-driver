@@ -47,7 +47,7 @@ public abstract class AbstractFixtureQueryTestCase extends AbstractAxonTestCase 
     try {
       actualEntity = completableFuture.get();
     } catch (InterruptedException | ExecutionException e) {
-      e.printStackTrace();
+      Thread.currentThread().interrupt();
     }
     Assertions.assertNotNull(actualEntity);
   }
@@ -64,11 +64,13 @@ public abstract class AbstractFixtureQueryTestCase extends AbstractAxonTestCase 
     try {
       actualResponse = completableFuture.get();
     } catch (InterruptedException | ExecutionException e) {
-      throw new RuntimeException(e);
+      Thread.currentThread().interrupt();
     }
     Assertions.assertNotNull(actualResponse);
     this.thenQueryCanBeSerialized(query);
-    this.thenResponseCanBeSerializedWithJsonSerializer(actualResponse);
+    if (actualResponse != null) {
+      this.thenResponseCanBeSerializedWithJsonSerializer(actualResponse);
+    }
 
     return actualResponse;
   }
@@ -86,8 +88,9 @@ public abstract class AbstractFixtureQueryTestCase extends AbstractAxonTestCase 
     try {
       actualResponse = completableFuture.get();
     } catch (InterruptedException | ExecutionException e) {
-      throw new RuntimeException(e);
+      Thread.currentThread().interrupt();
     }
+    Assertions.assertNotNull(actualResponse);
     this.thenQueryCanBeSerialized(query);
     if (actualResponse != null) {
       this.thenResponseCanBeSerializedWithJsonSerializer(actualResponse);
@@ -123,7 +126,7 @@ public abstract class AbstractFixtureQueryTestCase extends AbstractAxonTestCase 
     try {
       actualResponse = completableFuture.get();
     } catch (InterruptedException | ExecutionException e) {
-      throw new RuntimeException(e);
+      Thread.currentThread().interrupt();
     }
     Assertions.assertNotNull(actualResponse);
     return actualResponse;
