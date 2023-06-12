@@ -2,29 +2,19 @@ package ai.stapi.test.fixtureQueryTest;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import ai.stapi.graph.attribute.AbstractAttributeContainer;
-import ai.stapi.graph.traversableGraphElements.TraversableEdge;
-import ai.stapi.graph.traversableGraphElements.TraversableGraphElement;
-import ai.stapi.graph.traversableGraphElements.TraversableNode;
 import ai.stapi.graphsystem.messaging.query.Query;
 import ai.stapi.graphsystem.messaging.query.Response;
 import ai.stapi.graphsystem.systemfixtures.model.SystemModelDefinitionsLoader;
-import ai.stapi.test.schemaintegration.AbstractSchemaIntegrationTestCase;
+import ai.stapi.test.base.AbstractAxonTestCase;
 import ai.stapi.test.schemaintegration.StructureDefinitionScope;
-import ai.stapi.utils.LineFormatter;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.thoughtworks.xstream.XStream;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import javax.annotation.Nullable;
-import org.approvaltests.Approvals;
-import org.axonframework.eventhandling.TrackedEventMessage;
-import org.axonframework.eventhandling.TrackingEventStream;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.axonframework.serialization.xml.XStreamSerializer;
@@ -33,7 +23,7 @@ import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @StructureDefinitionScope(SystemModelDefinitionsLoader.SCOPE)
-public abstract class AbstractFixtureQueryTestCase extends AbstractSchemaIntegrationTestCase {
+public abstract class AbstractFixtureQueryTestCase extends AbstractAxonTestCase {
 
   @Autowired
   private QueryGateway queryGateway;
@@ -44,7 +34,6 @@ public abstract class AbstractFixtureQueryTestCase extends AbstractSchemaIntegra
   @Autowired
   private XStream xStream;
   
-
   @Deprecated
   protected void thenQueryWillReturnResponseOfType(
       Query query,
@@ -84,85 +73,6 @@ public abstract class AbstractFixtureQueryTestCase extends AbstractSchemaIntegra
     return actualResponse;
   }
 
-
-  private void assertEventTypeListsAreSame(List<Class<?>> expectedEventTypes,
-      List<Class<?>> actualEventTypes) {
-    var actualEventTypesIterator = actualEventTypes.iterator();
-    expectedEventTypes.forEach(expectedEventType ->
-        Assertions.assertEquals(
-            expectedEventType,
-            actualEventTypesIterator.next(),
-            this.getErrorMessage(expectedEventTypes, actualEventTypes)
-        )
-    );
-  }
-
-  private List<Class<?>> getActualEventTypes(TrackingEventStream actualEventStream) {
-    var actualEventTypes = new ArrayList<Class<?>>();
-    while (actualEventStream.hasNextAvailable()) {
-      actualEventTypes.add(getActualEventType(actualEventStream));
-    }
-    actualEventStream.close();
-    return actualEventTypes;
-  }
-
-  private List<Object> getActualEvents(TrackingEventStream actualEventStream) {
-    var actualEvents = new ArrayList<>();
-    while (actualEventStream.hasNextAvailable()) {
-      actualEvents.add(getActualEvent(actualEventStream));
-    }
-    actualEventStream.close();
-    return actualEvents;
-  }
-
-  private Object getActualEvent(TrackingEventStream actualEventStream) {
-    try {
-      return actualEventStream.nextAvailable().getPayload();
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  private List<TrackedEventMessage<?>> getActualEventMessages(
-      TrackingEventStream actualEventStream) {
-    var actualEvents = new ArrayList<TrackedEventMessage<?>>();
-    while (actualEventStream.hasNextAvailable()) {
-      actualEvents.add(getActualEventMessage(actualEventStream));
-    }
-    actualEventStream.close();
-    return actualEvents;
-  }
-
-  private TrackedEventMessage<?> getActualEventMessage(TrackingEventStream actualEventStream) {
-    try {
-      return actualEventStream.nextAvailable();
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  private Class<?> getActualEventType(TrackingEventStream actualEventStream) {
-    try {
-      return actualEventStream.nextAvailable().getPayloadType();
-    } catch (InterruptedException e) {
-      throw new RuntimeException(e);
-    }
-  }
-
-  private String getErrorMessage(List<Class<?>> expectedEventTypes,
-      List<Class<?>> actualEventTypes) {
-    var title = LineFormatter.createLine("Actual event types differ from expected event types.");
-    var expectedTitle = LineFormatter.createLine("Expected:");
-    var expectedString = LineFormatter.createLines(
-        expectedEventTypes.stream().map(Class::toString)
-    );
-    var actualTitle = LineFormatter.createLine("Actual:");
-    var actualString = LineFormatter.createLines(
-        actualEventTypes.stream().map(Class::toString)
-    );
-    return title + expectedTitle + expectedString + actualTitle + actualString;
-  }
-
   @Nullable
   protected <T> T whenNullableQueryIsDispatched(
       Query query,
@@ -183,64 +93,6 @@ public abstract class AbstractFixtureQueryTestCase extends AbstractSchemaIntegra
       this.thenResponseCanBeSerializedWithJsonSerializer(actualResponse);
     }
     return actualResponse;
-  }
-
-  protected void thenGraphElementsApprovedSorted(List<TraversableGraphElement> graphElements) {
-    Assertions.assertNotNull(graphElements);
-    if (graphElements.size() == 0) {
-      Approvals.verify(new ArrayList<>());
-      return;
-    }
-    if (graphElements.get(0) instanceof TraversableNode) {
-      var nodes = graphElements.stream()
-          .map(node -> (TraversableNode) node)
-          .sorted(Comparator.comparingInt(AbstractAttributeContainer::getIdlessHashCode))
-          .toList();
-      this.thenNodesApproved(nodes);
-    }
-    if (graphElements.get(0) instanceof TraversableEdge) {
-      var edges = graphElements.stream()
-          .map(edge -> (TraversableEdge) edge)
-          .sorted(Comparator.comparingInt(AbstractAttributeContainer::getIdlessHashCode))
-          .toList();
-      this.thenEdgesApproved(edges);
-    }
-  }
-
-
-  protected void thenNodeApproved(TraversableNode node) {
-    Assertions.assertNotNull(node);
-    var renderedNode = idLessTextNodeRenderer.render(node).toPrintableString();
-    Approvals.verify(renderedNode);
-  }
-
-  protected void thenNodesApproved(List<TraversableNode> nodes) {
-    Assertions.assertNotNull(nodes);
-    if (nodes.size() == 0) {
-      Approvals.verify(new ArrayList<>());
-      return;
-    }
-    var renderedNodes = nodes.stream()
-        .map(node -> idLessTextNodeRenderer.render(node).toPrintableString());
-    Approvals.verify(LineFormatter.createLines(renderedNodes));
-  }
-
-  protected void thenEdgeApproved(TraversableEdge edge) {
-    var renderEdge =
-        idLessTextEdgeRenderer.render(edge, this.getRenderOptions()).toPrintableString();
-    Approvals.verify(renderEdge);
-  }
-
-  protected void thenEdgesApproved(List<TraversableEdge> edges) {
-    Assertions.assertNotNull(edges);
-    if (edges.size() == 0) {
-      Approvals.verify(new ArrayList<>());
-      return;
-    }
-    var renderedEdges = edges.stream()
-        .map(edge -> idLessTextEdgeRenderer.render(edge).toPrintableString())
-        .sorted();
-    Approvals.verify(LineFormatter.createLines(renderedEdges));
   }
 
   protected <T> List<T> whenQueryReturningListIsDispatched(
