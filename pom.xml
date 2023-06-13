@@ -5,7 +5,7 @@
 
     <groupId>ai.stapi</groupId>
     <artifactId>axon-driver</artifactId>
-    <version>0.0.9</version>
+    <version>0.0.10</version>
     <modules>
         <module>axon-system</module>
         <module>axon-system-plugin</module>
@@ -32,7 +32,7 @@
     </issueManagement>
 
     <properties>
-        <stapi.version>0.0.9</stapi.version>
+        <stapi.version>0.0.10</stapi.version>
         <java.version>17</java.version>
         <maven-dependency-plugin.version>3.5.0</maven-dependency-plugin.version>
         <surefire-junit-platform.version>2.22.2</surefire-junit-platform.version>
