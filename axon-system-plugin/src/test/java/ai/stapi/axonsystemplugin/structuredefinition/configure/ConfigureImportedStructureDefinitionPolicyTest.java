@@ -23,15 +23,139 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 
 @ActiveProfiles("dev")
-@Disabled
 class ConfigureImportedStructureDefinitionPolicyTest extends DomainTestCase {
 
   @Autowired
   private StructureSchemaFinder structureSchemaFinder;
+  
+  @Test
+  void itWillConfigureNewStructureDefinition() {
+    var testComplex = new RawStructureDefinitionData(
+        "TestComplex",
+        "http://test.url/for/complex",
+        "draft",
+        "Structure Definition for test complex ",
+        "complex-type",
+        false,
+        "TestComplex",
+        null,
+        new RawStructureDefinitionData.Differential(
+            new ArrayList<>(
+                List.of(
+                    new RawStructureDefinitionElementDefinition(
+                        "TestComplex.somePrimitiveField",
+                        1,
+                        "1",
+                        "Primitive Example Field on Test Complex",
+                        "",
+                        "",
+                        new ArrayList<>(
+                            List.of(
+                                new RawStructureDefinitionElementDefinition.ElementDefinitionType(
+                                    "string",
+                                    new ArrayList<>()
+                                )
+                            )
+                        )
+                    )
+                )
+            ),
+            ""
+        )
+    );
+    this.whenCommandIsDispatched(
+        new ImportStructureDefinition(
+            new StructureDefinitionId("TestComplex"),
+            testComplex
+        )
+    );
+    this.thenExpectedEventTypesSaved(
+        StructureDefinitionImported.class,
+        StructureDefinitionConfigured.class
+    );
+    var field = this.structureSchemaFinder.getFieldDefinitionFor(
+        "TestComplex",
+        "somePrimitiveField"
+    );
+    this.thenObjectApproved(field);
+  }
 
   @Test
-  void itCanImportStructureDefinitionAndExecuteAppropriateDynamicCommand()
-      throws InterruptedException {
+  void itWillConfigureAddedElement() {
+    var testComplex = new RawStructureDefinitionData(
+        "TestComplex",
+        "http://test.url/for/complex",
+        "draft",
+        "Structure Definition for test complex ",
+        "complex-type",
+        false,
+        "TestComplex",
+        null,
+        new RawStructureDefinitionData.Differential(
+            new ArrayList<>(
+                List.of(
+                    new RawStructureDefinitionElementDefinition(
+                        "TestComplex.somePrimitiveField",
+                        1,
+                        "1",
+                        "Primitive Example Field on Test Complex",
+                        "",
+                        "",
+                        new ArrayList<>(
+                            List.of(
+                                new RawStructureDefinitionElementDefinition.ElementDefinitionType(
+                                    "string",
+                                    new ArrayList<>()
+                                )
+                            )
+                        )
+                    )
+                )
+            ),
+            ""
+        )
+    );
+    this.givenCommandIsDispatched(
+        new ImportStructureDefinition(
+            new StructureDefinitionId("TestComplex"),
+            testComplex
+        )
+    );
+    this.whenCommandIsDispatched(
+        new DynamicCommand(
+            new UniqueIdentifier("TestComplex"),
+            "AddElementOnStructureDefinitionDifferential",
+            Map.of(
+                "element", new ArrayList<>(List.of(
+                    new ElementDefinition(
+                        "TestComplex.newField",
+                        new ArrayList<>(List.of(new ElementDefinitionType("string"))),
+                        0,
+                        "1",
+                        "New field",
+                        "New field",
+                        "New field"
+                    )
+                ))
+            )
+        )
+    );
+    this.thenExpectedEventTypesSaved(
+        StructureDefinitionImported.class,
+        StructureDefinitionConfigured.class,
+        DynamicGraphUpdatedEvent.class,
+        ElementsToStructureDefinitionConfigured.class
+    );
+    var field = this.structureSchemaFinder.getFieldDefinitionFor(
+        "TestComplex",
+        "newField"
+    );
+    this.thenObjectApproved(field);
+  }
+
+  @Test
+  @Disabled
+  void itCanImportStructureDefinitionAndExecuteAppropriateDynamicCommand() {
     var testPrimitive = new RawStructureDefinitionData(
         "string",
         "http://test.url/for/primitive",
@@ -175,78 +299,5 @@ class ConfigureImportedStructureDefinitionPolicyTest extends DomainTestCase {
             )
         ));
     this.thenLastEventOfTypeGraphApproved(DynamicGraphUpdatedEvent.class);
-  }
-
-  @Test
-  void itWillConfigureAddedElement() {
-    var testComplex = new RawStructureDefinitionData(
-        "TestComplex",
-        "http://test.url/for/complex",
-        "draft",
-        "Structure Definition for test complex ",
-        "complex-type",
-        false,
-        "TestComplex",
-        null,
-        new RawStructureDefinitionData.Differential(
-            new ArrayList<>(
-                List.of(
-                    new RawStructureDefinitionElementDefinition(
-                        "TestComplex.somePrimitiveField",
-                        1,
-                        "1",
-                        "Primitive Example Field on Test Complex",
-                        "",
-                        "",
-                        new ArrayList<>(
-                            List.of(
-                                new RawStructureDefinitionElementDefinition.ElementDefinitionType(
-                                    "string",
-                                    new ArrayList<>()
-                                )
-                            )
-                        )
-                    )
-                )
-            ),
-            ""
-        )
-    );
-    this.givenCommandIsDispatched(
-        new ImportStructureDefinition(
-            new StructureDefinitionId("TestComplex"),
-            testComplex
-        )
-    );
-    this.whenCommandIsDispatched(
-        new DynamicCommand(
-            new UniqueIdentifier("TestComplex"),
-            "AddElementOnStructureDefinitionDifferential",
-            Map.of(
-                "element", new ArrayList<>(List.of(
-                    new ElementDefinition(
-                        "TestComplex.newField",
-                        new ArrayList<>(List.of(new ElementDefinitionType("string"))),
-                        0,
-                        "1",
-                        "New field",
-                        "New field",
-                        "New field"
-                    )
-                ))
-            )
-        )
-    );
-    this.thenExpectedEventTypesSaved(
-        StructureDefinitionImported.class,
-        StructureDefinitionConfigured.class,
-        DynamicGraphUpdatedEvent.class,
-        ElementsToStructureDefinitionConfigured.class
-    );
-    var field = this.structureSchemaFinder.getFieldDefinitionFor(
-        "TestComplex",
-        "newField"
-    );
-    this.thenObjectApproved(field);
   }
 }
