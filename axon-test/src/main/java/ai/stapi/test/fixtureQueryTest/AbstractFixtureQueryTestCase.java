@@ -18,7 +18,6 @@ import javax.annotation.Nullable;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.axonframework.serialization.xml.XStreamSerializer;
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -102,11 +101,14 @@ public abstract class AbstractFixtureQueryTestCase extends AbstractAxonTestCase 
       Query query,
       Class<T> expectedResponseType
   ) {
-    var actualResponse = makeQueryReturningList(query, expectedResponseType);
+    var actualResponse = this.makeQueryReturningList(query, expectedResponseType);
+    if (actualResponse == null) {
+      Assertions.fail("Response is null");
+      throw new RuntimeException("Response is null");
+    }
     this.thenQueryCanBeSerialized(query);
     actualResponse.forEach(this::thenResponseCanBeSerializedWithJsonSerializer);
     return actualResponse;
-
   }
 
   protected <T> List<T> givenQueryReturningListIsDispatched(
@@ -116,7 +118,6 @@ public abstract class AbstractFixtureQueryTestCase extends AbstractAxonTestCase 
     return makeQueryReturningList(query, expectedResponseType);
   }
 
-  @NotNull
   private <T> List<T> makeQueryReturningList(Query query, Class<T> expectedResponseType) {
     var completableFuture = queryGateway.query(
         query,
