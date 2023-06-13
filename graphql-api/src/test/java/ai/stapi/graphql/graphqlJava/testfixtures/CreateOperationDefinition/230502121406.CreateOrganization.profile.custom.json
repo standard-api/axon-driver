@@ -1,0 +1,107 @@
+{
+  "code": "Create Organization",
+  "system": false,
+  "instance": true,
+  "resource": [
+    "Organization"
+  ],
+  "kind": "operation",
+  "parameter": [
+    {
+      "name": "extension",
+      "use": "in",
+      "min": 0,
+      "max": "*",
+      "type": "Extension",
+      "referencedFrom": [
+        {
+          "source": "Organization.extension"
+        }
+      ],
+      "targetProfileReference": []
+    },
+    {
+      "name": "address",
+      "use": "in",
+      "min": 0,
+      "max": "*",
+      "type": "Address",
+      "referencedFrom": [
+        {
+          "source": "Organization.address"
+        }
+      ],
+      "targetProfileReference": []
+    },
+    {
+      "name": "type",
+      "use": "in",
+      "min": 0,
+      "max": "*",
+      "type": "CodeableConcept",
+      "referencedFrom": [
+        {
+          "source": "Organization.type"
+        }
+      ],
+      "targetProfileReference": []
+    },
+    {
+      "name": "name",
+      "use": "in",
+      "min": 0,
+      "max": "1",
+      "type": "string",
+      "referencedFrom": [
+        {
+          "source": "Organization.name"
+        }
+      ],
+      "targetProfileReference": []
+    },
+    {
+      "name": "levelString",
+      "use": "in",
+      "min": 0,
+      "max": "1",
+      "type": "string",
+      "referencedFrom": [
+        {
+          "source": "Organization.level"
+        }
+      ],
+      "targetProfileReference": []
+    },
+    {
+      "name": "levelInteger",
+      "use": "in",
+      "min": 0,
+      "max": "1",
+      "type": "integer",
+      "referencedFrom": [
+        {
+          "source": "Organization.level"
+        }
+      ],
+      "targetProfileReference": []
+    },
+    {
+      "name": "telecom",
+      "use": "in",
+      "min": 0,
+      "max": "*",
+      "type": "ContactPoint",
+      "referencedFrom": [
+        {
+          "source": "Organization.telecom"
+        }
+      ],
+      "targetProfileReference": []
+    }
+  ],
+  "name": "Create Organization",
+  "description": "Generated command for creating Organization with all fields.",
+  "id": "CreateOrganization",
+  "type": true,
+  "status": "draft"
+}

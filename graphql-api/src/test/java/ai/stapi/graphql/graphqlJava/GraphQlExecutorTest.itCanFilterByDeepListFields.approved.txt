@@ -1,0 +1,21 @@
+{
+  "findOrganizationList" : [ {
+    "name" : "Hradec Kralove Cardiology",
+    "address" : [ {
+      "city" : "Hradec Kralove",
+      "line" : [ "Sokolská 581" ]
+    } ]
+  }, {
+    "name" : "Prague Medical Clinic",
+    "address" : [ {
+      "city" : "Aš",
+      "line" : [ "Dlouhá 21" ]
+    }, {
+      "city" : "Prague",
+      "line" : [ "Vaclavske Namesti 8", "Vaclavske Namesti 11", "Vaclavske Namesti 50" ]
+    } ]
+  }, {
+    "name" : "TestLab",
+    "address" : [ ]
+  } ]
+}

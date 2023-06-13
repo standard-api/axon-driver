@@ -1,0 +1,56 @@
+{
+  "name": "Organization",
+  "description": "A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, payer/insurer, etc.",
+  "id": "OrganizationAggregate",
+  "command": [
+    {
+      "creationalPolicy": "if_missing",
+      "operation": {
+        "id": "CreateOrganization"
+      },
+      "eventFactory": [
+        {
+          "event": {
+            "id": "OrganizationCreated"
+          },
+          "modification": [
+            {
+              "kind": "add",
+              "inputValueParameterName": "extension",
+              "modificationPath": "Organization.extension"
+            },
+            {
+              "kind": "add",
+              "inputValueParameterName": "address",
+              "modificationPath": "Organization.address"
+            },
+            {
+              "kind": "add",
+              "inputValueParameterName": "type",
+              "modificationPath": "Organization.type"
+            },
+            {
+              "kind": "add",
+              "inputValueParameterName": "name",
+              "modificationPath": "Organization.name"
+            },
+            {
+              "kind": "add",
+              "inputValueParameterName": "level",
+              "modificationPath": "Organization.level"
+            },
+            {
+              "kind": "add",
+              "inputValueParameterName": "telecom",
+              "modificationPath": "Organization.telecom"
+            }
+          ],
+          "id": "0cb49601-e601-4125-942b-f2d9b9bca43d"
+        }
+      ]
+    }
+  ],
+  "structure": {
+    "id": "Organization"
+  }
+}

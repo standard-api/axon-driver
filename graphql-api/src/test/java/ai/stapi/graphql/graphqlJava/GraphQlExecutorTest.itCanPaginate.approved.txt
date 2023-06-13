@@ -1,0 +1,33 @@
+{
+  "findOrganizationList" : [ {
+    "id" : "brnoDentalCare",
+    "name" : "Brno Dental Care",
+    "address" : [ {
+      "city" : "Brno",
+      "country" : "Czech Republic",
+      "postalCode" : "60200",
+      "state" : "Jihomoravsky kraj"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "dental-care",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  }, {
+    "id" : "ceskeBudejoviceOptometry",
+    "name" : "Ceske Budejovice Optometry",
+    "address" : [ {
+      "city" : "Ceske Budejovice",
+      "country" : "Czech Republic",
+      "postalCode" : "37001",
+      "state" : "Jihocesky kraj"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "optometry",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  } ]
+}

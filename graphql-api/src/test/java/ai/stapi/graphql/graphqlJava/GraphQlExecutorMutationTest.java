@@ -1,0 +1,171 @@
+package ai.stapi.graphql.graphqlJava;
+
+import ai.stapi.graphql.GraphQlExecutor;
+import ai.stapi.graphql.GraphQlOperation;
+import ai.stapi.graphql.graphqlJava.testfixtures.TestGraphqlModelDefinitionsLoader;
+import ai.stapi.test.domain.DomainTestCase;
+import ai.stapi.test.schemaintegration.StructureDefinitionScope;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@StructureDefinitionScope(TestGraphqlModelDefinitionsLoader.SCOPE)
+class GraphQlExecutorMutationTest extends DomainTestCase {
+
+  @Autowired
+  private GraphQlExecutor graphQlExecutor;
+
+  @Test
+  void itCanExecuteCreationalMutation() {
+    var graphQlRequest = new GraphQlOperation(
+        "",
+        """
+                mutation {
+                  createOrganization(
+                    id: "pragueMedicalClinic",
+                    payload: {
+                      address: [
+                        {
+                          line: [
+                            "Vaclavske Namesti 8",
+                            "Vaclavske Namesti 11",
+                            "Vaclavske Namesti 50"
+                          ],
+                          city: "Prague",
+                          state: "Praha",
+                          postalCode: "11000",
+                          country: "Czech Republic",
+                          position: {
+                            latitude: 50.08804,
+                            longitude: 14.42076
+                          }
+                        }
+                      ],
+                      telecom: [
+                        {
+                          system: "email",
+                          value: "info@praguemedicalclinic.cz"
+                        }
+                      ]
+                    }
+                  ) {
+                    successes
+                  }
+                }
+            """
+    );
+
+    var response = this.graphQlExecutor.execute(graphQlRequest);
+    this.thenLastEventGraphApproved();
+  }
+
+  @Test
+  void itCanExecuteCreationalMutationWithUnionParameter() {
+    var graphQlRequest = new GraphQlOperation(
+        "",
+        """
+                mutation {
+                  createOrganization(
+                    id: "pragueMedicalClinic",
+                    payload: {
+                      level: { string: "VeryMuch" }
+                    }
+                  ) {
+                    successes
+                  }
+                }
+            """
+    );
+
+    var response = this.graphQlExecutor.execute(graphQlRequest);
+    this.thenLastEventGraphApproved();
+  }
+
+  @Test
+  void itCanExecuteCreationalMutationWithComplexParameterWithUnionField() {
+    var graphQlRequest = new GraphQlOperation(
+        "",
+        """
+                mutation {
+                  createOrganization(
+                    id: "ExampleOrganization",
+                    payload: {
+                      address: [
+                        {
+                          extension: [
+                              {
+                                  url: "http://urlto.coding.extension",
+                                  value: {
+                                      Coding: {
+                                          display: "DisplayName"
+                                      }
+                                  }
+                              },
+                              {
+                                  url: "http://urlto.string.extension",
+                                  value: {
+                                      string: "Brnenice"
+                                  }
+                              }
+                          ]
+                          country: "Czech Republic",
+                          city: "Brno"
+                        }
+                      ]
+                    }
+                  ) {
+                    successes
+                  }
+                }
+            """
+    );
+    var response = this.graphQlExecutor.execute(graphQlRequest);
+    this.thenLastEventGraphApproved();
+  }
+
+//    @Test
+//    public void itCanGetStructureDefinitionAndItsElements() {
+//        var graphQlRequest = new GraphQLQuery(
+//            "",
+//            """
+//                    query {
+//                        getStructureDefinition(id: "Patient") {
+//                            id
+//                            kind
+//                            abstract
+//                            differential {
+//                                element(
+//                                    pagination: {limit: 100, offset: 0},
+//                                    sort: [
+//                                        { path: ASC },
+//                                        {
+//                                            complexUnion: {
+//                                                onComplex1: {uglyName: ASC},
+//                                                onComplex2: {prettyName: ASC },
+//                                                onBoxedString: {value: ASC }
+//                                            }
+//                                        }
+//                                    ]
+//                                ) {
+//                                    id
+//                                    path
+//                                    min
+//                                    max
+//                                    complexUnion {
+//                                        ... on Complex1 {
+//                                            uglyName
+//                                        }
+//                                        ... on Complex2 {
+//                                            prettyName
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                """
+//        );
+//
+//        var response = this.whenQueryIsDispatched(graphQlRequest, LinkedHashMap.class);
+//        this.thenObjectApproved(response);
+//    }
+}

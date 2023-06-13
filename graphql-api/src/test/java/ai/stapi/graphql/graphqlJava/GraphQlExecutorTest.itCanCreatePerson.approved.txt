@@ -1,0 +1,21 @@
+nodes:
+	node_type: Address
+	node_hash: 1D85C
+	node_edges:
+		Patient -> address -> Address (746F3 -> 1C20C -> 1D85C)
+	attributes:
+		city -> Brno
+		country -> Czech Republic
+
+	node_type: Patient
+	node_hash: 746F3
+	node_edges:
+		Patient -> address -> Address (746F3 -> 1C20C -> 1D85C)
+	attributes:
+		gender -> male
+
+edges:
+	edge_type: address
+	edge_hash: 1C20C
+	Patient -> address -> Address (746F3 -> 1C20C -> 1D85C)
+	attributes:

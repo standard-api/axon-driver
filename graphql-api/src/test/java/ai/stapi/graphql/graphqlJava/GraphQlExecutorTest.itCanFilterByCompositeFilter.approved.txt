@@ -1,0 +1,15 @@
+{
+  "findOrganizationList" : [ {
+    "id" : "liberecOrthopedicClinic",
+    "name" : "Liberec Orthopedic Clinic"
+  }, {
+    "id" : "litomericePhysicalTherapy",
+    "name" : "Litomerice Physical Therapy"
+  }, {
+    "id" : "plzenChildrensHospital",
+    "name" : "Plzen Children's Hospital"
+  }, {
+    "id" : "pragueMedicalClinic",
+    "name" : "Prague Medical Clinic"
+  } ]
+}

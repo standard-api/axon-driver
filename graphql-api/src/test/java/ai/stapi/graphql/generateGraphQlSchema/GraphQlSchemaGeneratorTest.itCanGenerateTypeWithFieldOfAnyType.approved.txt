@@ -1,0 +1,1469 @@
+"\"Marks the field, argument, input field or enum value as deprecated\"
+directive @deprecated(
+    \"The reason for the deprecation\"
+    reason: String = \"No longer supported\"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+\"Directs the executor to include this field or fragment only when the `if` argument is true\"
+directive @include(
+    \"Included when true.\"
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+\"Directs the executor to skip this field or fragment when the `if` argument is true.\"
+directive @skip(
+    \"Skipped when true.\"
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+\"Exposes a URL that specifies the behaviour of this scalar.\"
+directive @specifiedBy(
+    \"The URL that specifies the behaviour of this scalar.\"
+    url: String!
+  ) on SCALAR
+
+\"High level Union type of all types in this schema.\"
+union AnyNode = Element | ExampleComplexType | ExampleResource | Type0 | Type1 | Type10 | Type11 | Type12 | Type13 | Type14 | Type15 | Type16 | Type17 | Type18 | Type19 | Type2 | Type20 | Type21 | Type22 | Type23 | Type24 | Type25 | Type26 | Type27 | Type28 | Type29 | Type3 | Type30 | Type31 | Type32 | Type33 | Type34 | Type35 | Type36 | Type37 | Type38 | Type39 | Type4 | Type40 | Type41 | Type42 | Type5 | Type6 | Type7 | Type8 | Type9
+
+type Element {
+  \"Unique id for inter-element referencing\"
+  id: [String!]!
+}
+
+\"Description of Example Complex Type\"
+type ExampleComplexType {
+  \"Example Any Field on Example Complex Type\"
+  exampleAnyField: AnyNode!
+}
+
+\"Description of Example Resource\"
+type ExampleResource {
+  \"Example List Decimal Field on Example Resource\"
+  exampleListDecimalField: [Float!]!
+}
+
+type Query {
+  findExampleResourceList(filter: [ExampleResourceLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExampleResourceSortOption!]): [ExampleResource!]!
+  getExampleResource(id: String!): ExampleResource
+}
+
+\"Generated Description for type number: 0\"
+type Type0 {
+  \"Example field 0\"
+  exampleFieldOnType0: Float!
+}
+
+\"Generated Description for type number: 1\"
+type Type1 {
+  \"Example field 1\"
+  exampleFieldOnType1: Float!
+}
+
+\"Generated Description for type number: 10\"
+type Type10 {
+  \"Example field 10\"
+  exampleFieldOnType10: Float!
+}
+
+\"Generated Description for type number: 11\"
+type Type11 {
+  \"Example field 11\"
+  exampleFieldOnType11: Float!
+}
+
+\"Generated Description for type number: 12\"
+type Type12 {
+  \"Example field 12\"
+  exampleFieldOnType12: Float!
+}
+
+\"Generated Description for type number: 13\"
+type Type13 {
+  \"Example field 13\"
+  exampleFieldOnType13: Float!
+}
+
+\"Generated Description for type number: 14\"
+type Type14 {
+  \"Example field 14\"
+  exampleFieldOnType14: Float!
+}
+
+\"Generated Description for type number: 15\"
+type Type15 {
+  \"Example field 15\"
+  exampleFieldOnType15: Float!
+}
+
+\"Generated Description for type number: 16\"
+type Type16 {
+  \"Example field 16\"
+  exampleFieldOnType16: Float!
+}
+
+\"Generated Description for type number: 17\"
+type Type17 {
+  \"Example field 17\"
+  exampleFieldOnType17: Float!
+}
+
+\"Generated Description for type number: 18\"
+type Type18 {
+  \"Example field 18\"
+  exampleFieldOnType18: Float!
+}
+
+\"Generated Description for type number: 19\"
+type Type19 {
+  \"Example field 19\"
+  exampleFieldOnType19: Float!
+}
+
+\"Generated Description for type number: 2\"
+type Type2 {
+  \"Example field 2\"
+  exampleFieldOnType2: Float!
+}
+
+\"Generated Description for type number: 20\"
+type Type20 {
+  \"Example field 20\"
+  exampleFieldOnType20: Float!
+}
+
+\"Generated Description for type number: 21\"
+type Type21 {
+  \"Example field 21\"
+  exampleFieldOnType21: Float!
+}
+
+\"Generated Description for type number: 22\"
+type Type22 {
+  \"Example field 22\"
+  exampleFieldOnType22: Float!
+}
+
+\"Generated Description for type number: 23\"
+type Type23 {
+  \"Example field 23\"
+  exampleFieldOnType23: Float!
+}
+
+\"Generated Description for type number: 24\"
+type Type24 {
+  \"Example field 24\"
+  exampleFieldOnType24: Float!
+}
+
+\"Generated Description for type number: 25\"
+type Type25 {
+  \"Example field 25\"
+  exampleFieldOnType25: Float!
+}
+
+\"Generated Description for type number: 26\"
+type Type26 {
+  \"Example field 26\"
+  exampleFieldOnType26: Float!
+}
+
+\"Generated Description for type number: 27\"
+type Type27 {
+  \"Example field 27\"
+  exampleFieldOnType27: Float!
+}
+
+\"Generated Description for type number: 28\"
+type Type28 {
+  \"Example field 28\"
+  exampleFieldOnType28: Float!
+}
+
+\"Generated Description for type number: 29\"
+type Type29 {
+  \"Example field 29\"
+  exampleFieldOnType29: Float!
+}
+
+\"Generated Description for type number: 3\"
+type Type3 {
+  \"Example field 3\"
+  exampleFieldOnType3: Float!
+}
+
+\"Generated Description for type number: 30\"
+type Type30 {
+  \"Example field 30\"
+  exampleFieldOnType30: Float!
+}
+
+\"Generated Description for type number: 31\"
+type Type31 {
+  \"Example field 31\"
+  exampleFieldOnType31: Float!
+}
+
+\"Generated Description for type number: 32\"
+type Type32 {
+  \"Example field 32\"
+  exampleFieldOnType32: Float!
+}
+
+\"Generated Description for type number: 33\"
+type Type33 {
+  \"Example field 33\"
+  exampleFieldOnType33: Float!
+}
+
+\"Generated Description for type number: 34\"
+type Type34 {
+  \"Example field 34\"
+  exampleFieldOnType34: Float!
+}
+
+\"Generated Description for type number: 35\"
+type Type35 {
+  \"Example field 35\"
+  exampleFieldOnType35: Float!
+}
+
+\"Generated Description for type number: 36\"
+type Type36 {
+  \"Example field 36\"
+  exampleFieldOnType36: Float!
+}
+
+\"Generated Description for type number: 37\"
+type Type37 {
+  \"Example field 37\"
+  exampleFieldOnType37: Float!
+}
+
+\"Generated Description for type number: 38\"
+type Type38 {
+  \"Example field 38\"
+  exampleFieldOnType38: Float!
+}
+
+\"Generated Description for type number: 39\"
+type Type39 {
+  \"Example field 39\"
+  exampleFieldOnType39: Float!
+}
+
+\"Generated Description for type number: 4\"
+type Type4 {
+  \"Example field 4\"
+  exampleFieldOnType4: Float!
+}
+
+\"Generated Description for type number: 40\"
+type Type40 {
+  \"Example field 40\"
+  exampleFieldOnType40: Float!
+}
+
+\"Generated Description for type number: 41\"
+type Type41 {
+  \"Example field 41\"
+  exampleFieldOnType41: Float!
+}
+
+\"Generated Description for type number: 42\"
+type Type42 {
+  \"Example field 42\"
+  exampleFieldOnType42: Float!
+}
+
+\"Generated Description for type number: 5\"
+type Type5 {
+  \"Example field 5\"
+  exampleFieldOnType5: Float!
+}
+
+\"Generated Description for type number: 6\"
+type Type6 {
+  \"Example field 6\"
+  exampleFieldOnType6: Float!
+}
+
+\"Generated Description for type number: 7\"
+type Type7 {
+  \"Example field 7\"
+  exampleFieldOnType7: Float!
+}
+
+\"Generated Description for type number: 8\"
+type Type8 {
+  \"Example field 8\"
+  exampleFieldOnType8: Float!
+}
+
+\"Generated Description for type number: 9\"
+type Type9 {
+  \"Example field 9\"
+  exampleFieldOnType9: Float!
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+\"Base StructureDefinition for decimal Type: A rational number with implicit precision\"
+scalar decimal
+
+\"Base StructureDefinition for string Type\"
+scalar string
+
+input ElementFilterOption {
+  id_ALL_MATCH: ElementIdChildFilterOption
+  id_ANY_MATCH: ElementIdChildFilterOption
+  id_EQUALS: [String!]
+  id_NONE_MATCH: ElementIdChildFilterOption
+  id_NOT_EQUALS: [String!]
+}
+
+input ElementIdChildFilterOption {
+  CONTAINS: String
+  ENDS_WITH: String
+  EQUALS: String
+  GREATER_THAN: String
+  GREATER_THAN_OR_EQUALS: String
+  LOWER_THAN: String
+  LOWER_THAN_OR_EQUALS: String
+  NOT_EQUALS: String
+  STARTS_WITH: String
+}
+
+input ElementLogicalFilterOption {
+  AND: [ElementLogicalFilterOption!]
+  NOT: ElementLogicalFilterOption
+  OR: [ElementLogicalFilterOption!]
+  id_ALL_MATCH: ElementIdChildFilterOption
+  id_ANY_MATCH: ElementIdChildFilterOption
+  id_EQUALS: [String!]
+  id_NONE_MATCH: ElementIdChildFilterOption
+  id_NOT_EQUALS: [String!]
+}
+
+input ElementSortOption {
+  id: SortDirection
+}
+
+input ExampleComplexTypeSortOption {
+  exampleAnyField: SortDirection
+}
+
+input ExampleResourceExampleListDecimalFieldChildFilterOption {
+  EQUALS: Float
+  GREATER_THAN: Float
+  GREATER_THAN_OR_EQUALS: Float
+  LOWER_THAN: Float
+  LOWER_THAN_OR_EQUALS: Float
+  NOT_EQUALS: Float
+}
+
+input ExampleResourceFilterOption {
+  exampleListDecimalField_ALL_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_ANY_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_EQUALS: [Float!]
+  exampleListDecimalField_NONE_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_NOT_EQUALS: [Float!]
+}
+
+input ExampleResourceLogicalFilterOption {
+  AND: [ExampleResourceLogicalFilterOption!]
+  NOT: ExampleResourceLogicalFilterOption
+  OR: [ExampleResourceLogicalFilterOption!]
+  exampleListDecimalField_ALL_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_ANY_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_EQUALS: [Float!]
+  exampleListDecimalField_NONE_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_NOT_EQUALS: [Float!]
+}
+
+input ExampleResourceSortOption {
+  exampleListDecimalField: SortDirection
+}
+
+input OffsetPaginationOption {
+  limit: Int!
+  offset: Int!
+}
+
+input Type0FilterOption {
+  exampleFieldOnType0_EQUALS: Float
+  exampleFieldOnType0_GREATER_THAN: Float
+  exampleFieldOnType0_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType0_LOWER_THAN: Float
+  exampleFieldOnType0_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType0_NOT_EQUALS: Float
+}
+
+input Type0LogicalFilterOption {
+  AND: [Type0LogicalFilterOption!]
+  NOT: Type0LogicalFilterOption
+  OR: [Type0LogicalFilterOption!]
+  exampleFieldOnType0_EQUALS: Float
+  exampleFieldOnType0_GREATER_THAN: Float
+  exampleFieldOnType0_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType0_LOWER_THAN: Float
+  exampleFieldOnType0_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType0_NOT_EQUALS: Float
+}
+
+input Type0SortOption {
+  exampleFieldOnType0: SortDirection
+}
+
+input Type10FilterOption {
+  exampleFieldOnType10_EQUALS: Float
+  exampleFieldOnType10_GREATER_THAN: Float
+  exampleFieldOnType10_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType10_LOWER_THAN: Float
+  exampleFieldOnType10_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType10_NOT_EQUALS: Float
+}
+
+input Type10LogicalFilterOption {
+  AND: [Type10LogicalFilterOption!]
+  NOT: Type10LogicalFilterOption
+  OR: [Type10LogicalFilterOption!]
+  exampleFieldOnType10_EQUALS: Float
+  exampleFieldOnType10_GREATER_THAN: Float
+  exampleFieldOnType10_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType10_LOWER_THAN: Float
+  exampleFieldOnType10_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType10_NOT_EQUALS: Float
+}
+
+input Type10SortOption {
+  exampleFieldOnType10: SortDirection
+}
+
+input Type11FilterOption {
+  exampleFieldOnType11_EQUALS: Float
+  exampleFieldOnType11_GREATER_THAN: Float
+  exampleFieldOnType11_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType11_LOWER_THAN: Float
+  exampleFieldOnType11_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType11_NOT_EQUALS: Float
+}
+
+input Type11LogicalFilterOption {
+  AND: [Type11LogicalFilterOption!]
+  NOT: Type11LogicalFilterOption
+  OR: [Type11LogicalFilterOption!]
+  exampleFieldOnType11_EQUALS: Float
+  exampleFieldOnType11_GREATER_THAN: Float
+  exampleFieldOnType11_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType11_LOWER_THAN: Float
+  exampleFieldOnType11_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType11_NOT_EQUALS: Float
+}
+
+input Type11SortOption {
+  exampleFieldOnType11: SortDirection
+}
+
+input Type12FilterOption {
+  exampleFieldOnType12_EQUALS: Float
+  exampleFieldOnType12_GREATER_THAN: Float
+  exampleFieldOnType12_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType12_LOWER_THAN: Float
+  exampleFieldOnType12_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType12_NOT_EQUALS: Float
+}
+
+input Type12LogicalFilterOption {
+  AND: [Type12LogicalFilterOption!]
+  NOT: Type12LogicalFilterOption
+  OR: [Type12LogicalFilterOption!]
+  exampleFieldOnType12_EQUALS: Float
+  exampleFieldOnType12_GREATER_THAN: Float
+  exampleFieldOnType12_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType12_LOWER_THAN: Float
+  exampleFieldOnType12_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType12_NOT_EQUALS: Float
+}
+
+input Type12SortOption {
+  exampleFieldOnType12: SortDirection
+}
+
+input Type13FilterOption {
+  exampleFieldOnType13_EQUALS: Float
+  exampleFieldOnType13_GREATER_THAN: Float
+  exampleFieldOnType13_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType13_LOWER_THAN: Float
+  exampleFieldOnType13_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType13_NOT_EQUALS: Float
+}
+
+input Type13LogicalFilterOption {
+  AND: [Type13LogicalFilterOption!]
+  NOT: Type13LogicalFilterOption
+  OR: [Type13LogicalFilterOption!]
+  exampleFieldOnType13_EQUALS: Float
+  exampleFieldOnType13_GREATER_THAN: Float
+  exampleFieldOnType13_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType13_LOWER_THAN: Float
+  exampleFieldOnType13_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType13_NOT_EQUALS: Float
+}
+
+input Type13SortOption {
+  exampleFieldOnType13: SortDirection
+}
+
+input Type14FilterOption {
+  exampleFieldOnType14_EQUALS: Float
+  exampleFieldOnType14_GREATER_THAN: Float
+  exampleFieldOnType14_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType14_LOWER_THAN: Float
+  exampleFieldOnType14_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType14_NOT_EQUALS: Float
+}
+
+input Type14LogicalFilterOption {
+  AND: [Type14LogicalFilterOption!]
+  NOT: Type14LogicalFilterOption
+  OR: [Type14LogicalFilterOption!]
+  exampleFieldOnType14_EQUALS: Float
+  exampleFieldOnType14_GREATER_THAN: Float
+  exampleFieldOnType14_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType14_LOWER_THAN: Float
+  exampleFieldOnType14_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType14_NOT_EQUALS: Float
+}
+
+input Type14SortOption {
+  exampleFieldOnType14: SortDirection
+}
+
+input Type15FilterOption {
+  exampleFieldOnType15_EQUALS: Float
+  exampleFieldOnType15_GREATER_THAN: Float
+  exampleFieldOnType15_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType15_LOWER_THAN: Float
+  exampleFieldOnType15_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType15_NOT_EQUALS: Float
+}
+
+input Type15LogicalFilterOption {
+  AND: [Type15LogicalFilterOption!]
+  NOT: Type15LogicalFilterOption
+  OR: [Type15LogicalFilterOption!]
+  exampleFieldOnType15_EQUALS: Float
+  exampleFieldOnType15_GREATER_THAN: Float
+  exampleFieldOnType15_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType15_LOWER_THAN: Float
+  exampleFieldOnType15_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType15_NOT_EQUALS: Float
+}
+
+input Type15SortOption {
+  exampleFieldOnType15: SortDirection
+}
+
+input Type16FilterOption {
+  exampleFieldOnType16_EQUALS: Float
+  exampleFieldOnType16_GREATER_THAN: Float
+  exampleFieldOnType16_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType16_LOWER_THAN: Float
+  exampleFieldOnType16_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType16_NOT_EQUALS: Float
+}
+
+input Type16LogicalFilterOption {
+  AND: [Type16LogicalFilterOption!]
+  NOT: Type16LogicalFilterOption
+  OR: [Type16LogicalFilterOption!]
+  exampleFieldOnType16_EQUALS: Float
+  exampleFieldOnType16_GREATER_THAN: Float
+  exampleFieldOnType16_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType16_LOWER_THAN: Float
+  exampleFieldOnType16_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType16_NOT_EQUALS: Float
+}
+
+input Type16SortOption {
+  exampleFieldOnType16: SortDirection
+}
+
+input Type17FilterOption {
+  exampleFieldOnType17_EQUALS: Float
+  exampleFieldOnType17_GREATER_THAN: Float
+  exampleFieldOnType17_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType17_LOWER_THAN: Float
+  exampleFieldOnType17_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType17_NOT_EQUALS: Float
+}
+
+input Type17LogicalFilterOption {
+  AND: [Type17LogicalFilterOption!]
+  NOT: Type17LogicalFilterOption
+  OR: [Type17LogicalFilterOption!]
+  exampleFieldOnType17_EQUALS: Float
+  exampleFieldOnType17_GREATER_THAN: Float
+  exampleFieldOnType17_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType17_LOWER_THAN: Float
+  exampleFieldOnType17_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType17_NOT_EQUALS: Float
+}
+
+input Type17SortOption {
+  exampleFieldOnType17: SortDirection
+}
+
+input Type18FilterOption {
+  exampleFieldOnType18_EQUALS: Float
+  exampleFieldOnType18_GREATER_THAN: Float
+  exampleFieldOnType18_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType18_LOWER_THAN: Float
+  exampleFieldOnType18_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType18_NOT_EQUALS: Float
+}
+
+input Type18LogicalFilterOption {
+  AND: [Type18LogicalFilterOption!]
+  NOT: Type18LogicalFilterOption
+  OR: [Type18LogicalFilterOption!]
+  exampleFieldOnType18_EQUALS: Float
+  exampleFieldOnType18_GREATER_THAN: Float
+  exampleFieldOnType18_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType18_LOWER_THAN: Float
+  exampleFieldOnType18_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType18_NOT_EQUALS: Float
+}
+
+input Type18SortOption {
+  exampleFieldOnType18: SortDirection
+}
+
+input Type19FilterOption {
+  exampleFieldOnType19_EQUALS: Float
+  exampleFieldOnType19_GREATER_THAN: Float
+  exampleFieldOnType19_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType19_LOWER_THAN: Float
+  exampleFieldOnType19_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType19_NOT_EQUALS: Float
+}
+
+input Type19LogicalFilterOption {
+  AND: [Type19LogicalFilterOption!]
+  NOT: Type19LogicalFilterOption
+  OR: [Type19LogicalFilterOption!]
+  exampleFieldOnType19_EQUALS: Float
+  exampleFieldOnType19_GREATER_THAN: Float
+  exampleFieldOnType19_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType19_LOWER_THAN: Float
+  exampleFieldOnType19_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType19_NOT_EQUALS: Float
+}
+
+input Type19SortOption {
+  exampleFieldOnType19: SortDirection
+}
+
+input Type1FilterOption {
+  exampleFieldOnType1_EQUALS: Float
+  exampleFieldOnType1_GREATER_THAN: Float
+  exampleFieldOnType1_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType1_LOWER_THAN: Float
+  exampleFieldOnType1_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType1_NOT_EQUALS: Float
+}
+
+input Type1LogicalFilterOption {
+  AND: [Type1LogicalFilterOption!]
+  NOT: Type1LogicalFilterOption
+  OR: [Type1LogicalFilterOption!]
+  exampleFieldOnType1_EQUALS: Float
+  exampleFieldOnType1_GREATER_THAN: Float
+  exampleFieldOnType1_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType1_LOWER_THAN: Float
+  exampleFieldOnType1_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType1_NOT_EQUALS: Float
+}
+
+input Type1SortOption {
+  exampleFieldOnType1: SortDirection
+}
+
+input Type20FilterOption {
+  exampleFieldOnType20_EQUALS: Float
+  exampleFieldOnType20_GREATER_THAN: Float
+  exampleFieldOnType20_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType20_LOWER_THAN: Float
+  exampleFieldOnType20_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType20_NOT_EQUALS: Float
+}
+
+input Type20LogicalFilterOption {
+  AND: [Type20LogicalFilterOption!]
+  NOT: Type20LogicalFilterOption
+  OR: [Type20LogicalFilterOption!]
+  exampleFieldOnType20_EQUALS: Float
+  exampleFieldOnType20_GREATER_THAN: Float
+  exampleFieldOnType20_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType20_LOWER_THAN: Float
+  exampleFieldOnType20_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType20_NOT_EQUALS: Float
+}
+
+input Type20SortOption {
+  exampleFieldOnType20: SortDirection
+}
+
+input Type21FilterOption {
+  exampleFieldOnType21_EQUALS: Float
+  exampleFieldOnType21_GREATER_THAN: Float
+  exampleFieldOnType21_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType21_LOWER_THAN: Float
+  exampleFieldOnType21_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType21_NOT_EQUALS: Float
+}
+
+input Type21LogicalFilterOption {
+  AND: [Type21LogicalFilterOption!]
+  NOT: Type21LogicalFilterOption
+  OR: [Type21LogicalFilterOption!]
+  exampleFieldOnType21_EQUALS: Float
+  exampleFieldOnType21_GREATER_THAN: Float
+  exampleFieldOnType21_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType21_LOWER_THAN: Float
+  exampleFieldOnType21_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType21_NOT_EQUALS: Float
+}
+
+input Type21SortOption {
+  exampleFieldOnType21: SortDirection
+}
+
+input Type22FilterOption {
+  exampleFieldOnType22_EQUALS: Float
+  exampleFieldOnType22_GREATER_THAN: Float
+  exampleFieldOnType22_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType22_LOWER_THAN: Float
+  exampleFieldOnType22_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType22_NOT_EQUALS: Float
+}
+
+input Type22LogicalFilterOption {
+  AND: [Type22LogicalFilterOption!]
+  NOT: Type22LogicalFilterOption
+  OR: [Type22LogicalFilterOption!]
+  exampleFieldOnType22_EQUALS: Float
+  exampleFieldOnType22_GREATER_THAN: Float
+  exampleFieldOnType22_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType22_LOWER_THAN: Float
+  exampleFieldOnType22_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType22_NOT_EQUALS: Float
+}
+
+input Type22SortOption {
+  exampleFieldOnType22: SortDirection
+}
+
+input Type23FilterOption {
+  exampleFieldOnType23_EQUALS: Float
+  exampleFieldOnType23_GREATER_THAN: Float
+  exampleFieldOnType23_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType23_LOWER_THAN: Float
+  exampleFieldOnType23_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType23_NOT_EQUALS: Float
+}
+
+input Type23LogicalFilterOption {
+  AND: [Type23LogicalFilterOption!]
+  NOT: Type23LogicalFilterOption
+  OR: [Type23LogicalFilterOption!]
+  exampleFieldOnType23_EQUALS: Float
+  exampleFieldOnType23_GREATER_THAN: Float
+  exampleFieldOnType23_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType23_LOWER_THAN: Float
+  exampleFieldOnType23_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType23_NOT_EQUALS: Float
+}
+
+input Type23SortOption {
+  exampleFieldOnType23: SortDirection
+}
+
+input Type24FilterOption {
+  exampleFieldOnType24_EQUALS: Float
+  exampleFieldOnType24_GREATER_THAN: Float
+  exampleFieldOnType24_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType24_LOWER_THAN: Float
+  exampleFieldOnType24_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType24_NOT_EQUALS: Float
+}
+
+input Type24LogicalFilterOption {
+  AND: [Type24LogicalFilterOption!]
+  NOT: Type24LogicalFilterOption
+  OR: [Type24LogicalFilterOption!]
+  exampleFieldOnType24_EQUALS: Float
+  exampleFieldOnType24_GREATER_THAN: Float
+  exampleFieldOnType24_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType24_LOWER_THAN: Float
+  exampleFieldOnType24_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType24_NOT_EQUALS: Float
+}
+
+input Type24SortOption {
+  exampleFieldOnType24: SortDirection
+}
+
+input Type25FilterOption {
+  exampleFieldOnType25_EQUALS: Float
+  exampleFieldOnType25_GREATER_THAN: Float
+  exampleFieldOnType25_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType25_LOWER_THAN: Float
+  exampleFieldOnType25_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType25_NOT_EQUALS: Float
+}
+
+input Type25LogicalFilterOption {
+  AND: [Type25LogicalFilterOption!]
+  NOT: Type25LogicalFilterOption
+  OR: [Type25LogicalFilterOption!]
+  exampleFieldOnType25_EQUALS: Float
+  exampleFieldOnType25_GREATER_THAN: Float
+  exampleFieldOnType25_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType25_LOWER_THAN: Float
+  exampleFieldOnType25_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType25_NOT_EQUALS: Float
+}
+
+input Type25SortOption {
+  exampleFieldOnType25: SortDirection
+}
+
+input Type26FilterOption {
+  exampleFieldOnType26_EQUALS: Float
+  exampleFieldOnType26_GREATER_THAN: Float
+  exampleFieldOnType26_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType26_LOWER_THAN: Float
+  exampleFieldOnType26_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType26_NOT_EQUALS: Float
+}
+
+input Type26LogicalFilterOption {
+  AND: [Type26LogicalFilterOption!]
+  NOT: Type26LogicalFilterOption
+  OR: [Type26LogicalFilterOption!]
+  exampleFieldOnType26_EQUALS: Float
+  exampleFieldOnType26_GREATER_THAN: Float
+  exampleFieldOnType26_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType26_LOWER_THAN: Float
+  exampleFieldOnType26_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType26_NOT_EQUALS: Float
+}
+
+input Type26SortOption {
+  exampleFieldOnType26: SortDirection
+}
+
+input Type27FilterOption {
+  exampleFieldOnType27_EQUALS: Float
+  exampleFieldOnType27_GREATER_THAN: Float
+  exampleFieldOnType27_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType27_LOWER_THAN: Float
+  exampleFieldOnType27_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType27_NOT_EQUALS: Float
+}
+
+input Type27LogicalFilterOption {
+  AND: [Type27LogicalFilterOption!]
+  NOT: Type27LogicalFilterOption
+  OR: [Type27LogicalFilterOption!]
+  exampleFieldOnType27_EQUALS: Float
+  exampleFieldOnType27_GREATER_THAN: Float
+  exampleFieldOnType27_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType27_LOWER_THAN: Float
+  exampleFieldOnType27_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType27_NOT_EQUALS: Float
+}
+
+input Type27SortOption {
+  exampleFieldOnType27: SortDirection
+}
+
+input Type28FilterOption {
+  exampleFieldOnType28_EQUALS: Float
+  exampleFieldOnType28_GREATER_THAN: Float
+  exampleFieldOnType28_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType28_LOWER_THAN: Float
+  exampleFieldOnType28_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType28_NOT_EQUALS: Float
+}
+
+input Type28LogicalFilterOption {
+  AND: [Type28LogicalFilterOption!]
+  NOT: Type28LogicalFilterOption
+  OR: [Type28LogicalFilterOption!]
+  exampleFieldOnType28_EQUALS: Float
+  exampleFieldOnType28_GREATER_THAN: Float
+  exampleFieldOnType28_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType28_LOWER_THAN: Float
+  exampleFieldOnType28_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType28_NOT_EQUALS: Float
+}
+
+input Type28SortOption {
+  exampleFieldOnType28: SortDirection
+}
+
+input Type29FilterOption {
+  exampleFieldOnType29_EQUALS: Float
+  exampleFieldOnType29_GREATER_THAN: Float
+  exampleFieldOnType29_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType29_LOWER_THAN: Float
+  exampleFieldOnType29_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType29_NOT_EQUALS: Float
+}
+
+input Type29LogicalFilterOption {
+  AND: [Type29LogicalFilterOption!]
+  NOT: Type29LogicalFilterOption
+  OR: [Type29LogicalFilterOption!]
+  exampleFieldOnType29_EQUALS: Float
+  exampleFieldOnType29_GREATER_THAN: Float
+  exampleFieldOnType29_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType29_LOWER_THAN: Float
+  exampleFieldOnType29_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType29_NOT_EQUALS: Float
+}
+
+input Type29SortOption {
+  exampleFieldOnType29: SortDirection
+}
+
+input Type2FilterOption {
+  exampleFieldOnType2_EQUALS: Float
+  exampleFieldOnType2_GREATER_THAN: Float
+  exampleFieldOnType2_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType2_LOWER_THAN: Float
+  exampleFieldOnType2_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType2_NOT_EQUALS: Float
+}
+
+input Type2LogicalFilterOption {
+  AND: [Type2LogicalFilterOption!]
+  NOT: Type2LogicalFilterOption
+  OR: [Type2LogicalFilterOption!]
+  exampleFieldOnType2_EQUALS: Float
+  exampleFieldOnType2_GREATER_THAN: Float
+  exampleFieldOnType2_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType2_LOWER_THAN: Float
+  exampleFieldOnType2_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType2_NOT_EQUALS: Float
+}
+
+input Type2SortOption {
+  exampleFieldOnType2: SortDirection
+}
+
+input Type30FilterOption {
+  exampleFieldOnType30_EQUALS: Float
+  exampleFieldOnType30_GREATER_THAN: Float
+  exampleFieldOnType30_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType30_LOWER_THAN: Float
+  exampleFieldOnType30_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType30_NOT_EQUALS: Float
+}
+
+input Type30LogicalFilterOption {
+  AND: [Type30LogicalFilterOption!]
+  NOT: Type30LogicalFilterOption
+  OR: [Type30LogicalFilterOption!]
+  exampleFieldOnType30_EQUALS: Float
+  exampleFieldOnType30_GREATER_THAN: Float
+  exampleFieldOnType30_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType30_LOWER_THAN: Float
+  exampleFieldOnType30_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType30_NOT_EQUALS: Float
+}
+
+input Type30SortOption {
+  exampleFieldOnType30: SortDirection
+}
+
+input Type31FilterOption {
+  exampleFieldOnType31_EQUALS: Float
+  exampleFieldOnType31_GREATER_THAN: Float
+  exampleFieldOnType31_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType31_LOWER_THAN: Float
+  exampleFieldOnType31_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType31_NOT_EQUALS: Float
+}
+
+input Type31LogicalFilterOption {
+  AND: [Type31LogicalFilterOption!]
+  NOT: Type31LogicalFilterOption
+  OR: [Type31LogicalFilterOption!]
+  exampleFieldOnType31_EQUALS: Float
+  exampleFieldOnType31_GREATER_THAN: Float
+  exampleFieldOnType31_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType31_LOWER_THAN: Float
+  exampleFieldOnType31_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType31_NOT_EQUALS: Float
+}
+
+input Type31SortOption {
+  exampleFieldOnType31: SortDirection
+}
+
+input Type32FilterOption {
+  exampleFieldOnType32_EQUALS: Float
+  exampleFieldOnType32_GREATER_THAN: Float
+  exampleFieldOnType32_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType32_LOWER_THAN: Float
+  exampleFieldOnType32_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType32_NOT_EQUALS: Float
+}
+
+input Type32LogicalFilterOption {
+  AND: [Type32LogicalFilterOption!]
+  NOT: Type32LogicalFilterOption
+  OR: [Type32LogicalFilterOption!]
+  exampleFieldOnType32_EQUALS: Float
+  exampleFieldOnType32_GREATER_THAN: Float
+  exampleFieldOnType32_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType32_LOWER_THAN: Float
+  exampleFieldOnType32_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType32_NOT_EQUALS: Float
+}
+
+input Type32SortOption {
+  exampleFieldOnType32: SortDirection
+}
+
+input Type33FilterOption {
+  exampleFieldOnType33_EQUALS: Float
+  exampleFieldOnType33_GREATER_THAN: Float
+  exampleFieldOnType33_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType33_LOWER_THAN: Float
+  exampleFieldOnType33_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType33_NOT_EQUALS: Float
+}
+
+input Type33LogicalFilterOption {
+  AND: [Type33LogicalFilterOption!]
+  NOT: Type33LogicalFilterOption
+  OR: [Type33LogicalFilterOption!]
+  exampleFieldOnType33_EQUALS: Float
+  exampleFieldOnType33_GREATER_THAN: Float
+  exampleFieldOnType33_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType33_LOWER_THAN: Float
+  exampleFieldOnType33_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType33_NOT_EQUALS: Float
+}
+
+input Type33SortOption {
+  exampleFieldOnType33: SortDirection
+}
+
+input Type34FilterOption {
+  exampleFieldOnType34_EQUALS: Float
+  exampleFieldOnType34_GREATER_THAN: Float
+  exampleFieldOnType34_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType34_LOWER_THAN: Float
+  exampleFieldOnType34_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType34_NOT_EQUALS: Float
+}
+
+input Type34LogicalFilterOption {
+  AND: [Type34LogicalFilterOption!]
+  NOT: Type34LogicalFilterOption
+  OR: [Type34LogicalFilterOption!]
+  exampleFieldOnType34_EQUALS: Float
+  exampleFieldOnType34_GREATER_THAN: Float
+  exampleFieldOnType34_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType34_LOWER_THAN: Float
+  exampleFieldOnType34_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType34_NOT_EQUALS: Float
+}
+
+input Type34SortOption {
+  exampleFieldOnType34: SortDirection
+}
+
+input Type35FilterOption {
+  exampleFieldOnType35_EQUALS: Float
+  exampleFieldOnType35_GREATER_THAN: Float
+  exampleFieldOnType35_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType35_LOWER_THAN: Float
+  exampleFieldOnType35_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType35_NOT_EQUALS: Float
+}
+
+input Type35LogicalFilterOption {
+  AND: [Type35LogicalFilterOption!]
+  NOT: Type35LogicalFilterOption
+  OR: [Type35LogicalFilterOption!]
+  exampleFieldOnType35_EQUALS: Float
+  exampleFieldOnType35_GREATER_THAN: Float
+  exampleFieldOnType35_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType35_LOWER_THAN: Float
+  exampleFieldOnType35_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType35_NOT_EQUALS: Float
+}
+
+input Type35SortOption {
+  exampleFieldOnType35: SortDirection
+}
+
+input Type36FilterOption {
+  exampleFieldOnType36_EQUALS: Float
+  exampleFieldOnType36_GREATER_THAN: Float
+  exampleFieldOnType36_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType36_LOWER_THAN: Float
+  exampleFieldOnType36_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType36_NOT_EQUALS: Float
+}
+
+input Type36LogicalFilterOption {
+  AND: [Type36LogicalFilterOption!]
+  NOT: Type36LogicalFilterOption
+  OR: [Type36LogicalFilterOption!]
+  exampleFieldOnType36_EQUALS: Float
+  exampleFieldOnType36_GREATER_THAN: Float
+  exampleFieldOnType36_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType36_LOWER_THAN: Float
+  exampleFieldOnType36_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType36_NOT_EQUALS: Float
+}
+
+input Type36SortOption {
+  exampleFieldOnType36: SortDirection
+}
+
+input Type37FilterOption {
+  exampleFieldOnType37_EQUALS: Float
+  exampleFieldOnType37_GREATER_THAN: Float
+  exampleFieldOnType37_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType37_LOWER_THAN: Float
+  exampleFieldOnType37_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType37_NOT_EQUALS: Float
+}
+
+input Type37LogicalFilterOption {
+  AND: [Type37LogicalFilterOption!]
+  NOT: Type37LogicalFilterOption
+  OR: [Type37LogicalFilterOption!]
+  exampleFieldOnType37_EQUALS: Float
+  exampleFieldOnType37_GREATER_THAN: Float
+  exampleFieldOnType37_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType37_LOWER_THAN: Float
+  exampleFieldOnType37_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType37_NOT_EQUALS: Float
+}
+
+input Type37SortOption {
+  exampleFieldOnType37: SortDirection
+}
+
+input Type38FilterOption {
+  exampleFieldOnType38_EQUALS: Float
+  exampleFieldOnType38_GREATER_THAN: Float
+  exampleFieldOnType38_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType38_LOWER_THAN: Float
+  exampleFieldOnType38_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType38_NOT_EQUALS: Float
+}
+
+input Type38LogicalFilterOption {
+  AND: [Type38LogicalFilterOption!]
+  NOT: Type38LogicalFilterOption
+  OR: [Type38LogicalFilterOption!]
+  exampleFieldOnType38_EQUALS: Float
+  exampleFieldOnType38_GREATER_THAN: Float
+  exampleFieldOnType38_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType38_LOWER_THAN: Float
+  exampleFieldOnType38_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType38_NOT_EQUALS: Float
+}
+
+input Type38SortOption {
+  exampleFieldOnType38: SortDirection
+}
+
+input Type39FilterOption {
+  exampleFieldOnType39_EQUALS: Float
+  exampleFieldOnType39_GREATER_THAN: Float
+  exampleFieldOnType39_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType39_LOWER_THAN: Float
+  exampleFieldOnType39_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType39_NOT_EQUALS: Float
+}
+
+input Type39LogicalFilterOption {
+  AND: [Type39LogicalFilterOption!]
+  NOT: Type39LogicalFilterOption
+  OR: [Type39LogicalFilterOption!]
+  exampleFieldOnType39_EQUALS: Float
+  exampleFieldOnType39_GREATER_THAN: Float
+  exampleFieldOnType39_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType39_LOWER_THAN: Float
+  exampleFieldOnType39_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType39_NOT_EQUALS: Float
+}
+
+input Type39SortOption {
+  exampleFieldOnType39: SortDirection
+}
+
+input Type3FilterOption {
+  exampleFieldOnType3_EQUALS: Float
+  exampleFieldOnType3_GREATER_THAN: Float
+  exampleFieldOnType3_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType3_LOWER_THAN: Float
+  exampleFieldOnType3_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType3_NOT_EQUALS: Float
+}
+
+input Type3LogicalFilterOption {
+  AND: [Type3LogicalFilterOption!]
+  NOT: Type3LogicalFilterOption
+  OR: [Type3LogicalFilterOption!]
+  exampleFieldOnType3_EQUALS: Float
+  exampleFieldOnType3_GREATER_THAN: Float
+  exampleFieldOnType3_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType3_LOWER_THAN: Float
+  exampleFieldOnType3_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType3_NOT_EQUALS: Float
+}
+
+input Type3SortOption {
+  exampleFieldOnType3: SortDirection
+}
+
+input Type40FilterOption {
+  exampleFieldOnType40_EQUALS: Float
+  exampleFieldOnType40_GREATER_THAN: Float
+  exampleFieldOnType40_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType40_LOWER_THAN: Float
+  exampleFieldOnType40_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType40_NOT_EQUALS: Float
+}
+
+input Type40LogicalFilterOption {
+  AND: [Type40LogicalFilterOption!]
+  NOT: Type40LogicalFilterOption
+  OR: [Type40LogicalFilterOption!]
+  exampleFieldOnType40_EQUALS: Float
+  exampleFieldOnType40_GREATER_THAN: Float
+  exampleFieldOnType40_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType40_LOWER_THAN: Float
+  exampleFieldOnType40_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType40_NOT_EQUALS: Float
+}
+
+input Type40SortOption {
+  exampleFieldOnType40: SortDirection
+}
+
+input Type41FilterOption {
+  exampleFieldOnType41_EQUALS: Float
+  exampleFieldOnType41_GREATER_THAN: Float
+  exampleFieldOnType41_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType41_LOWER_THAN: Float
+  exampleFieldOnType41_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType41_NOT_EQUALS: Float
+}
+
+input Type41LogicalFilterOption {
+  AND: [Type41LogicalFilterOption!]
+  NOT: Type41LogicalFilterOption
+  OR: [Type41LogicalFilterOption!]
+  exampleFieldOnType41_EQUALS: Float
+  exampleFieldOnType41_GREATER_THAN: Float
+  exampleFieldOnType41_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType41_LOWER_THAN: Float
+  exampleFieldOnType41_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType41_NOT_EQUALS: Float
+}
+
+input Type41SortOption {
+  exampleFieldOnType41: SortDirection
+}
+
+input Type42FilterOption {
+  exampleFieldOnType42_EQUALS: Float
+  exampleFieldOnType42_GREATER_THAN: Float
+  exampleFieldOnType42_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType42_LOWER_THAN: Float
+  exampleFieldOnType42_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType42_NOT_EQUALS: Float
+}
+
+input Type42LogicalFilterOption {
+  AND: [Type42LogicalFilterOption!]
+  NOT: Type42LogicalFilterOption
+  OR: [Type42LogicalFilterOption!]
+  exampleFieldOnType42_EQUALS: Float
+  exampleFieldOnType42_GREATER_THAN: Float
+  exampleFieldOnType42_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType42_LOWER_THAN: Float
+  exampleFieldOnType42_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType42_NOT_EQUALS: Float
+}
+
+input Type42SortOption {
+  exampleFieldOnType42: SortDirection
+}
+
+input Type4FilterOption {
+  exampleFieldOnType4_EQUALS: Float
+  exampleFieldOnType4_GREATER_THAN: Float
+  exampleFieldOnType4_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType4_LOWER_THAN: Float
+  exampleFieldOnType4_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType4_NOT_EQUALS: Float
+}
+
+input Type4LogicalFilterOption {
+  AND: [Type4LogicalFilterOption!]
+  NOT: Type4LogicalFilterOption
+  OR: [Type4LogicalFilterOption!]
+  exampleFieldOnType4_EQUALS: Float
+  exampleFieldOnType4_GREATER_THAN: Float
+  exampleFieldOnType4_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType4_LOWER_THAN: Float
+  exampleFieldOnType4_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType4_NOT_EQUALS: Float
+}
+
+input Type4SortOption {
+  exampleFieldOnType4: SortDirection
+}
+
+input Type5FilterOption {
+  exampleFieldOnType5_EQUALS: Float
+  exampleFieldOnType5_GREATER_THAN: Float
+  exampleFieldOnType5_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType5_LOWER_THAN: Float
+  exampleFieldOnType5_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType5_NOT_EQUALS: Float
+}
+
+input Type5LogicalFilterOption {
+  AND: [Type5LogicalFilterOption!]
+  NOT: Type5LogicalFilterOption
+  OR: [Type5LogicalFilterOption!]
+  exampleFieldOnType5_EQUALS: Float
+  exampleFieldOnType5_GREATER_THAN: Float
+  exampleFieldOnType5_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType5_LOWER_THAN: Float
+  exampleFieldOnType5_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType5_NOT_EQUALS: Float
+}
+
+input Type5SortOption {
+  exampleFieldOnType5: SortDirection
+}
+
+input Type6FilterOption {
+  exampleFieldOnType6_EQUALS: Float
+  exampleFieldOnType6_GREATER_THAN: Float
+  exampleFieldOnType6_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType6_LOWER_THAN: Float
+  exampleFieldOnType6_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType6_NOT_EQUALS: Float
+}
+
+input Type6LogicalFilterOption {
+  AND: [Type6LogicalFilterOption!]
+  NOT: Type6LogicalFilterOption
+  OR: [Type6LogicalFilterOption!]
+  exampleFieldOnType6_EQUALS: Float
+  exampleFieldOnType6_GREATER_THAN: Float
+  exampleFieldOnType6_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType6_LOWER_THAN: Float
+  exampleFieldOnType6_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType6_NOT_EQUALS: Float
+}
+
+input Type6SortOption {
+  exampleFieldOnType6: SortDirection
+}
+
+input Type7FilterOption {
+  exampleFieldOnType7_EQUALS: Float
+  exampleFieldOnType7_GREATER_THAN: Float
+  exampleFieldOnType7_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType7_LOWER_THAN: Float
+  exampleFieldOnType7_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType7_NOT_EQUALS: Float
+}
+
+input Type7LogicalFilterOption {
+  AND: [Type7LogicalFilterOption!]
+  NOT: Type7LogicalFilterOption
+  OR: [Type7LogicalFilterOption!]
+  exampleFieldOnType7_EQUALS: Float
+  exampleFieldOnType7_GREATER_THAN: Float
+  exampleFieldOnType7_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType7_LOWER_THAN: Float
+  exampleFieldOnType7_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType7_NOT_EQUALS: Float
+}
+
+input Type7SortOption {
+  exampleFieldOnType7: SortDirection
+}
+
+input Type8FilterOption {
+  exampleFieldOnType8_EQUALS: Float
+  exampleFieldOnType8_GREATER_THAN: Float
+  exampleFieldOnType8_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType8_LOWER_THAN: Float
+  exampleFieldOnType8_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType8_NOT_EQUALS: Float
+}
+
+input Type8LogicalFilterOption {
+  AND: [Type8LogicalFilterOption!]
+  NOT: Type8LogicalFilterOption
+  OR: [Type8LogicalFilterOption!]
+  exampleFieldOnType8_EQUALS: Float
+  exampleFieldOnType8_GREATER_THAN: Float
+  exampleFieldOnType8_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType8_LOWER_THAN: Float
+  exampleFieldOnType8_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType8_NOT_EQUALS: Float
+}
+
+input Type8SortOption {
+  exampleFieldOnType8: SortDirection
+}
+
+input Type9FilterOption {
+  exampleFieldOnType9_EQUALS: Float
+  exampleFieldOnType9_GREATER_THAN: Float
+  exampleFieldOnType9_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType9_LOWER_THAN: Float
+  exampleFieldOnType9_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType9_NOT_EQUALS: Float
+}
+
+input Type9LogicalFilterOption {
+  AND: [Type9LogicalFilterOption!]
+  NOT: Type9LogicalFilterOption
+  OR: [Type9LogicalFilterOption!]
+  exampleFieldOnType9_EQUALS: Float
+  exampleFieldOnType9_GREATER_THAN: Float
+  exampleFieldOnType9_GREATER_THAN_OR_EQUALS: Float
+  exampleFieldOnType9_LOWER_THAN: Float
+  exampleFieldOnType9_LOWER_THAN_OR_EQUALS: Float
+  exampleFieldOnType9_NOT_EQUALS: Float
+}
+
+input Type9SortOption {
+  exampleFieldOnType9: SortDirection
+}
+"

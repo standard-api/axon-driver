@@ -1,0 +1,7 @@
+{
+  "getStructureDefinition" : {
+    "id" : "CodeableConcept",
+    "abstract" : false,
+    "kind" : "complex-type"
+  }
+}
