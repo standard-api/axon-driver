@@ -4,7 +4,7 @@ import ai.stapi.axonsystemplugin.aggregatedefinition.CreateAggregateDefinitionPo
 import ai.stapi.axonsystemplugin.aggregatedefinition.createCRUDCommandHandlers.CreateAddItemCommandHandlerPolicy;
 import ai.stapi.axonsystemplugin.aggregatedefinition.createCRUDCommandHandlers.CreateCreationalCommandHandlerPolicy;
 import ai.stapi.axonsystemplugin.structuredefinition.configure.ConfigureImportedStructureDefinitionPolicy;
-import ai.stapi.graphoperations.graphDeserializers.ogmDeserializer.GenericGraphToObjectDeserializer;
+import ai.stapi.graphoperations.graphLoader.inmemory.InMemoryGraphLoaderProvider;
 import ai.stapi.graphsystem.aggregatedefinition.model.ResourceAggregateDefinitionMapper;
 import ai.stapi.graphsystem.aggregatedefinition.model.eventFactory.CreatedOperationEventFactoriesMapper;
 import ai.stapi.graphsystem.aggregatedefinition.model.eventFactory.ItemAddedOperationEventFactoriesMapper;
@@ -24,12 +24,12 @@ public class DevAxonSystemPluginConfiguration {
 
   @Bean
   public ConfigureImportedStructureDefinitionPolicy configureImportedStructureDefinitionPolicy(
-      GenericGraphToObjectDeserializer genericGraphToObjectDeserializer,
+      InMemoryGraphLoaderProvider inMemoryGraphLoaderProvider,
       CommandGateway commandGateway
   ) {
     return new ConfigureImportedStructureDefinitionPolicy(
-        genericGraphToObjectDeserializer,
-        commandGateway
+        commandGateway,
+        inMemoryGraphLoaderProvider
     );
   }
 

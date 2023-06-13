@@ -1,0 +1,14 @@
+{
+  "serializationType" : "FieldDefinition",
+  "description" : "",
+  "max" : "1",
+  "min" : 1,
+  "name" : "somePrimitiveField",
+  "parentDefinitionType" : "TestComplex",
+  "types" : [ {
+    "isContentReferenced" : false,
+    "originalType" : "string",
+    "type" : "string",
+    "typeGroup" : "STANDARD"
+  } ]
+}

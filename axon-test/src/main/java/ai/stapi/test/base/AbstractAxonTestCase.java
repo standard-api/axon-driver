@@ -407,6 +407,7 @@ public class AbstractAxonTestCase extends AbstractSchemaIntegrationTestCase {
     try {
       return actualEventStream.nextAvailable().getPayload();
     } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
       throw new RuntimeException(e);
     }
   }
@@ -426,6 +427,7 @@ public class AbstractAxonTestCase extends AbstractSchemaIntegrationTestCase {
     try {
       return actualEventStream.nextAvailable();
     } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
       throw new RuntimeException(e);
     }
   }
@@ -434,6 +436,7 @@ public class AbstractAxonTestCase extends AbstractSchemaIntegrationTestCase {
     try {
       return actualEventStream.nextAvailable().getPayloadType();
     } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
       throw new RuntimeException(e);
     }
   }
