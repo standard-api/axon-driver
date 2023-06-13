@@ -1,0 +1,43 @@
+{
+  "findStructureDefinitionList" : [ {
+    "id" : "AggregateDefinition",
+    "abstract" : false,
+    "kind" : "resource"
+  }, {
+    "id" : "BackboneElement",
+    "abstract" : true,
+    "kind" : "complex-type"
+  }, {
+    "id" : "base64Binary",
+    "abstract" : false,
+    "kind" : "primitive-type"
+  }, {
+    "id" : "boolean",
+    "abstract" : false,
+    "kind" : "primitive-type"
+  }, {
+    "id" : "canonical",
+    "abstract" : false,
+    "kind" : "primitive-type"
+  }, {
+    "id" : "code",
+    "abstract" : false,
+    "kind" : "primitive-type"
+  }, {
+    "id" : "CodeableConcept",
+    "abstract" : false,
+    "kind" : "complex-type"
+  }, {
+    "id" : "CodeableReference",
+    "abstract" : false,
+    "kind" : "complex-type"
+  }, {
+    "id" : "Coding",
+    "abstract" : false,
+    "kind" : "complex-type"
+  }, {
+    "id" : "CommandHandlerDefinition",
+    "abstract" : false,
+    "kind" : "complex-type"
+  } ]
+}

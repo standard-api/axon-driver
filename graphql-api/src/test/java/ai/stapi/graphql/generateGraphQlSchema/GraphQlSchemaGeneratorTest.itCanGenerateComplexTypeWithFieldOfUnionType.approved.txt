@@ -1,0 +1,464 @@
+"\"Marks the field, argument, input field or enum value as deprecated\"
+directive @deprecated(
+    \"The reason for the deprecation\"
+    reason: String = \"No longer supported\"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+\"Directs the executor to include this field or fragment only when the `if` argument is true\"
+directive @include(
+    \"Included when true.\"
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+\"Directs the executor to skip this field or fragment when the `if` argument is true.\"
+directive @skip(
+    \"Skipped when true.\"
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+\"Exposes a URL that specifies the behaviour of this scalar.\"
+directive @specifiedBy(
+    \"The URL that specifies the behaviour of this scalar.\"
+    url: String!
+  ) on SCALAR
+
+\"The base definition for all elements contained inside a resource. All elements, whether defined as a Data Type (including primitives) or as part of a resource structure, have this base content\"
+interface Element {
+  \"Additional content defined by implementations\"
+  extension(filter: [ExtensionLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExtensionSortOption!]): [Extension!]!
+  \"Unique id for inter-element referencing\"
+  id: String
+}
+
+\"High level Union type of all types in this schema.\"
+union AnyNode = BoxedDecimal | BoxedString | BoxedUri | ExampleComplexType | ExampleResource | ExampleType | Extension
+
+\"Type for union type field contained in ExampleComplexType\"
+union ExampleComplexTypeExampleUnionTypeField = BoxedDecimal | BoxedString | ExampleType
+
+\"Base StructureDefinition for decimal Type: A rational number with implicit precision\"
+type BoxedDecimal implements Element {
+  \"Additional content defined by implementations\"
+  extension(filter: [ExtensionLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExtensionSortOption!]): [Extension!]!
+  \"Unique id for inter-element referencing\"
+  id: String
+  \"Primitive value for BoxedDecimal\"
+  value: Float
+}
+
+\"Base StructureDefinition for string Type: A String description\"
+type BoxedString implements Element {
+  \"Additional content defined by implementations\"
+  extension(filter: [ExtensionLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExtensionSortOption!]): [Extension!]!
+  \"Unique id for inter-element referencing\"
+  id: String
+  \"Primitive value for BoxedString\"
+  value: String
+}
+
+\"Base StructureDefinition for uri Type: A Uri description\"
+type BoxedUri implements Element {
+  \"Additional content defined by implementations\"
+  extension(filter: [ExtensionLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExtensionSortOption!]): [Extension!]!
+  \"Unique id for inter-element referencing\"
+  id: String
+  \"Primitive value for BoxedUri\"
+  value: uri
+}
+
+\"Description of ExampleComplexType\"
+type ExampleComplexType {
+  \"Example Union Type Field on Example Complex Type\"
+  exampleUnionTypeField: ExampleComplexTypeExampleUnionTypeField!
+}
+
+\"Description of Example Resource\"
+type ExampleResource {
+  \"Example List Decimal Field on Example Resource\"
+  exampleListDecimalField: [Float!]!
+}
+
+\"Description of ExampleType\"
+type ExampleType {
+  \"Example String Field on Example Type\"
+  exampleStringField: String!
+}
+
+\"Every element in a resource or data type includes an optional \\\"extension\\\" child element that may be present any number of times. This is the content model of the extension as it appears in each resource\"
+type Extension implements Element {
+  \"Additional content defined by implementations\"
+  extension(filter: [ExtensionLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExtensionSortOption!]): [Extension!]!
+  \"Unique id for inter-element referencing\"
+  id: String
+  \"identifies the meaning of the extension\"
+  url: uri!
+  \"Value of extension\"
+  value: String
+}
+
+type Query {
+  findExampleResourceList(filter: [ExampleResourceLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExampleResourceSortOption!]): [ExampleResource!]!
+  getExampleResource(id: String!): ExampleResource
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+\"Base StructureDefinition for decimal Type: A rational number with implicit precision\"
+scalar decimal
+
+\"Base StructureDefinition for string Type: A String description\"
+scalar string
+
+\"Base StructureDefinition for uri Type: A Uri description\"
+scalar uri
+
+input BoxedDecimalFilterOption {
+  extension_ALL_MATCH: ExtensionFilterOption
+  extension_ANY_MATCH: ExtensionFilterOption
+  extension_NONE_MATCH: ExtensionFilterOption
+  id_CONTAINS: String
+  id_ENDS_WITH: String
+  id_EQUALS: String
+  id_GREATER_THAN: String
+  id_GREATER_THAN_OR_EQUALS: String
+  id_LOWER_THAN: String
+  id_LOWER_THAN_OR_EQUALS: String
+  id_NOT_EQUALS: String
+  id_STARTS_WITH: String
+  value_EQUALS: Float
+  value_GREATER_THAN: Float
+  value_GREATER_THAN_OR_EQUALS: Float
+  value_LOWER_THAN: Float
+  value_LOWER_THAN_OR_EQUALS: Float
+  value_NOT_EQUALS: Float
+}
+
+input BoxedDecimalLogicalFilterOption {
+  AND: [BoxedDecimalLogicalFilterOption!]
+  NOT: BoxedDecimalLogicalFilterOption
+  OR: [BoxedDecimalLogicalFilterOption!]
+  extension_ALL_MATCH: ExtensionFilterOption
+  extension_ANY_MATCH: ExtensionFilterOption
+  extension_NONE_MATCH: ExtensionFilterOption
+  id_CONTAINS: String
+  id_ENDS_WITH: String
+  id_EQUALS: String
+  id_GREATER_THAN: String
+  id_GREATER_THAN_OR_EQUALS: String
+  id_LOWER_THAN: String
+  id_LOWER_THAN_OR_EQUALS: String
+  id_NOT_EQUALS: String
+  id_STARTS_WITH: String
+  value_EQUALS: Float
+  value_GREATER_THAN: Float
+  value_GREATER_THAN_OR_EQUALS: Float
+  value_LOWER_THAN: Float
+  value_LOWER_THAN_OR_EQUALS: Float
+  value_NOT_EQUALS: Float
+}
+
+input BoxedDecimalSortOption {
+  extension: ExtensionSortOption
+  id: SortDirection
+  value: SortDirection
+}
+
+input BoxedStringFilterOption {
+  extension_ALL_MATCH: ExtensionFilterOption
+  extension_ANY_MATCH: ExtensionFilterOption
+  extension_NONE_MATCH: ExtensionFilterOption
+  id_CONTAINS: String
+  id_ENDS_WITH: String
+  id_EQUALS: String
+  id_GREATER_THAN: String
+  id_GREATER_THAN_OR_EQUALS: String
+  id_LOWER_THAN: String
+  id_LOWER_THAN_OR_EQUALS: String
+  id_NOT_EQUALS: String
+  id_STARTS_WITH: String
+  value_CONTAINS: String
+  value_ENDS_WITH: String
+  value_EQUALS: String
+  value_GREATER_THAN: String
+  value_GREATER_THAN_OR_EQUALS: String
+  value_LOWER_THAN: String
+  value_LOWER_THAN_OR_EQUALS: String
+  value_NOT_EQUALS: String
+  value_STARTS_WITH: String
+}
+
+input BoxedStringLogicalFilterOption {
+  AND: [BoxedStringLogicalFilterOption!]
+  NOT: BoxedStringLogicalFilterOption
+  OR: [BoxedStringLogicalFilterOption!]
+  extension_ALL_MATCH: ExtensionFilterOption
+  extension_ANY_MATCH: ExtensionFilterOption
+  extension_NONE_MATCH: ExtensionFilterOption
+  id_CONTAINS: String
+  id_ENDS_WITH: String
+  id_EQUALS: String
+  id_GREATER_THAN: String
+  id_GREATER_THAN_OR_EQUALS: String
+  id_LOWER_THAN: String
+  id_LOWER_THAN_OR_EQUALS: String
+  id_NOT_EQUALS: String
+  id_STARTS_WITH: String
+  value_CONTAINS: String
+  value_ENDS_WITH: String
+  value_EQUALS: String
+  value_GREATER_THAN: String
+  value_GREATER_THAN_OR_EQUALS: String
+  value_LOWER_THAN: String
+  value_LOWER_THAN_OR_EQUALS: String
+  value_NOT_EQUALS: String
+  value_STARTS_WITH: String
+}
+
+input BoxedStringSortOption {
+  extension: ExtensionSortOption
+  id: SortDirection
+  value: SortDirection
+}
+
+input BoxedUriFilterOption {
+  extension_ALL_MATCH: ExtensionFilterOption
+  extension_ANY_MATCH: ExtensionFilterOption
+  extension_NONE_MATCH: ExtensionFilterOption
+  id_CONTAINS: String
+  id_ENDS_WITH: String
+  id_EQUALS: String
+  id_GREATER_THAN: String
+  id_GREATER_THAN_OR_EQUALS: String
+  id_LOWER_THAN: String
+  id_LOWER_THAN_OR_EQUALS: String
+  id_NOT_EQUALS: String
+  id_STARTS_WITH: String
+  value_CONTAINS: uri
+  value_ENDS_WITH: uri
+  value_EQUALS: uri
+  value_GREATER_THAN: uri
+  value_GREATER_THAN_OR_EQUALS: uri
+  value_LOWER_THAN: uri
+  value_LOWER_THAN_OR_EQUALS: uri
+  value_NOT_EQUALS: uri
+  value_STARTS_WITH: uri
+}
+
+input BoxedUriLogicalFilterOption {
+  AND: [BoxedUriLogicalFilterOption!]
+  NOT: BoxedUriLogicalFilterOption
+  OR: [BoxedUriLogicalFilterOption!]
+  extension_ALL_MATCH: ExtensionFilterOption
+  extension_ANY_MATCH: ExtensionFilterOption
+  extension_NONE_MATCH: ExtensionFilterOption
+  id_CONTAINS: String
+  id_ENDS_WITH: String
+  id_EQUALS: String
+  id_GREATER_THAN: String
+  id_GREATER_THAN_OR_EQUALS: String
+  id_LOWER_THAN: String
+  id_LOWER_THAN_OR_EQUALS: String
+  id_NOT_EQUALS: String
+  id_STARTS_WITH: String
+  value_CONTAINS: uri
+  value_ENDS_WITH: uri
+  value_EQUALS: uri
+  value_GREATER_THAN: uri
+  value_GREATER_THAN_OR_EQUALS: uri
+  value_LOWER_THAN: uri
+  value_LOWER_THAN_OR_EQUALS: uri
+  value_NOT_EQUALS: uri
+  value_STARTS_WITH: uri
+}
+
+input BoxedUriSortOption {
+  extension: ExtensionSortOption
+  id: SortDirection
+  value: SortDirection
+}
+
+input ElementFilterOption {
+  extension_ALL_MATCH: ExtensionFilterOption
+  extension_ANY_MATCH: ExtensionFilterOption
+  extension_NONE_MATCH: ExtensionFilterOption
+  id_CONTAINS: String
+  id_ENDS_WITH: String
+  id_EQUALS: String
+  id_GREATER_THAN: String
+  id_GREATER_THAN_OR_EQUALS: String
+  id_LOWER_THAN: String
+  id_LOWER_THAN_OR_EQUALS: String
+  id_NOT_EQUALS: String
+  id_STARTS_WITH: String
+}
+
+input ElementLogicalFilterOption {
+  AND: [ElementLogicalFilterOption!]
+  NOT: ElementLogicalFilterOption
+  OR: [ElementLogicalFilterOption!]
+  extension_ALL_MATCH: ExtensionFilterOption
+  extension_ANY_MATCH: ExtensionFilterOption
+  extension_NONE_MATCH: ExtensionFilterOption
+  id_CONTAINS: String
+  id_ENDS_WITH: String
+  id_EQUALS: String
+  id_GREATER_THAN: String
+  id_GREATER_THAN_OR_EQUALS: String
+  id_LOWER_THAN: String
+  id_LOWER_THAN_OR_EQUALS: String
+  id_NOT_EQUALS: String
+  id_STARTS_WITH: String
+}
+
+input ElementSortOption {
+  extension: ExtensionSortOption
+  id: SortDirection
+}
+
+input ExampleResourceExampleListDecimalFieldChildFilterOption {
+  EQUALS: Float
+  GREATER_THAN: Float
+  GREATER_THAN_OR_EQUALS: Float
+  LOWER_THAN: Float
+  LOWER_THAN_OR_EQUALS: Float
+  NOT_EQUALS: Float
+}
+
+input ExampleResourceFilterOption {
+  exampleListDecimalField_ALL_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_ANY_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_EQUALS: [Float!]
+  exampleListDecimalField_NONE_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_NOT_EQUALS: [Float!]
+}
+
+input ExampleResourceLogicalFilterOption {
+  AND: [ExampleResourceLogicalFilterOption!]
+  NOT: ExampleResourceLogicalFilterOption
+  OR: [ExampleResourceLogicalFilterOption!]
+  exampleListDecimalField_ALL_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_ANY_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_EQUALS: [Float!]
+  exampleListDecimalField_NONE_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_NOT_EQUALS: [Float!]
+}
+
+input ExampleResourceSortOption {
+  exampleListDecimalField: SortDirection
+}
+
+input ExampleTypeFilterOption {
+  exampleStringField_CONTAINS: String
+  exampleStringField_ENDS_WITH: String
+  exampleStringField_EQUALS: String
+  exampleStringField_GREATER_THAN: String
+  exampleStringField_GREATER_THAN_OR_EQUALS: String
+  exampleStringField_LOWER_THAN: String
+  exampleStringField_LOWER_THAN_OR_EQUALS: String
+  exampleStringField_NOT_EQUALS: String
+  exampleStringField_STARTS_WITH: String
+}
+
+input ExampleTypeLogicalFilterOption {
+  AND: [ExampleTypeLogicalFilterOption!]
+  NOT: ExampleTypeLogicalFilterOption
+  OR: [ExampleTypeLogicalFilterOption!]
+  exampleStringField_CONTAINS: String
+  exampleStringField_ENDS_WITH: String
+  exampleStringField_EQUALS: String
+  exampleStringField_GREATER_THAN: String
+  exampleStringField_GREATER_THAN_OR_EQUALS: String
+  exampleStringField_LOWER_THAN: String
+  exampleStringField_LOWER_THAN_OR_EQUALS: String
+  exampleStringField_NOT_EQUALS: String
+  exampleStringField_STARTS_WITH: String
+}
+
+input ExampleTypeSortOption {
+  exampleStringField: SortDirection
+}
+
+input ExtensionFilterOption {
+  extension_ALL_MATCH: ExtensionFilterOption
+  extension_ANY_MATCH: ExtensionFilterOption
+  extension_NONE_MATCH: ExtensionFilterOption
+  id_CONTAINS: String
+  id_ENDS_WITH: String
+  id_EQUALS: String
+  id_GREATER_THAN: String
+  id_GREATER_THAN_OR_EQUALS: String
+  id_LOWER_THAN: String
+  id_LOWER_THAN_OR_EQUALS: String
+  id_NOT_EQUALS: String
+  id_STARTS_WITH: String
+  url_CONTAINS: uri
+  url_ENDS_WITH: uri
+  url_EQUALS: uri
+  url_GREATER_THAN: uri
+  url_GREATER_THAN_OR_EQUALS: uri
+  url_LOWER_THAN: uri
+  url_LOWER_THAN_OR_EQUALS: uri
+  url_NOT_EQUALS: uri
+  url_STARTS_WITH: uri
+  value_CONTAINS: String
+  value_ENDS_WITH: String
+  value_EQUALS: String
+  value_GREATER_THAN: String
+  value_GREATER_THAN_OR_EQUALS: String
+  value_LOWER_THAN: String
+  value_LOWER_THAN_OR_EQUALS: String
+  value_NOT_EQUALS: String
+  value_STARTS_WITH: String
+}
+
+input ExtensionLogicalFilterOption {
+  AND: [ExtensionLogicalFilterOption!]
+  NOT: ExtensionLogicalFilterOption
+  OR: [ExtensionLogicalFilterOption!]
+  extension_ALL_MATCH: ExtensionFilterOption
+  extension_ANY_MATCH: ExtensionFilterOption
+  extension_NONE_MATCH: ExtensionFilterOption
+  id_CONTAINS: String
+  id_ENDS_WITH: String
+  id_EQUALS: String
+  id_GREATER_THAN: String
+  id_GREATER_THAN_OR_EQUALS: String
+  id_LOWER_THAN: String
+  id_LOWER_THAN_OR_EQUALS: String
+  id_NOT_EQUALS: String
+  id_STARTS_WITH: String
+  url_CONTAINS: uri
+  url_ENDS_WITH: uri
+  url_EQUALS: uri
+  url_GREATER_THAN: uri
+  url_GREATER_THAN_OR_EQUALS: uri
+  url_LOWER_THAN: uri
+  url_LOWER_THAN_OR_EQUALS: uri
+  url_NOT_EQUALS: uri
+  url_STARTS_WITH: uri
+  value_CONTAINS: String
+  value_ENDS_WITH: String
+  value_EQUALS: String
+  value_GREATER_THAN: String
+  value_GREATER_THAN_OR_EQUALS: String
+  value_LOWER_THAN: String
+  value_LOWER_THAN_OR_EQUALS: String
+  value_NOT_EQUALS: String
+  value_STARTS_WITH: String
+}
+
+input ExtensionSortOption {
+  extension: ExtensionSortOption
+  id: SortDirection
+  url: SortDirection
+  value: SortDirection
+}
+
+input OffsetPaginationOption {
+  limit: Int!
+  offset: Int!
+}
+"

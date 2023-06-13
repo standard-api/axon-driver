@@ -1,0 +1,8 @@
+{
+  "name": "Organization Created",
+  "description": "Generated Event for newly created Organization.",
+  "id": "OrganizationCreated",
+  "type": {
+    "id": "Organization"
+  }
+}

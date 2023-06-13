@@ -1,0 +1,36 @@
+{
+  "findOrganizationList" : [ {
+    "name" : "Brno Dental Care",
+    "address" : [ ]
+  }, {
+    "name" : "Ceske Budejovice Optometry",
+    "address" : [ ]
+  }, {
+    "name" : "Hradec Kralove Cardiology",
+    "address" : [ ]
+  }, {
+    "name" : "Karlovy Vary Rehabilitation Center",
+    "address" : [ ]
+  }, {
+    "name" : "Liberec Orthopedic Clinic",
+    "address" : [ ]
+  }, {
+    "name" : "Litomerice Physical Therapy",
+    "address" : [ ]
+  }, {
+    "name" : "Olomouc Hospital",
+    "address" : [ ]
+  }, {
+    "name" : "Ostrava Physical Therapy",
+    "address" : [ ]
+  }, {
+    "name" : "Plzen Children's Hospital",
+    "address" : [ ]
+  }, {
+    "name" : "Prague Medical Clinic",
+    "address" : [ {
+      "city" : "Aš",
+      "line" : [ "Dlouhá 21" ]
+    } ]
+  } ]
+}

@@ -1,0 +1,331 @@
+"\"Marks the field, argument, input field or enum value as deprecated\"
+directive @deprecated(
+    \"The reason for the deprecation\"
+    reason: String = \"No longer supported\"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+\"Directs the executor to include this field or fragment only when the `if` argument is true\"
+directive @include(
+    \"Included when true.\"
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+\"Directs the executor to skip this field or fragment when the `if` argument is true.\"
+directive @skip(
+    \"Skipped when true.\"
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+\"Exposes a URL that specifies the behaviour of this scalar.\"
+directive @specifiedBy(
+    \"The URL that specifies the behaviour of this scalar.\"
+    url: String!
+  ) on SCALAR
+
+\"High level Union type of all types in this schema.\"
+union AnyNode = BoxedDecimal | BoxedString | Element | ExampleComplexType | ExampleResource
+
+\"Type for union type field contained in ExampleComplexType\"
+union ExampleComplexTypeExampleUnionField = BoxedDecimal | BoxedString
+
+\"Base StructureDefinition for decimal Type: A rational number with implicit precision\"
+type BoxedDecimal {
+  \"Unique id for inter-element referencing\"
+  id: [String!]!
+  \"Primitive value for BoxedDecimal\"
+  value: Float
+}
+
+\"Base StructureDefinition for string Type\"
+type BoxedString {
+  \"Unique id for inter-element referencing\"
+  id: [String!]!
+  \"Primitive value for BoxedString\"
+  value: String
+}
+
+type Element {
+  \"Unique id for inter-element referencing\"
+  id: [String!]!
+}
+
+\"Description of Example Complex Type\"
+type ExampleComplexType {
+  \"Example String Field on Example Complex Type\"
+  exampleStringField: String!
+  \"Example Union Field on Example Complex Type\"
+  exampleUnionField(pagination: OffsetPaginationOption): [ExampleComplexTypeExampleUnionField!]!
+}
+
+\"Description of Example Resource\"
+type ExampleResource {
+  \"Example List Decimal Field on Example Resource\"
+  exampleListDecimalField: [Float!]!
+  \"Example Union Field on Example Resource\"
+  exampleUnionField: ExampleComplexType!
+}
+
+type Mutation {
+  createExampleResource(id: ID, payload: CreateExampleResourceCommandPayloadInput!): MutationResponse
+}
+
+type MutationResponse {
+  successes: Boolean
+}
+
+type Query {
+  findExampleResourceList(filter: [ExampleResourceLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExampleResourceSortOption!]): [ExampleResource!]!
+  getExampleResource(id: String!): ExampleResource
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+\"Base StructureDefinition for decimal Type: A rational number with implicit precision\"
+scalar decimal
+
+\"Base StructureDefinition for string Type\"
+scalar string
+
+input BoxedDecimalCommandInput {
+  id: [String!]
+  value: Float
+}
+
+input BoxedDecimalFilterOption {
+  id_ALL_MATCH: BoxedDecimalIdChildFilterOption
+  id_ANY_MATCH: BoxedDecimalIdChildFilterOption
+  id_EQUALS: [String!]
+  id_NONE_MATCH: BoxedDecimalIdChildFilterOption
+  id_NOT_EQUALS: [String!]
+  value_EQUALS: Float
+  value_GREATER_THAN: Float
+  value_GREATER_THAN_OR_EQUALS: Float
+  value_LOWER_THAN: Float
+  value_LOWER_THAN_OR_EQUALS: Float
+  value_NOT_EQUALS: Float
+}
+
+input BoxedDecimalIdChildFilterOption {
+  CONTAINS: String
+  ENDS_WITH: String
+  EQUALS: String
+  GREATER_THAN: String
+  GREATER_THAN_OR_EQUALS: String
+  LOWER_THAN: String
+  LOWER_THAN_OR_EQUALS: String
+  NOT_EQUALS: String
+  STARTS_WITH: String
+}
+
+input BoxedDecimalLogicalFilterOption {
+  AND: [BoxedDecimalLogicalFilterOption!]
+  NOT: BoxedDecimalLogicalFilterOption
+  OR: [BoxedDecimalLogicalFilterOption!]
+  id_ALL_MATCH: BoxedDecimalIdChildFilterOption
+  id_ANY_MATCH: BoxedDecimalIdChildFilterOption
+  id_EQUALS: [String!]
+  id_NONE_MATCH: BoxedDecimalIdChildFilterOption
+  id_NOT_EQUALS: [String!]
+  value_EQUALS: Float
+  value_GREATER_THAN: Float
+  value_GREATER_THAN_OR_EQUALS: Float
+  value_LOWER_THAN: Float
+  value_LOWER_THAN_OR_EQUALS: Float
+  value_NOT_EQUALS: Float
+}
+
+input BoxedDecimalSortOption {
+  id: SortDirection
+  value: SortDirection
+}
+
+input BoxedStringCommandInput {
+  id: [String!]
+  value: String
+}
+
+input BoxedStringFilterOption {
+  id_ALL_MATCH: BoxedStringIdChildFilterOption
+  id_ANY_MATCH: BoxedStringIdChildFilterOption
+  id_EQUALS: [String!]
+  id_NONE_MATCH: BoxedStringIdChildFilterOption
+  id_NOT_EQUALS: [String!]
+  value_CONTAINS: String
+  value_ENDS_WITH: String
+  value_EQUALS: String
+  value_GREATER_THAN: String
+  value_GREATER_THAN_OR_EQUALS: String
+  value_LOWER_THAN: String
+  value_LOWER_THAN_OR_EQUALS: String
+  value_NOT_EQUALS: String
+  value_STARTS_WITH: String
+}
+
+input BoxedStringIdChildFilterOption {
+  CONTAINS: String
+  ENDS_WITH: String
+  EQUALS: String
+  GREATER_THAN: String
+  GREATER_THAN_OR_EQUALS: String
+  LOWER_THAN: String
+  LOWER_THAN_OR_EQUALS: String
+  NOT_EQUALS: String
+  STARTS_WITH: String
+}
+
+input BoxedStringLogicalFilterOption {
+  AND: [BoxedStringLogicalFilterOption!]
+  NOT: BoxedStringLogicalFilterOption
+  OR: [BoxedStringLogicalFilterOption!]
+  id_ALL_MATCH: BoxedStringIdChildFilterOption
+  id_ANY_MATCH: BoxedStringIdChildFilterOption
+  id_EQUALS: [String!]
+  id_NONE_MATCH: BoxedStringIdChildFilterOption
+  id_NOT_EQUALS: [String!]
+  value_CONTAINS: String
+  value_ENDS_WITH: String
+  value_EQUALS: String
+  value_GREATER_THAN: String
+  value_GREATER_THAN_OR_EQUALS: String
+  value_LOWER_THAN: String
+  value_LOWER_THAN_OR_EQUALS: String
+  value_NOT_EQUALS: String
+  value_STARTS_WITH: String
+}
+
+input BoxedStringSortOption {
+  id: SortDirection
+  value: SortDirection
+}
+
+\"Example Mutation For Creating Example Resource\"
+input CreateExampleResourceCommandPayloadInput {
+  exampleComplexField: ExampleComplexTypeCommandInput!
+  exampleListDecimalField: [Float!]
+}
+
+input ElementCommandInput {
+  id: [String!]
+}
+
+input ElementFilterOption {
+  id_ALL_MATCH: ElementIdChildFilterOption
+  id_ANY_MATCH: ElementIdChildFilterOption
+  id_EQUALS: [String!]
+  id_NONE_MATCH: ElementIdChildFilterOption
+  id_NOT_EQUALS: [String!]
+}
+
+input ElementIdChildFilterOption {
+  CONTAINS: String
+  ENDS_WITH: String
+  EQUALS: String
+  GREATER_THAN: String
+  GREATER_THAN_OR_EQUALS: String
+  LOWER_THAN: String
+  LOWER_THAN_OR_EQUALS: String
+  NOT_EQUALS: String
+  STARTS_WITH: String
+}
+
+input ElementLogicalFilterOption {
+  AND: [ElementLogicalFilterOption!]
+  NOT: ElementLogicalFilterOption
+  OR: [ElementLogicalFilterOption!]
+  id_ALL_MATCH: ElementIdChildFilterOption
+  id_ANY_MATCH: ElementIdChildFilterOption
+  id_EQUALS: [String!]
+  id_NONE_MATCH: ElementIdChildFilterOption
+  id_NOT_EQUALS: [String!]
+}
+
+input ElementSortOption {
+  id: SortDirection
+}
+
+input ExampleComplexTypeCommandInput {
+  exampleStringField: String!
+  exampleUnionField: [ExampleComplexTypeCommandInputExampleUnionField!]!
+}
+
+\"Generated Input Type, which works as a Union type. Only one field should be filled.\"
+input ExampleComplexTypeCommandInputExampleUnionField {
+  decimal: Float
+  string: String
+}
+
+input ExampleComplexTypeFilterOption {
+  exampleStringField_CONTAINS: String
+  exampleStringField_ENDS_WITH: String
+  exampleStringField_EQUALS: String
+  exampleStringField_GREATER_THAN: String
+  exampleStringField_GREATER_THAN_OR_EQUALS: String
+  exampleStringField_LOWER_THAN: String
+  exampleStringField_LOWER_THAN_OR_EQUALS: String
+  exampleStringField_NOT_EQUALS: String
+  exampleStringField_STARTS_WITH: String
+}
+
+input ExampleComplexTypeLogicalFilterOption {
+  AND: [ExampleComplexTypeLogicalFilterOption!]
+  NOT: ExampleComplexTypeLogicalFilterOption
+  OR: [ExampleComplexTypeLogicalFilterOption!]
+  exampleStringField_CONTAINS: String
+  exampleStringField_ENDS_WITH: String
+  exampleStringField_EQUALS: String
+  exampleStringField_GREATER_THAN: String
+  exampleStringField_GREATER_THAN_OR_EQUALS: String
+  exampleStringField_LOWER_THAN: String
+  exampleStringField_LOWER_THAN_OR_EQUALS: String
+  exampleStringField_NOT_EQUALS: String
+  exampleStringField_STARTS_WITH: String
+}
+
+input ExampleComplexTypeSortOption {
+  exampleStringField: SortDirection
+  exampleUnionField: SortDirection
+}
+
+input ExampleResourceExampleListDecimalFieldChildFilterOption {
+  EQUALS: Float
+  GREATER_THAN: Float
+  GREATER_THAN_OR_EQUALS: Float
+  LOWER_THAN: Float
+  LOWER_THAN_OR_EQUALS: Float
+  NOT_EQUALS: Float
+}
+
+input ExampleResourceFilterOption {
+  exampleListDecimalField_ALL_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_ANY_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_EQUALS: [Float!]
+  exampleListDecimalField_NONE_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_NOT_EQUALS: [Float!]
+  exampleUnionField: ExampleComplexTypeFilterOption
+}
+
+input ExampleResourceLogicalFilterOption {
+  AND: [ExampleResourceLogicalFilterOption!]
+  NOT: ExampleResourceLogicalFilterOption
+  OR: [ExampleResourceLogicalFilterOption!]
+  exampleListDecimalField_ALL_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_ANY_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_EQUALS: [Float!]
+  exampleListDecimalField_NONE_MATCH: ExampleResourceExampleListDecimalFieldChildFilterOption
+  exampleListDecimalField_NOT_EQUALS: [Float!]
+  exampleUnionField: ExampleComplexTypeFilterOption
+}
+
+input ExampleResourceSortOption {
+  exampleListDecimalField: SortDirection
+  exampleUnionField: ExampleComplexTypeSortOption
+}
+
+input OffsetPaginationOption {
+  limit: Int!
+  offset: Int!
+}
+"

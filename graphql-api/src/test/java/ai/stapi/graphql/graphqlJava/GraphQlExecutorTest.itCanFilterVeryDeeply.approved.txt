@@ -1,0 +1,33 @@
+{
+  "findStructureDefinitionList" : [ {
+    "kind" : "complex-type",
+    "type" : "DataRequirement",
+    "differential" : {
+      "element" : [ {
+        "path" : "DataRequirement.dateFilter.value[x]",
+        "type" : [ {
+          "code" : "dateTime"
+        }, {
+          "code" : "Duration"
+        }, {
+          "code" : "Period"
+        } ]
+      } ]
+    }
+  }, {
+    "kind" : "complex-type",
+    "type" : "Timing",
+    "differential" : {
+      "element" : [ {
+        "path" : "Timing.repeat.bounds[x]",
+        "type" : [ {
+          "code" : "Duration"
+        }, {
+          "code" : "Period"
+        }, {
+          "code" : "Range"
+        } ]
+      } ]
+    }
+  } ]
+}

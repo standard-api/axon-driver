@@ -1,0 +1,51 @@
+nodes:
+	node_type: Address
+	node_hash: 6B615
+	node_edges:
+		Address -> position -> AddressPosition (6B615 -> 7826A -> C93FE)
+		Organization -> address -> Address (7BCA6 -> 8785A -> 6B615)
+	attributes:
+		city -> Prague
+		country -> Czech Republic
+		line -> [Vaclavske Namesti 8, Vaclavske Namesti 11, Vaclavske Namesti 50]
+		postalCode -> 11000
+		state -> Praha
+
+	node_type: AddressPosition
+	node_hash: C93FE
+	node_edges:
+		Address -> position -> AddressPosition (6B615 -> 7826A -> C93FE)
+	attributes:
+		latitude -> 50.08803939819336
+		longitude -> 14.420760154724121
+
+	node_type: ContactPoint
+	node_hash: 293B7
+	node_edges:
+		Organization -> telecom -> ContactPoint (7BCA6 -> 5CA79 -> 293B7)
+	attributes:
+		system -> email
+		value -> info@praguemedicalclinic.cz
+
+	node_type: Organization
+	node_hash: 7BCA6
+	node_edges:
+		Organization -> address -> Address (7BCA6 -> 8785A -> 6B615)
+		Organization -> telecom -> ContactPoint (7BCA6 -> 5CA79 -> 293B7)
+	attributes:
+
+edges:
+	edge_type: address
+	edge_hash: 8785A
+	Organization -> address -> Address (7BCA6 -> 8785A -> 6B615)
+	attributes:
+
+	edge_type: position
+	edge_hash: 7826A
+	Address -> position -> AddressPosition (6B615 -> 7826A -> C93FE)
+	attributes:
+
+	edge_type: telecom
+	edge_hash: 5CA79
+	Organization -> telecom -> ContactPoint (7BCA6 -> 5CA79 -> 293B7)
+	attributes:

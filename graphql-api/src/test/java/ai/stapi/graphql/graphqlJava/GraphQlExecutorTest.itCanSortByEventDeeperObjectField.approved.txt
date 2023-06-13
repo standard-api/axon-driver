@@ -1,0 +1,158 @@
+{
+  "findOrganizationList" : [ {
+    "id" : "karlovyVaryRehabilitationCenter",
+    "name" : "Karlovy Vary Rehabilitation Center",
+    "address" : [ {
+      "city" : "Karlovy Vary",
+      "country" : "Czech Republic",
+      "postalCode" : "36001",
+      "state" : "Karlovarsky kraj"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "rehabilitation-center",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  }, {
+    "id" : "ostravaPhysicalTherapy",
+    "name" : "Ostrava Physical Therapy",
+    "address" : [ {
+      "city" : "Ostrava",
+      "country" : "Czech Republic",
+      "postalCode" : "70030",
+      "state" : "Moravskoslezsky kraj"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "physical-therapy",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  }, {
+    "id" : "litomericePhysicalTherapy",
+    "name" : "Litomerice Physical Therapy",
+    "address" : [ {
+      "city" : "Litomerice",
+      "country" : "Czech Republic",
+      "postalCode" : "41201",
+      "state" : "Ustecky kraj"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "physical-therapy",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  }, {
+    "id" : "liberecOrthopedicClinic",
+    "name" : "Liberec Orthopedic Clinic",
+    "address" : [ {
+      "city" : "Liberec",
+      "country" : "Czech Republic",
+      "postalCode" : "46001",
+      "state" : "Liberecky kraj"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "orthopedic-clinic",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  }, {
+    "id" : "ceskeBudejoviceOptometry",
+    "name" : "Ceske Budejovice Optometry",
+    "address" : [ {
+      "city" : "Ceske Budejovice",
+      "country" : "Czech Republic",
+      "postalCode" : "37001",
+      "state" : "Jihocesky kraj"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "optometry",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  }, {
+    "id" : "pragueMedicalClinic",
+    "name" : "Prague Medical Clinic",
+    "address" : [ {
+      "city" : "Aš",
+      "country" : "Czech Republic",
+      "postalCode" : "35201",
+      "state" : "Aš"
+    }, {
+      "city" : "Prague",
+      "country" : "Czech Republic",
+      "postalCode" : "11000",
+      "state" : "Praha"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "medical-clinic",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  }, {
+    "id" : "plzenChildrensHospital",
+    "name" : "Plzen Children's Hospital",
+    "address" : [ {
+      "city" : "Plzen",
+      "country" : "Czech Republic",
+      "postalCode" : "32600",
+      "state" : "Plzensky kraj"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "hospital",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  }, {
+    "id" : "olomoucHospital",
+    "name" : "Olomouc Hospital",
+    "address" : [ {
+      "city" : "Olomouc",
+      "country" : "Czech Republic",
+      "postalCode" : "77200",
+      "state" : "Olomoucky kraj"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "hospital",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  }, {
+    "id" : "brnoDentalCare",
+    "name" : "Brno Dental Care",
+    "address" : [ {
+      "city" : "Brno",
+      "country" : "Czech Republic",
+      "postalCode" : "60200",
+      "state" : "Jihomoravsky kraj"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "dental-care",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  }, {
+    "id" : "hradecKraloveCardiology",
+    "name" : "Hradec Kralove Cardiology",
+    "address" : [ {
+      "city" : "Hradec Kralove",
+      "country" : "Czech Republic",
+      "postalCode" : "50003",
+      "state" : "Kralovehradecky kraj"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "cardiology",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  } ]
+}

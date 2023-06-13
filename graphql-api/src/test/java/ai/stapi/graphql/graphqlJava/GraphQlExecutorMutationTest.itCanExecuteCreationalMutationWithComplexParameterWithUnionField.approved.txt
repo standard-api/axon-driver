@@ -1,0 +1,60 @@
+nodes:
+	node_type: Address
+	node_hash: 096E7
+	node_edges:
+		Address -> extension -> Extension (096E7 -> 5CA36 -> 241DF)
+		Address -> extension -> Extension (096E7 -> 9EEAC -> 79ABA)
+		Organization -> address -> Address (76470 -> 9E78E -> 096E7)
+	attributes:
+		city -> Brno
+		country -> Czech Republic
+
+	node_type: Coding
+	node_hash: 89A84
+	node_edges:
+		Extension -> value -> Coding (241DF -> 35686 -> 89A84)
+	attributes:
+		display -> DisplayName
+
+	node_type: Extension
+	node_hash: 241DF
+	node_edges:
+		Address -> extension -> Extension (096E7 -> 5CA36 -> 241DF)
+		Extension -> value -> Coding (241DF -> 35686 -> 89A84)
+	attributes:
+		url -> http://urlto.coding.extension
+
+	node_type: Extension
+	node_hash: 79ABA
+	node_edges:
+		Address -> extension -> Extension (096E7 -> 9EEAC -> 79ABA)
+	attributes:
+		url -> http://urlto.string.extension
+		value -> Brnenice
+
+	node_type: Organization
+	node_hash: 76470
+	node_edges:
+		Organization -> address -> Address (76470 -> 9E78E -> 096E7)
+	attributes:
+
+edges:
+	edge_type: address
+	edge_hash: 9E78E
+	Organization -> address -> Address (76470 -> 9E78E -> 096E7)
+	attributes:
+
+	edge_type: extension
+	edge_hash: 5CA36
+	Address -> extension -> Extension (096E7 -> 5CA36 -> 241DF)
+	attributes:
+
+	edge_type: extension
+	edge_hash: 9EEAC
+	Address -> extension -> Extension (096E7 -> 9EEAC -> 79ABA)
+	attributes:
+
+	edge_type: value
+	edge_hash: 35686
+	Extension -> value -> Coding (241DF -> 35686 -> 89A84)
+	attributes:

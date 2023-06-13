@@ -1,0 +1,244 @@
+"\"Marks the field, argument, input field or enum value as deprecated\"
+directive @deprecated(
+    \"The reason for the deprecation\"
+    reason: String = \"No longer supported\"
+  ) on FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM_VALUE | INPUT_FIELD_DEFINITION
+
+\"Directs the executor to include this field or fragment only when the `if` argument is true\"
+directive @include(
+    \"Included when true.\"
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+\"Directs the executor to skip this field or fragment when the `if` argument is true.\"
+directive @skip(
+    \"Skipped when true.\"
+    if: Boolean!
+  ) on FIELD | FRAGMENT_SPREAD | INLINE_FRAGMENT
+
+\"Exposes a URL that specifies the behaviour of this scalar.\"
+directive @specifiedBy(
+    \"The URL that specifies the behaviour of this scalar.\"
+    url: String!
+  ) on SCALAR
+
+\"High level Union type of all types in this schema.\"
+union AnyNode = BoxedString | Element | ExampleBase | ExampleResource
+
+\"Base StructureDefinition for string Type: A String description\"
+type BoxedString {
+  \"Unique id for inter-element referencing\"
+  id: [String!]!
+  \"Primitive value for BoxedString\"
+  value: String
+}
+
+type Element {
+  \"Unique id for inter-element referencing\"
+  id: [String!]!
+}
+
+\"Description of Example Base\"
+type ExampleBase {
+  \"Example String Field on Example Base\"
+  exampleBaseStringField: String!
+}
+
+\"Description of Example Resource\"
+type ExampleResource {
+  \"Example String Field on Example Base\"
+  exampleBaseStringField: String!
+  \"Example String Field on Example Resource\"
+  exampleStringField: String!
+}
+
+type Query {
+  findExampleBaseList(filter: [ExampleBaseLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExampleBaseSortOption!]): [ExampleBase!]!
+  findExampleResourceList(filter: [ExampleResourceLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExampleResourceSortOption!]): [ExampleResource!]!
+  getExampleBase(id: String!): ExampleBase
+  getExampleResource(id: String!): ExampleResource
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+\"Base StructureDefinition for string Type: A String description\"
+scalar string
+
+input BoxedStringFilterOption {
+  id_ALL_MATCH: BoxedStringIdChildFilterOption
+  id_ANY_MATCH: BoxedStringIdChildFilterOption
+  id_EQUALS: [String!]
+  id_NONE_MATCH: BoxedStringIdChildFilterOption
+  id_NOT_EQUALS: [String!]
+  value_CONTAINS: String
+  value_ENDS_WITH: String
+  value_EQUALS: String
+  value_GREATER_THAN: String
+  value_GREATER_THAN_OR_EQUALS: String
+  value_LOWER_THAN: String
+  value_LOWER_THAN_OR_EQUALS: String
+  value_NOT_EQUALS: String
+  value_STARTS_WITH: String
+}
+
+input BoxedStringIdChildFilterOption {
+  CONTAINS: String
+  ENDS_WITH: String
+  EQUALS: String
+  GREATER_THAN: String
+  GREATER_THAN_OR_EQUALS: String
+  LOWER_THAN: String
+  LOWER_THAN_OR_EQUALS: String
+  NOT_EQUALS: String
+  STARTS_WITH: String
+}
+
+input BoxedStringLogicalFilterOption {
+  AND: [BoxedStringLogicalFilterOption!]
+  NOT: BoxedStringLogicalFilterOption
+  OR: [BoxedStringLogicalFilterOption!]
+  id_ALL_MATCH: BoxedStringIdChildFilterOption
+  id_ANY_MATCH: BoxedStringIdChildFilterOption
+  id_EQUALS: [String!]
+  id_NONE_MATCH: BoxedStringIdChildFilterOption
+  id_NOT_EQUALS: [String!]
+  value_CONTAINS: String
+  value_ENDS_WITH: String
+  value_EQUALS: String
+  value_GREATER_THAN: String
+  value_GREATER_THAN_OR_EQUALS: String
+  value_LOWER_THAN: String
+  value_LOWER_THAN_OR_EQUALS: String
+  value_NOT_EQUALS: String
+  value_STARTS_WITH: String
+}
+
+input BoxedStringSortOption {
+  id: SortDirection
+  value: SortDirection
+}
+
+input ElementFilterOption {
+  id_ALL_MATCH: ElementIdChildFilterOption
+  id_ANY_MATCH: ElementIdChildFilterOption
+  id_EQUALS: [String!]
+  id_NONE_MATCH: ElementIdChildFilterOption
+  id_NOT_EQUALS: [String!]
+}
+
+input ElementIdChildFilterOption {
+  CONTAINS: String
+  ENDS_WITH: String
+  EQUALS: String
+  GREATER_THAN: String
+  GREATER_THAN_OR_EQUALS: String
+  LOWER_THAN: String
+  LOWER_THAN_OR_EQUALS: String
+  NOT_EQUALS: String
+  STARTS_WITH: String
+}
+
+input ElementLogicalFilterOption {
+  AND: [ElementLogicalFilterOption!]
+  NOT: ElementLogicalFilterOption
+  OR: [ElementLogicalFilterOption!]
+  id_ALL_MATCH: ElementIdChildFilterOption
+  id_ANY_MATCH: ElementIdChildFilterOption
+  id_EQUALS: [String!]
+  id_NONE_MATCH: ElementIdChildFilterOption
+  id_NOT_EQUALS: [String!]
+}
+
+input ElementSortOption {
+  id: SortDirection
+}
+
+input ExampleBaseFilterOption {
+  exampleBaseStringField_CONTAINS: String
+  exampleBaseStringField_ENDS_WITH: String
+  exampleBaseStringField_EQUALS: String
+  exampleBaseStringField_GREATER_THAN: String
+  exampleBaseStringField_GREATER_THAN_OR_EQUALS: String
+  exampleBaseStringField_LOWER_THAN: String
+  exampleBaseStringField_LOWER_THAN_OR_EQUALS: String
+  exampleBaseStringField_NOT_EQUALS: String
+  exampleBaseStringField_STARTS_WITH: String
+}
+
+input ExampleBaseLogicalFilterOption {
+  AND: [ExampleBaseLogicalFilterOption!]
+  NOT: ExampleBaseLogicalFilterOption
+  OR: [ExampleBaseLogicalFilterOption!]
+  exampleBaseStringField_CONTAINS: String
+  exampleBaseStringField_ENDS_WITH: String
+  exampleBaseStringField_EQUALS: String
+  exampleBaseStringField_GREATER_THAN: String
+  exampleBaseStringField_GREATER_THAN_OR_EQUALS: String
+  exampleBaseStringField_LOWER_THAN: String
+  exampleBaseStringField_LOWER_THAN_OR_EQUALS: String
+  exampleBaseStringField_NOT_EQUALS: String
+  exampleBaseStringField_STARTS_WITH: String
+}
+
+input ExampleBaseSortOption {
+  exampleBaseStringField: SortDirection
+}
+
+input ExampleResourceFilterOption {
+  exampleBaseStringField_CONTAINS: String
+  exampleBaseStringField_ENDS_WITH: String
+  exampleBaseStringField_EQUALS: String
+  exampleBaseStringField_GREATER_THAN: String
+  exampleBaseStringField_GREATER_THAN_OR_EQUALS: String
+  exampleBaseStringField_LOWER_THAN: String
+  exampleBaseStringField_LOWER_THAN_OR_EQUALS: String
+  exampleBaseStringField_NOT_EQUALS: String
+  exampleBaseStringField_STARTS_WITH: String
+  exampleStringField_CONTAINS: String
+  exampleStringField_ENDS_WITH: String
+  exampleStringField_EQUALS: String
+  exampleStringField_GREATER_THAN: String
+  exampleStringField_GREATER_THAN_OR_EQUALS: String
+  exampleStringField_LOWER_THAN: String
+  exampleStringField_LOWER_THAN_OR_EQUALS: String
+  exampleStringField_NOT_EQUALS: String
+  exampleStringField_STARTS_WITH: String
+}
+
+input ExampleResourceLogicalFilterOption {
+  AND: [ExampleResourceLogicalFilterOption!]
+  NOT: ExampleResourceLogicalFilterOption
+  OR: [ExampleResourceLogicalFilterOption!]
+  exampleBaseStringField_CONTAINS: String
+  exampleBaseStringField_ENDS_WITH: String
+  exampleBaseStringField_EQUALS: String
+  exampleBaseStringField_GREATER_THAN: String
+  exampleBaseStringField_GREATER_THAN_OR_EQUALS: String
+  exampleBaseStringField_LOWER_THAN: String
+  exampleBaseStringField_LOWER_THAN_OR_EQUALS: String
+  exampleBaseStringField_NOT_EQUALS: String
+  exampleBaseStringField_STARTS_WITH: String
+  exampleStringField_CONTAINS: String
+  exampleStringField_ENDS_WITH: String
+  exampleStringField_EQUALS: String
+  exampleStringField_GREATER_THAN: String
+  exampleStringField_GREATER_THAN_OR_EQUALS: String
+  exampleStringField_LOWER_THAN: String
+  exampleStringField_LOWER_THAN_OR_EQUALS: String
+  exampleStringField_NOT_EQUALS: String
+  exampleStringField_STARTS_WITH: String
+}
+
+input ExampleResourceSortOption {
+  exampleBaseStringField: SortDirection
+  exampleStringField: SortDirection
+}
+
+input OffsetPaginationOption {
+  limit: Int!
+  offset: Int!
+}
+"

@@ -1,0 +1,30 @@
+{
+  "findOrganizationList" : [ {
+    "id" : "brnoDentalCare",
+    "name" : "Brno Dental Care"
+  }, {
+    "id" : "ceskeBudejoviceOptometry",
+    "name" : "Ceske Budejovice Optometry"
+  }, {
+    "id" : "hradecKraloveCardiology",
+    "name" : "Hradec Kralove Cardiology"
+  }, {
+    "id" : "karlovyVaryRehabilitationCenter",
+    "name" : "Karlovy Vary Rehabilitation Center"
+  }, {
+    "id" : "olomoucHospital",
+    "name" : "Olomouc Hospital"
+  }, {
+    "id" : "ostravaPhysicalTherapy",
+    "name" : "Ostrava Physical Therapy"
+  }, {
+    "id" : "plzenChildrensHospital",
+    "name" : "Plzen Children's Hospital"
+  }, {
+    "id" : "pragueMedicalClinic",
+    "name" : "Prague Medical Clinic"
+  }, {
+    "id" : "testLab",
+    "name" : "TestLab"
+  } ]
+}

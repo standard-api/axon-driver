@@ -1,0 +1,28 @@
+{
+  "findOrganizationList" : [ {
+    "id" : "litomericePhysicalTherapy",
+    "name" : "Litomerice Physical Therapy",
+    "address" : [ ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "physical-therapy",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  }, {
+    "id" : "liberecOrthopedicClinic",
+    "name" : "Liberec Orthopedic Clinic",
+    "address" : [ {
+      "city" : "Liberec",
+      "country" : "Czech Republic",
+      "postalCode" : "46001",
+      "state" : "Liberecky kraj"
+    } ],
+    "type" : [ {
+      "coding" : [ {
+        "code" : "orthopedic-clinic",
+        "system" : "http://terminology.hl7.org/CodeSystem/organization-type"
+      } ]
+    } ]
+  } ]
+}
