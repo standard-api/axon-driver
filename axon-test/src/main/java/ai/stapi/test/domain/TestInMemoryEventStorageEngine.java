@@ -162,7 +162,7 @@ public class TestInMemoryEventStorageEngine implements EventStorageEngine {
       extends Spliterators.AbstractSpliterator<TrackedEventMessage<?>> {
 
     private final NavigableMap<TrackingToken, TrackedEventMessage<?>> source;
-    private volatile TrackingToken lastToken;
+    private TrackingToken lastToken;
 
     public MapEntrySpliterator(NavigableMap<TrackingToken, TrackedEventMessage<?>> source,
         TrackingToken trackingToken) {

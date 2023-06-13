@@ -262,7 +262,8 @@ public class AbstractAxonTestCase extends AbstractSchemaIntegrationTestCase {
   }
 
   protected <T extends Event> TrackedEventMessage<T> getLastEventMessagesOfPayloadType(
-      Class<T> eventType) {
+      Class<T> eventType
+  ) {
     var expectedNumberOfMessages = 1;
     List<TrackedEventMessage<?>> actualEvents = Retryable.retry(
         20,
