@@ -47,9 +47,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.stereotype.Service;
 
-@Service
 public class GraphLoaderGqlDataFetcher implements DataFetcher<Object> {
 
   public static final OffsetPaginationOption DEFAULT_MAIN_PAGINATION = new OffsetPaginationOption(0, 10);
