@@ -54,9 +54,7 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.springframework.stereotype.Service;
 
-@Service
 public class GraphQlFilterInputGenerator {
 
   public static final List<String> LEAF_FILTER_STRATEGIES = List.of(

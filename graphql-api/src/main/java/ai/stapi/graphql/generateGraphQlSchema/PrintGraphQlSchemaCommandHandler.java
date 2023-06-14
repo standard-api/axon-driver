@@ -6,9 +6,7 @@ import ai.stapi.schema.structureSchemaProvider.StructureSchemaProvider;
 import java.io.FileWriter;
 import java.io.IOException;
 import org.axonframework.commandhandling.CommandHandler;
-import org.springframework.stereotype.Service;
 
-@Service
 public class PrintGraphQlSchemaCommandHandler {
 
   private final GraphQlSchemaGenerator graphQlSchemaGenerator;

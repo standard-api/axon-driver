@@ -14,9 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.jetbrains.annotations.Nullable;
-import org.springframework.stereotype.Service;
 
-@Service
 public class GraphQlSortInputGenerator {
 
   protected static final GraphQLEnumType SORT_DIRECTION_ENUM = GraphQLEnumType.newEnum()

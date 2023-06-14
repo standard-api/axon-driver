@@ -3,9 +3,7 @@ package ai.stapi.graphql;
 import ai.stapi.graphql.graphqlJava.graphQLProvider.GraphQLProvider;
 import graphql.ExecutionInput;
 import java.util.Map;
-import org.springframework.stereotype.Service;
 
-@Service
 public class GraphQlExecutor {
 
   private final GraphQLProvider schemaProvider;

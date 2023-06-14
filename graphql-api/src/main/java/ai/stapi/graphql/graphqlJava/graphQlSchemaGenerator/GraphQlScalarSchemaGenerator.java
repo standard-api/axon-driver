@@ -7,9 +7,7 @@ import graphql.schema.CoercingParseValueException;
 import graphql.schema.CoercingSerializeException;
 import graphql.schema.GraphQLScalarType;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.stereotype.Service;
 
-@Service
 public class GraphQlScalarSchemaGenerator {
 
   public GraphQLScalarType generateScalarType(PrimitiveStructureType primitiveStructureType) {
