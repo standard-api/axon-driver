@@ -60,7 +60,7 @@ jobs:
 
       - name: Deploy release to Sonatype
         if: ${{ steps.check_version.outputs.version_exists == 'false' }}
-        uses: ./.github/actions/deploy-sonatype
+        uses: ./.github/actions/deploy-sonatype-all-in-order
         with:
           ossrh_username: ${{ secrets.OSSRH_USERNAME }}
           ossrh_token: ${{ secrets.OSSRH_TOKEN }}
