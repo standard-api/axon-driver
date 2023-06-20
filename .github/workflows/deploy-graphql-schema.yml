@@ -10,7 +10,9 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: yarn
-      - run: cd system-graphql-schema && yarn npm publish
+      - run: npm install && npm ci
+        working-directory: ./system-graphql-schema
+      - run: npm publish -access public
+        working-directory: ./system-graphql-schema
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
