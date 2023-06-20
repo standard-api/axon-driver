@@ -19,9 +19,12 @@ import org.axonframework.eventhandling.gateway.EventGateway;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Profile;
 
 @AutoConfiguration
+@ComponentScan("ai.stapi.axonsystemplugin.fixtures")
+@ComponentScan("ai.stapi.axonsystemplugin.structuredefinition")
 public class AxonSystemPluginConfiguration {
   
   @Bean
