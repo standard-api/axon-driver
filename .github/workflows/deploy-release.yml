@@ -50,7 +50,7 @@ jobs:
         id: check_version
         with:
           group_id: 'ai.stapi'
-          artifact_id: 'core'
+          artifact_id: 'axon-driver'
           version: ${{ steps.bumpedVersion.outputs.version }}
 
       - name: Setup JDK for sonatype release
