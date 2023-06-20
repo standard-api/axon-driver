@@ -3,7 +3,7 @@
   "version": "0.0.11",
   "description": "Stapi System GraphQL Schema",
   "repository": "https://github.com/standard-api/axon-driver",
-  "author": "clickout <mick.voros@gmail.com>",
+  "author": "stapi <tom@stapi.ai>",
   "license": "Apache 2.0",
   "private": false
 }
