@@ -34,7 +34,7 @@ jobs:
 
       - name: Publish snapshot to Sonatype
         if: ${{ steps.checkSnapshot.outputs.is_snapshot == 'true' }}
-        uses: ./.github/actions/deploy-sonatype
+        uses: ./.github/actions/deploy-sonatype-all-in-order
         with:
           ossrh_username: ${{ secrets.OSSRH_USERNAME }}
           ossrh_token: ${{ secrets.OSSRH_TOKEN }}
