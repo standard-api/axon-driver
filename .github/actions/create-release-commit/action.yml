@@ -1,0 +1,52 @@
+name: Commit And Create Release PR
+description: 'Commit And Create Release PR'
+
+inputs:
+  github_token:
+    description: 'Github token'
+    required: true
+  version:
+    description: 'Version to commit'
+    required: true
+  bump:
+    description: 'Bump type (patch, minor or major)'
+    required: true
+  repository:
+    description: 'Repository name at github.com/standard-api'
+    required: true
+outputs:
+  pr_number:
+    description: "The number of the created pull request"
+    value: ${{ steps.create.outputs.pr_number }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Commit updated POMs
+      shell: bash
+      run: |
+        git checkout -b release/${{ inputs.version }}
+        git add **/pom.xml
+        git add pom.xml
+        git commit -m "Release new ${{ inputs.bump }} version ${{ inputs.version }}"
+        git push https://${{ inputs.github_token }}@github.com/standard-api/${{ inputs.repository }}.git HEAD:release/${{ inputs.version }}
+    - name: Create Pull Request
+      shell: bash
+      id: createReleasePR
+      run: |
+        gh auth login --with-token <<< ${{ inputs.github_token }}
+        PR_URL=$(gh pr create --repo standard-api/${{ inputs.repository }} \
+          --title "Release ${{ inputs.version }} (${{ inputs.bump }})" \
+          --body "Auto PR for release ${{ inputs.version }}" \
+          --head release/${{ inputs.version }} \
+          --base master)
+        
+        PR_NUMBER=$(echo $PR_URL | grep -o '[0-9]\+$')
+        echo "::set-output name=pr_number::$PR_NUMBER"
+
+    - name: Automatically merge release PR
+      shell: bash
+      run: |
+        gh pr merge ${{ steps.createReleasePR.outputs.pr_number }} --merge --admin
+      env:
+        GH_TOKEN: ${{ inputs.github_token }}
