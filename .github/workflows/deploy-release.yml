@@ -72,6 +72,7 @@ jobs:
             git tag ${{ steps.bumpedVersion.outputs.version }}
             git push origin ${{ steps.bumpedVersion.outputs.version }}
           fi
+
       - name: Check if release exists
         id: check_release
         uses: ./.github/actions/check-github-release-exists
