@@ -1,0 +1,14 @@
+name: Bump npm version
+description: 'Bump npm version'
+inputs:
+  bump:
+    description: 'Bump type (patch, minor or major)'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Bump version
+      shell: bash
+      run: |
+        cd system-graphql-schema
+        npm version ${{ inputs.bump }} --no-git-tag-version

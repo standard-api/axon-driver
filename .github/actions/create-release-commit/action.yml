@@ -28,7 +28,7 @@ runs:
         git checkout -b release/${{ inputs.version }}
         git add **/pom.xml
         git add pom.xml
-        git commit -m "Release new ${{ inputs.bump }} version ${{ inputs.version }}"
+        git commit -m "Release new ${{ inputs.bump }} version ${{ inputs.version }} of maven packages"
         git push https://${{ inputs.github_token }}@github.com/standard-api/${{ inputs.repository }}.git HEAD:release/${{ inputs.version }}
     - name: Create Pull Request
       shell: bash

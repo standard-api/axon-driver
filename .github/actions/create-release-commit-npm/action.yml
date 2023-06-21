@@ -1,0 +1,24 @@
+name: Commit npm version bump
+description: 'Commit npm version bump'
+inputs:
+  github_token:
+    description: 'Github token'
+    required: true
+  version:
+    description: 'Version to commit'
+    required: true
+  bump:
+    description: 'Bump type (patch, minor or major)'
+    required: true
+  repository:
+    description: 'Repository name at github.com/standard-api'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Commit updated version
+      shell: bash
+      run: |
+        git add ${{ inputs.repository }}/package.json
+        git commit -m "Release new ${{ inputs.bump }} version ${{ inputs.version }} of npm packages"
+        git push https://${{ inputs.github_token }}@github.com/standard-api/${{ inputs.repository }}.git

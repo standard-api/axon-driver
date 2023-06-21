@@ -1,0 +1,31 @@
+name: 'Check if version exists on npm'
+description: 'Check if a given version of package exists on npm repository'
+inputs:
+  package_name:
+    description: 'The name of the npm package'
+    required: true
+  version:
+    description: 'The version to check'
+    required: true
+outputs:
+  version_exists:
+    description: 'Whether the version exists or not'
+    value: ${{ steps.check_version.outputs.version_exists }}
+runs:
+  using: "composite"
+  steps:
+    - id: check_version
+      shell: bash
+      run: |
+        PACKAGE_NAME=${{ inputs.package_name }}
+        VERSION=${{ inputs.version }}
+        echo "Going to find out if version ${{ inputs.version }} of package ${PACKAGE_NAME} is already deployed on npm."
+        
+        VERSION_EXISTS='false'
+        if npm view ${PACKAGE_NAME}@${VERSION} version; then
+          VERSION_EXISTS='true'
+          echo "And it is already deployed there."
+        else
+          echo "And it is not yet deployed there."
+        fi
+        echo "version_exists=$VERSION_EXISTS" >> $GITHUB_OUTPUT
