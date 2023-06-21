@@ -25,12 +25,12 @@
         <dependency>
             <groupId>ai.stapi</groupId>
             <artifactId>graph-system</artifactId>
-            <version>${stapi.version}</version>
+            <version>${stapi.core.version}</version>
         </dependency>
         <dependency>
             <groupId>ai.stapi</groupId>
             <artifactId>base-test</artifactId>
-            <version>${stapi.version}</version>
+            <version>${stapi.core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

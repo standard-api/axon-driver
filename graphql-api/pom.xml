@@ -16,7 +16,7 @@
         <dependency>
             <groupId>ai.stapi</groupId>
             <artifactId>axon-system</artifactId>
-            <version>${stapi.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.graphql-java</groupId>
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>ai.stapi</groupId>
             <artifactId>axon-test</artifactId>
-            <version>${stapi.version}</version>
+            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
