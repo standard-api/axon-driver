@@ -15,12 +15,12 @@
         <dependency>
             <groupId>ai.stapi</groupId>
             <artifactId>base-test</artifactId>
-            <version>${stapi.version}</version>
+            <version>${stapi.core.version}</version>
         </dependency>
         <dependency>
             <groupId>ai.stapi</groupId>
             <artifactId>axon-system</artifactId>
-            <version>${stapi.version}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>
