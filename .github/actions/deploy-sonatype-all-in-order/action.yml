@@ -17,27 +17,7 @@ runs:
   steps:
     - uses: ./.github/actions/deploy-sonatype
       with:
-        directory: 'axon-system'
-        ossrh_username: ${{ inputs.ossrh_username }}
-        ossrh_token: ${{ inputs.ossrh_token }}
-        ossrh_gpg_secret_key_password: ${{ inputs.ossrh_gpg_secret_key_password }}
-
-    - uses: ./.github/actions/deploy-sonatype
-      with:
-        directory: 'axon-test'
-        ossrh_username: ${{ inputs.ossrh_username }}
-        ossrh_token: ${{ inputs.ossrh_token }}
-        ossrh_gpg_secret_key_password: ${{ inputs.ossrh_gpg_secret_key_password }}
-
-    - uses: ./.github/actions/deploy-sonatype
-      with:
-        directory: 'axon-system-plugin'
-        ossrh_username: ${{ inputs.ossrh_username }}
-        ossrh_token: ${{ inputs.ossrh_token }}
-        ossrh_gpg_secret_key_password: ${{ inputs.ossrh_gpg_secret_key_password }}
-    - uses: ./.github/actions/deploy-sonatype
-      with:
-        directory: 'graphql-api'
+        directory: '.'
         ossrh_username: ${{ inputs.ossrh_username }}
         ossrh_token: ${{ inputs.ossrh_token }}
         ossrh_gpg_secret_key_password: ${{ inputs.ossrh_gpg_secret_key_password }}

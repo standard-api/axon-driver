@@ -8,8 +8,8 @@
     <version>0.0.12-SNAPSHOT</version>
     <modules>
         <module>axon-system</module>
-        <module>axon-system-plugin</module>
         <module>axon-test</module>
+        <module>axon-system-plugin</module>
         <module>graphql-api</module>
     </modules>
     <packaging>pom</packaging>
