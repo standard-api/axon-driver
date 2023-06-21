@@ -54,6 +54,6 @@ runs:
           ```
 
           ### Things that changed in this release
-          ${{ steps.changelog.outputs.changelog }}
+          ${{ steps.modified.outputs.log }}
         draft: false
         prerelease: false
