@@ -1,4 +1,4 @@
-name: Create Release on Github Repository
+name: Post release to public
 description: 'Create Release on Github Repository'
 
 inputs:
@@ -12,23 +12,36 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Get reference to release commit
+      id: release_commit
+      shell: bash
+      run: |
+        REF=$(git log --grep='Release [0-9.]* \(.*\) \(#[0-9]*\)' -n 1 --format=format:"%H")
+        echo "Last release commit is: $REF"
+        echo "ref=$REF" >> $GITHUB_ENV
+        
     - name: Generate changelog
       id: changelog
       uses: metcalfc/changelog-generator@v0.4.4
       with:
         myToken: ${{ inputs.github_token }}
+        head-ref: ${{ steps.release_commit.outputs.ref }}
 
     - name: Modify the changelog
       id: modified
       shell: bash
       run: |
         set -o noglob
-        CHANGELOG=$(cat << "EOF" | grep -vE 'Prepare new version .*SNAPSHOT for next development cycle|Merge pull request .* from standard-api/snapshot/.*-SNAPSHOT' | tac
+        CHANGELOG=$(cat << "EOF" | grep -vE 'Prepare new snapshot version .*SNAPSHOT for next development cycle|\
+          Merge pull request .* from standard-api/snapshot/.*-SNAPSHOT|\
+          Release [0-9.]* \(.*\) \(#[0-9]*\)' | tac
+        
         ${{ steps.changelog.outputs.changelog }}
         EOF
         )
-        echo "Changelog is: $CHANGELOG"
-        echo "log=$CHANGELOG" >> $GITHUB_OUTPUT
+        SANITIZED_CHANGELOG=$(printf '%q' "$CHANGELOG")
+        echo "Changelog is: $SANITIZED_CHANGELOG"
+        echo "log=$SANITIZED_CHANGELOG" >> $GITHUB_OUTPUT
         
     - name: Create Release on Github Repository
       id: create_release
@@ -39,14 +52,14 @@ runs:
         tag_name: ${{ inputs.release_version }}
         release_name: Release v${{ inputs.release_version }}
         body: |
-          Grab the new version from Maven central https://repo1.maven.org/maven2/ai/stapi/graph-system/${{ github.event.inputs.releaseversion }}/ by using it in your deps:
+          Grab the new version from Maven central https://repo1.maven.org/maven2/ai/stapi/graph-system/${{ inputs.release_version }}/ by using it in your deps:
 
           ```
           <dependencies>
               <dependency>
                   <groupId>ai.stapi</groupId>
                   <artifactId>graph-system</artifactId>
-                  <version>${{ github.event.inputs.releaseversion }}</version>
+                  <version>${{ inputs.release_version }}</version>
               </dependency>
           </dependencies>
           ```
@@ -55,3 +68,4 @@ runs:
           ${{ steps.modified.outputs.log }}
         draft: false
         prerelease: false
+
