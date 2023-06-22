@@ -50,7 +50,7 @@ jobs:
         with:
           bump: ${{ github.event.inputs.semverBump }}
           version: ${{ steps.bumpedVersion.outputs.version }}
-          repository: axon-driver
+          package_path: system-graphql-schema
 
       - name: Create release PR and automatic merge
         if: ${{ steps.bumpedVersion.outputs.was_bumped == 'true' }}

@@ -7,8 +7,8 @@ inputs:
   bump:
     description: 'Bump type (patch, minor or major)'
     required: true
-  repository:
-    description: 'Repository name at github.com/standard-api'
+  package_path:
+    description: 'Path to folder containing package.json'
     required: true
 runs:
   using: "composite"
@@ -16,5 +16,5 @@ runs:
     - name: Commit updated version
       shell: bash
       run: |
-        git add ${{ inputs.repository }}/system-graphql-schema/package.json
+        git add ${{ inputs.package_path }}/package.json
         git commit -m "Release new ${{ inputs.bump }} version ${{ inputs.version }} of npm packages" || true
