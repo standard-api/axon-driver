@@ -27,7 +27,7 @@ runs:
         ${{ steps.changelog.outputs.changelog }}
         EOF
         )
-        echo "Changelog is: $CHANGELOG
+        echo "Changelog is: $CHANGELOG"
         echo "log=$CHANGELOG" >> $GITHUB_OUTPUT
         
     - name: Create Release on Github Repository
