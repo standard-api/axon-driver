@@ -20,7 +20,13 @@ runs:
   steps:
     - name: Post changelog to Discord
       shell: bash
+      env:
+        CHANGELOG: ${{ inputs.changelog }}
+        RELEASE_VERSION: ${{ inputs.release_version }}
+        REPOSITORY: ${{ inputs.repository }}
+        DISCORD_WEBHOOK: ${{ inputs.discord_webhook_url }}
       run: |
-        MESSAGE="We have released new version ${{ inputs.release_version }} in [${{ inputs.repository }}](https::github.com/${{ inputs.repository }}). Here is what changed:\n\n${{ inputs.changelog }}"
-        JSON_MESSAGE=$(jq -n --arg msg "$MESSAGE" '{"content": $msg}')
-        curl -X POST -H "Content-Type: application/json" -d "$JSON_MESSAGE" ${{ secrets.DISCORD_WEBHOOK_URL }}
+        CHANGELOG=${CHANGELOG//'\`'/'`'}  # Correct the backticks escaping
+        TITLE="We have released new version $RELEASE_VERSION in [$REPOSITORY](https://github.com/$REPOSITORY)"
+        JSON_MESSAGE=$(jq -n --arg title "$TITLE" --arg description "$CHANGELOG" '{"embeds": [{"title": $title, "description": $description}]}')
+        curl -X POST -H "Content-Type: application/json" -d "$JSON_MESSAGE" $DISCORD_WEBHOOK

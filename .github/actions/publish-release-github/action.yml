@@ -16,36 +16,68 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: Checkout updated master
+      uses: actions/checkout@v3
+      with:
+        ref: master
+        fetch-depth: 100
     - name: Get reference to release commit
-      id: release_commit
+      id: releaseCommit
       shell: bash
       run: |
-        REF=$(git log --grep='Release [0-9.]* \(.*\) \(#[0-9]*\)' -n 1 --format=format:"%H")
+        REF=$(git log --grep='Release [0-9.]* \(.*\) \(.*\)' -n 1 --format=format:"%H")
         echo "Last release commit is: $REF"
-        echo "ref=$REF" >> $GITHUB_ENV
+        echo "ref=$(printf "%s" "$REF")" >> $GITHUB_OUTPUT
         
     - name: Generate changelog
       id: changelog
       uses: metcalfc/changelog-generator@v0.4.4
       with:
         myToken: ${{ inputs.github_token }}
-        head-ref: ${{ steps.release_commit.outputs.ref }}
+        head-ref: ${{ steps.releaseCommit.outputs.ref }}
 
     - name: Modify the changelog
       id: modified
       shell: bash
       run: |
         set -o noglob
-        CHANGELOG=$(cat << "EOF" | grep -vE 'Prepare new snapshot version .*SNAPSHOT for next development cycle|\
-          Merge pull request .* from standard-api/snapshot/.*-SNAPSHOT|\
-          Release [0-9.]* \(.*\) \(#[0-9]*\)' | tac
+
+        printf "Going to modify changelog\n"
+        echo "${{ steps.changelog.outputs.changelog }}" | base64 | tr -d '\n'
         
+        cat << "EOF"
+          ${{ steps.changelog.outputs.changelog }}
+        EOF
+        
+        # Define patterns to filter out
+        PATTERNS=(
+        'Prepare new snapshot version .*SNAPSHOT for next development cycle'
+        'Merge pull request .* from standard-api/snapshot/.*-SNAPSHOT'
+        'Release [0-9.]* \(.*\) \(.*\)'
+        )
+        printf "Patterns are defined\n"
+        
+        # Join patterns with '|'
+        JOINT_PATTERN=$(IFS='|'; echo "${PATTERNS[*]}")
+        printf "Patterns are joined\n"
+        
+        # Store the original changelog
+        ORIGINAL_CHANGELOG=$(cat << "EOF"
         ${{ steps.changelog.outputs.changelog }}
         EOF
         )
-        SANITIZED_CHANGELOG=$(printf '%q' "$CHANGELOG")
-        echo "Changelog is: $SANITIZED_CHANGELOG"
-        echo "log=$SANITIZED_CHANGELOG" >> $GITHUB_OUTPUT
+        printf "Original changelog: %s\n" "$ORIGINAL_CHANGELOG"
+        
+        # Filter the changelog until the given commit hash
+        echo "Commit ref: ${{ steps.releaseCommit.outputs.ref }}"
+        FILTERED_UNTIL_COMMIT=$(echo "$ORIGINAL_CHANGELOG" | awk "/\/commit\/${{ steps.releaseCommit.outputs.ref }}/{exit} 1")
+        printf "Filtered until last release: %s\n" "$FILTERED_CHANGELOG"
+        
+        # Filter out the undesired lines
+        FILTERED_CHANGELOG=$(echo "$FILTERED_UNTIL_COMMIT" | grep -vE "$JOINT_PATTERN")
+        printf "Filtered changelog: %s\n" "$FILTERED_CHANGELOG"
+      
+        echo "log<<EOF"$'\n'"$FILTERED_CHANGELOG"$'\n'EOF >> $GITHUB_OUTPUT
         
     - name: Create Release on Github Repository
       id: create_release
