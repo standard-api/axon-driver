@@ -1,14 +1,14 @@
 name: Publish package to npm
 description: 'Publish package to npm'
 inputs:
-  version:
+  npm_token:
     description: 'Version to publish'
     required: true
 runs:
   using: "composite"
   steps:
-    - name: Publish package
+    - run: npm publish -access public
       shell: bash
-      run: |
-        cd system-graphql-schema
-        npm publish
+      working-directory: ./system-graphql-schema
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.npm_token }}
