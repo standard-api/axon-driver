@@ -1,0 +1,16 @@
+name: Publish package to npm
+description: 'Publish package to npm'
+inputs:
+  npm_token:
+    description: 'Version to publish'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+        registry-url: 'https://registry.npmjs.org'
+    - run: npm install && npm ci
+      shell: bash
+      working-directory: ./system-graphql-schema
