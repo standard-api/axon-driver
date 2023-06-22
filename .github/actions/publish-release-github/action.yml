@@ -16,11 +16,15 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: Checkout updated master
+      uses: actions/checkout@v3
+      with:
+        ref: master
     - name: Get reference to release commit
       id: release_commit
       shell: bash
       run: |
-        REF=$(git log --grep='Release [0-9.]* \(.*\) \(#[0-9]*\)' -n 1 --format=format:"%H")
+        REF=$(git log --grep='Release [0-9.]* \(.*\) \(.*\)' -n 1 --format=format:"%H")
         echo "Last release commit is: $REF"
         echo "ref=$REF" >> $GITHUB_ENV
         
@@ -36,16 +40,38 @@ runs:
       shell: bash
       run: |
         set -o noglob
-        CHANGELOG=$(cat << "EOF" | grep -vE 'Prepare new snapshot version .*SNAPSHOT for next development cycle|\
-          Merge pull request .* from standard-api/snapshot/.*-SNAPSHOT|\
-          Release [0-9.]* \(.*\) \(#[0-9]*\)' | tac
+
+        printf "Going to modify changelog\n"
+        # Define patterns to filter out
         
-        ${{ steps.changelog.outputs.changelog }}
-        EOF
+        PATTERNS=(
+        'Prepare new snapshot version .*SNAPSHOT for next development cycle'
+        'Merge pull request .* from standard-api/snapshot/.*-SNAPSHOT'
+        'Release [0-9.]* \(.*\) \(.*\)'
         )
-        SANITIZED_CHANGELOG=$(printf '%q' "$CHANGELOG")
-        echo "Changelog is: $SANITIZED_CHANGELOG"
-        echo "log=$SANITIZED_CHANGELOG" >> $GITHUB_OUTPUT
+        printf "Patterns are defined\n"
+        # Join patterns with '|'
+        
+        JOINT_PATTERN=$(IFS='|'; echo "${PATTERNS[*]}")
+        printf "Patterns are joined\n"
+        # Store the original changelog
+        ORIGINAL_CHANGELOG=$(echo "${{ steps.changelog.outputs.changelog }}")
+        printf "Original changelog loaded\n"
+        printf "Original changelog: %s\n" "$ORIGINAL_CHANGELOG"
+        
+        # Filter the changelog until the given commit hash
+        FILTERED_UNTIL_COMMIT=$(echo "$ORIGINAL_CHANGELOG" | awk "/${{ steps.release_commit.outputs.ref }}/{exit} 1")
+    
+        # Filter out the undesired lines
+        FILTERED_CHANGELOG=$(echo "$FILTERED_UNTIL_COMMIT" | grep -vE "$JOINT_PATTERN")
+        printf "Filtered changelog: %s\n" "$FILTERED_CHANGELOG"
+      
+        # Sanitize the changelog for output
+        SANITIZED_CHANGELOG=$(printf '%b' "$REVERSED_CHANGELOG")
+        SANITIZED_CHANGELOG=${SANITIZED_CHANGELOG//$'\n'/'%0A'}
+        SANITIZED_CHANGELOG=${SANITIZED_CHANGELOG//$'\r'/'%0D'}
+        printf "Final changelog: %s\n" "$SANITIZED_CHANGELOG"
+        echo "log=$(printf "%s\n" "$SANITIZED_CHANGELOG")" >> $GITHUB_OUTPUT
         
     - name: Create Release on Github Repository
       id: create_release
