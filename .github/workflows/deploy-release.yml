@@ -31,10 +31,11 @@ jobs:
         with:
           bump: ${{ github.event.inputs.semverBump }}
 
-      - name: Bump new Semantic Version in npm
+      - name: Set version in npm
         uses: ./.github/actions/set-npm-version
         with:
           version: ${{ steps.bumpedVersion.outputs.version }}
+          package_path: system-graphql-schema
 
       - name: Set git user and email
         uses: ./.github/actions/set-git-username

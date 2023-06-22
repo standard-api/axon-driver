@@ -4,11 +4,14 @@ inputs:
   version:
     description: 'New version to set'
     required: true
+  package_path:
+    description: 'path to folder with package.json'
+    required: true
 runs:
   using: "composite"
   steps:
     - name: Set version
       shell: bash
       run: |
-        cd system-graphql-schema
-        npm version ${{ inputs.version }} --no-git-tag-version
+        cd ${{ inputs.package_path }}
+        npm version ${{ inputs.version }} --no-git-tag-version || true
