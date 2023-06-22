@@ -1,0 +1,26 @@
+name: Post release to public
+description: 'Create Release on Github Repository'
+
+inputs:
+  changelog:
+    description: 'Github token'
+    required: true
+  release_version:
+    description: 'Version to release'
+    required: true
+  repository:
+    description: 'Version to release'
+    required: true
+  discord_webhook_url:
+    description: 'Version to release'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Post changelog to Discord
+      shell: bash
+      run: |
+        MESSAGE="We have released new version ${{ inputs.release_version }} in [${{ inputs.repository }}](https::github.com/${{ inputs.repository }}). Here is what changed:\n\n${{ inputs.changelog }}"
+        JSON_MESSAGE=$(jq -n --arg msg "$MESSAGE" '{"content": $msg}')
+        curl -X POST -H "Content-Type: application/json" -d "$JSON_MESSAGE" ${{ secrets.DISCORD_WEBHOOK_URL }}

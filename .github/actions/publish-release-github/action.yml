@@ -8,7 +8,11 @@ inputs:
   release_version:
     description: 'Version to release'
     required: true
-
+outputs:
+  changelog:
+    value: ${{ steps.modified.outputs.log }}
+    description: "The changelog"
+    
 runs:
   using: "composite"
   steps:
