@@ -1,6 +1,6 @@
 {
   "name": "@standard-api/system-graphql-schema",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Stapi System GraphQL Schema",
   "repository": "https://github.com/standard-api/axon-driver",
   "author": "stapi <tom@stapi.ai>",
