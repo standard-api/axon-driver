@@ -25,11 +25,16 @@ jobs:
       - name: Setup node with npm
         uses: ./.github/actions/setup-node-with-npm
 
-      - name: Create new Semantic Version
+      - name: Bump new Semantic Version in maven
         uses: ./.github/actions/bump-maven-version
         id: bumpedVersion
         with:
           bump: ${{ github.event.inputs.semverBump }}
+
+      - name: Bump new Semantic Version in npm
+        uses: ./.github/actions/set-npm-version
+        with:
+          version: ${{ steps.bumpedVersion.outputs.version }}
 
       - name: Set git user and email
         uses: ./.github/actions/set-git-username

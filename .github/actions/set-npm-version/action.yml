@@ -1,0 +1,14 @@
+name: Set npm version
+description: 'Bump npm version'
+inputs:
+  version:
+    description: 'New version to set'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Set version
+      shell: bash
+      run: |
+        cd system-graphql-schema
+        npm version ${{ inputs.version }} --no-git-tag-version
