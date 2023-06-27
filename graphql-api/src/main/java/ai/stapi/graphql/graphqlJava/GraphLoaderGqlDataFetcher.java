@@ -67,15 +67,17 @@ public class GraphLoaderGqlDataFetcher implements DataFetcher<Object> {
   public Object get(DataFetchingEnvironment environment) {
     var graphDescription = this.createGraphDescription(environment);
     var type = environment.getFieldDefinition().getType();
-    if (type instanceof GraphQLObjectType && (environment.containsArgument("id"))) {
-      var id = (String) environment.getArgument("id");
-      var output = this.graphLoader.get(
-          new UniqueIdentifier(id),
-          graphDescription,
-          Object.class
-      );
-      return output.getData();
-
+    if (type instanceof GraphQLNonNull graphQLNonNull && (environment.containsArgument("id"))) {
+      var innerType = graphQLNonNull.getWrappedType();
+      if (innerType instanceof GraphQLObjectType) {
+        var id = (String) environment.getArgument("id");
+        var output = this.graphLoader.get(
+            new UniqueIdentifier(id),
+            graphDescription,
+            Object.class
+        );
+        return output.getData(); 
+      }
     }
     if (type instanceof GraphQLNonNull graphQLNonNull) {
       var innerType = graphQLNonNull.getWrappedType();

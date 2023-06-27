@@ -87,7 +87,7 @@ type ExampleType {
 
 type Query {
   findExampleResourceList(filter: [ExampleResourceLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExampleResourceSortOption!]): [ExampleResource!]!
-  getExampleResource(id: String!): ExampleResource
+  getExampleResource(id: String!): ExampleResource!
 }
 
 enum SortDirection {

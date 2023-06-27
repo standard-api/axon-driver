@@ -55,8 +55,8 @@ type MutationResponse {
 type Query {
   findExampleReferencedResourceList(filter: [ExampleReferencedResourceLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExampleReferencedResourceSortOption!]): [ExampleReferencedResource!]!
   findExampleResourceList(filter: [ExampleResourceLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExampleResourceSortOption!]): [ExampleResource!]!
-  getExampleReferencedResource(id: String!): ExampleReferencedResource
-  getExampleResource(id: String!): ExampleResource
+  getExampleReferencedResource(id: String!): ExampleReferencedResource!
+  getExampleResource(id: String!): ExampleResource!
 }
 
 enum SortDirection {

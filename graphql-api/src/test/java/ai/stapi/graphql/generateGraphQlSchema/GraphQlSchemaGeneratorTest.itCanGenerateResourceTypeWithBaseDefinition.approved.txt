@@ -55,8 +55,8 @@ type ExampleResource {
 type Query {
   findExampleBaseList(filter: [ExampleBaseLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExampleBaseSortOption!]): [ExampleBase!]!
   findExampleResourceList(filter: [ExampleResourceLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExampleResourceSortOption!]): [ExampleResource!]!
-  getExampleBase(id: String!): ExampleBase
-  getExampleResource(id: String!): ExampleResource
+  getExampleBase(id: String!): ExampleBase!
+  getExampleResource(id: String!): ExampleResource!
 }
 
 enum SortDirection {
