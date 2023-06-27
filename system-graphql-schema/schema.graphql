@@ -1554,15 +1554,15 @@ type Query {
   findResourceList(filter: [ResourceLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ResourceSortOption!]): [Resource!]!
   findStructureDefinitionList(filter: [StructureDefinitionLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [StructureDefinitionSortOption!]): [StructureDefinition!]!
   findValueSetList(filter: [ValueSetLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ValueSetSortOption!]): [ValueSet!]!
-  getAggregateDefinition(id: String!): AggregateDefinition
-  getDomainResource(id: String!): DomainResource
-  getEventMessageDefinition(id: String!): EventMessageDefinition
-  getOperationDefinition(id: String!): OperationDefinition
-  getOperationOutcome(id: String!): OperationOutcome
-  getParameters(id: String!): Parameters
-  getResource(id: String!): Resource
-  getStructureDefinition(id: String!): StructureDefinition
-  getValueSet(id: String!): ValueSet
+  getAggregateDefinition(id: String!): AggregateDefinition!
+  getDomainResource(id: String!): DomainResource!
+  getEventMessageDefinition(id: String!): EventMessageDefinition!
+  getOperationDefinition(id: String!): OperationDefinition!
+  getOperationOutcome(id: String!): OperationOutcome!
+  getParameters(id: String!): Parameters!
+  getResource(id: String!): Resource!
+  getStructureDefinition(id: String!): StructureDefinition!
+  getValueSet(id: String!): ValueSet!
 }
 
 "Base StructureDefinition for Range Type: A set of ordered Quantities defined by a low and high limit."
