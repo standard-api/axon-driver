@@ -201,7 +201,7 @@ public class GraphQlJavaSchemaGenerator implements GraphQlSchemaGenerator {
     builder.field(
         GraphQLFieldDefinition.newFieldDefinition()
             .name(getFieldName)
-            .type(new GraphQLTypeReference(typeName))
+            .type(GraphQLNonNull.nonNull(new GraphQLTypeReference(typeName)))
             .argument(
                 GraphQLArgument.newArgument()
                     .name("id")
