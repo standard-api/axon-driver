@@ -20,7 +20,7 @@ public class CannotLoadRequestedDataByGraphQL extends RuntimeException {
       GraphQLFieldDefinition fieldDefinition) {
     return new CannotLoadRequestedDataByGraphQL(
         "invalid field encountered in main Query object." +
-            "\nField should either return list and take search query parameters. Or return nullable object and take string id parameter."
+            "\nField should either return list and take search query parameters. Or return object and take string id parameter."
             +
             "\nGQL field definition: " + fieldDefinition.toString()
     );
