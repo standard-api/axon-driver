@@ -18,16 +18,13 @@ import org.axonframework.messaging.MessageHandlerInterceptor;
 import org.axonframework.messaging.correlation.CorrelationDataProvider;
 import org.axonframework.messaging.correlation.MessageOriginProvider;
 import org.axonframework.messaging.interceptors.CorrelationDataInterceptor;
-import org.axonframework.springboot.autoconfig.AxonAutoConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 
 @AutoConfiguration
-@AutoConfigureBefore(AxonAutoConfiguration.class)
 public class CommandGatewayConfiguration {
 
   @Bean
