@@ -11,6 +11,7 @@
         <module>axon-test</module>
         <module>axon-system-plugin</module>
         <module>graphql-api</module>
+        <module>form-api</module>
     </modules>
     <packaging>pom</packaging>
 
