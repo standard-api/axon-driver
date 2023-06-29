@@ -13,25 +13,30 @@ import org.axonframework.commandhandling.SimpleCommandBus;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.commandhandling.gateway.DefaultCommandGateway;
 import org.axonframework.common.transaction.TransactionManager;
+import org.axonframework.config.Configuration;
 import org.axonframework.messaging.MessageDispatchInterceptor;
 import org.axonframework.messaging.MessageHandlerInterceptor;
-import org.axonframework.messaging.correlation.CorrelationDataProvider;
-import org.axonframework.messaging.correlation.MessageOriginProvider;
 import org.axonframework.messaging.interceptors.CorrelationDataInterceptor;
+import org.axonframework.springboot.autoconfig.AxonAutoConfiguration;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
 @AutoConfiguration
+@AutoConfigureAfter({AxonAutoConfiguration.class})
 public class CommandGatewayConfiguration {
 
+  @Autowired
+  private ObjectProvider<TransactionManager> transactionManagerProvider;
+
   @Bean
-  @ConditionalOnMissingBean(CommandGateway.class)
-  public DefaultCommandGateway configuredCommandGateway(
-      @Autowired CommandBus commandBus,
-      @Autowired
+  @Primary
+  public CommandGateway configuredCommandGateway(
+      CommandBus commandBus,
       List<MessageDispatchInterceptor<? super CommandMessage<?>>> messageDispatchInterceptors
   ) {
     var failureCommandCallback = new CustomFailureLoggingCallback<>(
@@ -45,16 +50,19 @@ public class CommandGatewayConfiguration {
   }
 
   @Bean
-  @ConditionalOnMissingBean
-  public CommandBus configuredCommandBus(
-      @Autowired TransactionManager txManager,
-      @Autowired org.axonframework.config.Configuration axonConfiguration,
-      @Autowired DuplicateCommandHandlerResolver duplicateCommandHandlerResolver,
-      @Autowired
+  public SimpleCommandBus configuredCommandBus(
+      Configuration axonConfiguration,
+      DuplicateCommandHandlerResolver duplicateCommandHandlerResolver,
       List<MessageHandlerInterceptor<? super CommandMessage<?>>> messageHandlerInterceptors
   ) {
-    var commandBus = SimpleCommandBus.builder()
-        .transactionManager(txManager)
+    SimpleCommandBus.Builder commandBusBuilder = SimpleCommandBus.builder();
+
+    TransactionManager transactionManager = transactionManagerProvider.getIfAvailable();
+    if (transactionManager != null) {
+      commandBusBuilder.transactionManager(transactionManager);
+    }
+
+    SimpleCommandBus commandBus = commandBusBuilder
         .duplicateCommandHandlerResolver(duplicateCommandHandlerResolver)
         .spanFactory(axonConfiguration.spanFactory())
         .messageMonitor(axonConfiguration.messageMonitor(CommandBus.class, "commandBus"))
@@ -68,12 +76,12 @@ public class CommandGatewayConfiguration {
 
     return commandBus;
   }
-  
+
   @Bean
   public CommandDispatchedAtInterceptor commandDispatchedAtInterceptor() {
     return new CommandDispatchedAtInterceptor();
   }
-  
+
   @Bean
   @Profile("dev")
   public CommandValidatorDispatchInterceptor commandValidatorDispatchInterceptor(
@@ -82,8 +90,4 @@ public class CommandGatewayConfiguration {
     return new CommandValidatorDispatchInterceptor(commandValidator);
   }
 
-  @Bean
-  public CorrelationDataProvider messageCorrelationProvider() {
-    return new MessageOriginProvider();
-  }
 }
