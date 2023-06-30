@@ -12,7 +12,6 @@ import org.axonframework.commandhandling.DuplicateCommandHandlerResolver;
 import org.axonframework.commandhandling.SimpleCommandBus;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.commandhandling.gateway.DefaultCommandGateway;
-import org.axonframework.common.transaction.NoTransactionManager;
 import org.axonframework.common.transaction.TransactionManager;
 import org.axonframework.messaging.MessageDispatchInterceptor;
 import org.axonframework.messaging.MessageHandlerInterceptor;
@@ -36,8 +35,7 @@ public class CommandGatewayConfiguration {
   @ConditionalOnMissingBean
   public CommandGateway configuredCommandGateway(
       @Autowired CommandBus commandBus,
-      @Autowired
-      List<MessageDispatchInterceptor<? super CommandMessage<?>>> messageDispatchInterceptors
+      @Autowired List<MessageDispatchInterceptor<? super CommandMessage<?>>> messageDispatchInterceptors
   ) {
     var failureCommandCallback = new CustomFailureLoggingCallback<>(
         Logger.getLogger(DefaultCommandGateway.class.getSimpleName())
@@ -51,7 +49,11 @@ public class CommandGatewayConfiguration {
 
   @Bean
   @ConditionalOnMissingBean(
-      ignoredType = {"org.axonframework.commandhandling.distributed.DistributedCommandBus", "org.axonframework.axonserver.connector.command.AxonServerCommandBus", "org.axonframework.extensions.multitenancy.components.commandhandeling.MultiTenantCommandBus"},
+      ignoredType = {
+          "org.axonframework.commandhandling.distributed.DistributedCommandBus", 
+          "org.axonframework.axonserver.connector.command.AxonServerCommandBus", 
+          "org.axonframework.extensions.multitenancy.components.commandhandeling.MultiTenantCommandBus"
+      },
       value = {CommandBus.class}
   )
   @Qualifier("localSegment")
@@ -59,8 +61,7 @@ public class CommandGatewayConfiguration {
       @Autowired TransactionManager txManager,
       @Autowired org.axonframework.config.Configuration axonConfiguration,
       @Autowired DuplicateCommandHandlerResolver duplicateCommandHandlerResolver,
-      @Autowired
-      List<MessageHandlerInterceptor<? super CommandMessage<?>>> messageHandlerInterceptors
+      @Autowired List<MessageHandlerInterceptor<? super CommandMessage<?>>> messageHandlerInterceptors
   ) {
     var commandBus = SimpleCommandBus.builder()
         .transactionManager(txManager)
@@ -94,11 +95,5 @@ public class CommandGatewayConfiguration {
   @Bean
   public CorrelationDataProvider messageCorrelationProvider() {
     return new MessageOriginProvider();
-  }
-
-  @Bean
-  @ConditionalOnMissingBean(TransactionManager.class)
-  public TransactionManager stapiTransactionManager() {
-    return NoTransactionManager.INSTANCE;
   }
 }

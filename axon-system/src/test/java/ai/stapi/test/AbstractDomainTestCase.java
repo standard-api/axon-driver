@@ -1,6 +1,6 @@
 package ai.stapi.test;
 
-import ai.stapi.axonsystem.dynamic.DynamicAxonConfigurer;
+import ai.stapi.axonsystem.dynamic.aggregate.DynamicAggregateConfigurer;
 import ai.stapi.graph.Graph;
 import ai.stapi.graphsystem.messaging.event.Event;
 import ai.stapi.graphsystem.messaging.event.GraphUpdatedEvent;
@@ -38,14 +38,14 @@ public abstract class AbstractDomainTestCase extends AbstractSchemaIntegrationTe
   private EventStorageEngine eventStorageEngine;
 
   @Autowired
-  private DynamicAxonConfigurer dynamicAxonConfigurer;
+  private DynamicAggregateConfigurer dynamicAggregateConfigurer;
 
   private Instant testStartedAt;
 
   @BeforeEach
   @Order(1)
   protected void configureAggregates() {
-    this.dynamicAxonConfigurer.configureNewAggregates();
+    this.dynamicAggregateConfigurer.configureNewAggregates();
   }
 
   @BeforeEach

@@ -2,7 +2,7 @@ package ai.stapi.test.base;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import ai.stapi.axonsystem.dynamic.DynamicAxonConfigurer;
+import ai.stapi.axonsystem.dynamic.aggregate.DynamicAggregateConfigurer;
 import ai.stapi.graph.Graph;
 import ai.stapi.graph.graphElementForRemoval.GraphElementForRemoval;
 import ai.stapi.graphsystem.messaging.event.DynamicGraphUpdatedEvent;
@@ -53,14 +53,14 @@ public class AbstractAxonTestCase extends AbstractSchemaIntegrationTestCase {
   private EventStorageEngine eventStorageEngine;
 
   @Autowired
-  private DynamicAxonConfigurer dynamicAxonConfigurer;
+  private DynamicAggregateConfigurer dynamicAggregateConfigurer;
 
   private Instant testStartedAt;
 
   @BeforeEach
   @Order(1)
   protected void configureAggregates() {
-    this.dynamicAxonConfigurer.configureNewAggregates();
+    this.dynamicAggregateConfigurer.configureNewAggregates();
   }
 
   @BeforeEach
