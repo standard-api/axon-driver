@@ -12,6 +12,7 @@ import org.axonframework.commandhandling.DuplicateCommandHandlerResolver;
 import org.axonframework.commandhandling.SimpleCommandBus;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.commandhandling.gateway.DefaultCommandGateway;
+import org.axonframework.common.transaction.NoTransactionManager;
 import org.axonframework.common.transaction.TransactionManager;
 import org.axonframework.messaging.MessageDispatchInterceptor;
 import org.axonframework.messaging.MessageHandlerInterceptor;
@@ -95,5 +96,11 @@ public class CommandGatewayConfiguration {
   @Bean
   public CorrelationDataProvider messageCorrelationProvider() {
     return new MessageOriginProvider();
+  }
+
+  @Bean
+  @ConditionalOnMissingBean
+  public TransactionManager stapiTransactionManager() {
+    return NoTransactionManager.INSTANCE;
   }
 }
