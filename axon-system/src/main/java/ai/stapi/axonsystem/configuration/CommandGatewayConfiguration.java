@@ -19,6 +19,7 @@ import org.axonframework.messaging.correlation.CorrelationDataProvider;
 import org.axonframework.messaging.correlation.MessageOriginProvider;
 import org.axonframework.messaging.interceptors.CorrelationDataInterceptor;
 import org.axonframework.springboot.autoconfig.EventProcessingAutoConfiguration;
+import org.axonframework.springboot.autoconfig.NoOpTransactionAutoConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -28,7 +29,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 
 @AutoConfiguration
-@AutoConfigureAfter({EventProcessingAutoConfiguration.class})
+@AutoConfigureAfter({EventProcessingAutoConfiguration.class, NoOpTransactionAutoConfiguration.class})
 public class CommandGatewayConfiguration {
 
   @Bean
