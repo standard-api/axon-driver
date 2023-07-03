@@ -24,7 +24,6 @@ import ai.stapi.schema.scopeProvider.ScopeCacher;
 import ai.stapi.schema.structureSchemaProvider.StructureSchemaProvider;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.springboot.autoconfig.AxonAutoConfiguration;
-import org.axonframework.springboot.autoconfig.AxonServerAutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -36,7 +35,7 @@ import org.springframework.context.annotation.Profile;
 
 @AutoConfiguration
 @ComponentScan("ai.stapi.graphql")
-@AutoConfigureAfter({CommandGatewayConfiguration.class, AxonAutoConfiguration.class, AxonServerAutoConfiguration.class})
+@AutoConfigureAfter({CommandGatewayConfiguration.class, AxonAutoConfiguration.class})
 public class GraphQLConfiguration {
 
   @Bean
