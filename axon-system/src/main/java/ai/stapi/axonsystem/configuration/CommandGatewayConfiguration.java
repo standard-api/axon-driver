@@ -32,10 +32,9 @@ import org.springframework.context.annotation.Profile;
 @AutoConfigureAfter({EventProcessingAutoConfiguration.class, NoOpTransactionAutoConfiguration.class})
 public class CommandGatewayConfiguration {
 
-  private final TransactionManager transactionManager;
 
-  public CommandGatewayConfiguration(TransactionManager transactionManager) {
-    this.transactionManager = transactionManager;
+  public CommandGatewayConfiguration() {
+    System.out.println("Initializing CommandGatewayConfiguration");
   }
   
   @Bean
@@ -65,12 +64,13 @@ public class CommandGatewayConfiguration {
   )
   @Qualifier("localSegment")
   public SimpleCommandBus configuredCommandBus(
+      @Autowired TransactionManager transactionManager,
       @Autowired org.axonframework.config.Configuration axonConfiguration,
       @Autowired DuplicateCommandHandlerResolver duplicateCommandHandlerResolver,
       @Autowired List<MessageHandlerInterceptor<? super CommandMessage<?>>> messageHandlerInterceptors
   ) {
     var commandBus = SimpleCommandBus.builder()
-        .transactionManager(this.transactionManager)
+        .transactionManager(transactionManager)
         .duplicateCommandHandlerResolver(duplicateCommandHandlerResolver)
         .spanFactory(axonConfiguration.spanFactory())
         .messageMonitor(axonConfiguration.messageMonitor(CommandBus.class, "commandBus"))
