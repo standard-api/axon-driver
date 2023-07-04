@@ -1,8 +1,8 @@
 package ai.stapi.axonsystem.configuration;
 
-import ai.stapi.axonsystem.dynamic.DynamicAxonConfigurer;
 import ai.stapi.axonsystem.dynamic.aggregate.AggregateDefinitionDACProvider;
 import ai.stapi.axonsystem.dynamic.aggregate.DynamicAggregateConfigurationsProvider;
+import ai.stapi.axonsystem.dynamic.aggregate.DynamicAggregateConfigurer;
 import ai.stapi.axonsystem.dynamic.aggregate.RuntimeDynamicAggregateConfigurer;
 import ai.stapi.axonsystem.dynamic.command.CustomCommandTargetResolver;
 import ai.stapi.axonsystem.dynamic.command.DynamicCommandDispatchInterceptor;
@@ -15,28 +15,23 @@ import org.axonframework.config.Configurer;
 import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.axonframework.messaging.annotation.ParameterResolverFactory;
 import org.axonframework.modelling.command.CommandTargetResolver;
-import org.axonframework.spring.config.SpringConfigurer;
 import org.axonframework.tracing.SpanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Role;
 
 @AutoConfiguration
 public class DynamicAxonConfiguration {
   
   @Bean
-  @Primary
-  public DynamicAxonConfigurer dynamicAxonConfigurer(
-      SpringConfigurer springConfigurer,
+  public DynamicAggregateConfigurer dynamicAggregateConfigurer(
       DynamicAggregateConfigurationsProvider dynamicAggregateConfigurationsProvider,
       RuntimeDynamicAggregateConfigurer runtimeDynamicAggregateConfigurer
   ) {
-    return new DynamicAxonConfigurer(
-        springConfigurer,
+    return new DynamicAggregateConfigurer(
         dynamicAggregateConfigurationsProvider,
         runtimeDynamicAggregateConfigurer
     );

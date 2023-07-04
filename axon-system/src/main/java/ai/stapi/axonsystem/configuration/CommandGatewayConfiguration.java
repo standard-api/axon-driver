@@ -18,24 +18,24 @@ import org.axonframework.messaging.MessageHandlerInterceptor;
 import org.axonframework.messaging.correlation.CorrelationDataProvider;
 import org.axonframework.messaging.correlation.MessageOriginProvider;
 import org.axonframework.messaging.interceptors.CorrelationDataInterceptor;
-import org.axonframework.springboot.autoconfig.AxonAutoConfiguration;
+import org.axonframework.springboot.autoconfig.EventProcessingAutoConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 
 @AutoConfiguration
-@AutoConfigureBefore(AxonAutoConfiguration.class)
+@AutoConfigureAfter({EventProcessingAutoConfiguration.class})
 public class CommandGatewayConfiguration {
 
   @Bean
-  @ConditionalOnMissingBean(CommandGateway.class)
-  public DefaultCommandGateway configuredCommandGateway(
+  @ConditionalOnMissingBean
+  public CommandGateway configuredCommandGateway(
       @Autowired CommandBus commandBus,
-      @Autowired
-      List<MessageDispatchInterceptor<? super CommandMessage<?>>> messageDispatchInterceptors
+      @Autowired List<MessageDispatchInterceptor<? super CommandMessage<?>>> messageDispatchInterceptors
   ) {
     var failureCommandCallback = new CustomFailureLoggingCallback<>(
         Logger.getLogger(DefaultCommandGateway.class.getSimpleName())
@@ -48,13 +48,20 @@ public class CommandGatewayConfiguration {
   }
 
   @Bean
-  @ConditionalOnMissingBean
-  public CommandBus configuredCommandBus(
+  @ConditionalOnMissingBean(
+      ignoredType = {
+          "org.axonframework.commandhandling.distributed.DistributedCommandBus", 
+          "org.axonframework.axonserver.connector.command.AxonServerCommandBus", 
+          "org.axonframework.extensions.multitenancy.components.commandhandeling.MultiTenantCommandBus"
+      },
+      value = {CommandBus.class}
+  )
+  @Qualifier("localSegment")
+  public SimpleCommandBus configuredCommandBus(
       @Autowired TransactionManager txManager,
       @Autowired org.axonframework.config.Configuration axonConfiguration,
       @Autowired DuplicateCommandHandlerResolver duplicateCommandHandlerResolver,
-      @Autowired
-      List<MessageHandlerInterceptor<? super CommandMessage<?>>> messageHandlerInterceptors
+      @Autowired List<MessageHandlerInterceptor<? super CommandMessage<?>>> messageHandlerInterceptors
   ) {
     var commandBus = SimpleCommandBus.builder()
         .transactionManager(txManager)
