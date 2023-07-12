@@ -57,6 +57,7 @@ class GraphQlExecutorMutationTest extends DomainTestCase {
     var response = this.graphQlExecutor.execute(graphQlRequest);
     this.thenLastEventGraphApproved();
   }
+  
   @Test
   void itCanExecuteCreationalMutationForStructureDefinition() {
     var graphQlRequest = new GraphQlOperation(
@@ -67,13 +68,11 @@ class GraphQlExecutorMutationTest extends DomainTestCase {
                     id: "MyEntity",
                     payload: {
                       abstract: false,
-                      baseDefinition: {
-                        canonical: "http://hl7.org/fhir/StructureDefinition/DomainResource"
-                      },
+                      baseDefinition: "http://hl7.org/fhir/StructureDefinition/DomainResource",
+                      baseDefinitionRef: { id: "DomainResource" },
                       date: "2023-06-11T12:47:40+10:00",
                       description: "An example entity",
                       differential: {
-                        parent: "MyEntity",
                         element: [
                           {
                             definition: "This is long description of an example entity (in most common language), or aggregate (in domain-driven design language), or resource (in HL7 FHIR standard). It will appear in graphQL documentation.",
@@ -98,7 +97,8 @@ class GraphQlExecutorMutationTest extends DomainTestCase {
                             short: "Name used for the MyEntity resource",
                             type: [
                               {
-                                code: "string"
+                                code: "string",
+                                codeRef: { id: "string" }
                               }
                             ]
                           }
@@ -112,7 +112,9 @@ class GraphQlExecutorMutationTest extends DomainTestCase {
                       url: "http://myorganization.org/fhir/StructureDefinition/MyEntity",
                       version: "0.0.1",
                     }
-                  ){successes}
+                  ) {
+                    successes
+                  }
                 }
             """
     );
