@@ -45,8 +45,7 @@ class CreateAggregateDefinitionPolicyTest extends DomainTestCase {
                                 )
                             ))
                         )
-                    )),
-                    null
+                    ))
                 )
             )
         )
@@ -85,8 +84,7 @@ class CreateAggregateDefinitionPolicyTest extends DomainTestCase {
                                 )
                             ))
                         )
-                    )),
-                    null
+                    ))
                 )
             )
         )

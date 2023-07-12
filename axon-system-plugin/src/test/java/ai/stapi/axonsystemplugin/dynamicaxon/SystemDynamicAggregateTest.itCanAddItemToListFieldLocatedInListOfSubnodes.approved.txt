@@ -3,7 +3,7 @@ nodes:
 	node_hash: FE358
 	node_edges:
 		CodeableConcept -> coding -> Coding (FE358 -> BC44A -> 014B5)
-		StructureDefinition -> jurisdiction -> CodeableConcept (363DB -> B955B -> FE358)
+		StructureDefinition -> jurisdiction -> CodeableConcept (56387 -> B955B -> FE358)
 	attributes:
 		text -> Some Jurisdiction Text
 
@@ -15,10 +15,10 @@ nodes:
 		code -> Some Jurisdiction Code
 
 	node_type: ElementDefinition
-	node_hash: 1388F
+	node_hash: 130B3
 	node_edges:
-		ElementDefinition -> type -> ElementDefinitionType (1388F -> 29DBB -> FB86E)
-		StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 4E804 -> 1388F)
+		ElementDefinition -> type -> ElementDefinitionType (130B3 -> 34FFA -> 412CF)
+		StructureDefinitionDifferential -> element -> ElementDefinition (97649 -> 389D4 -> 130B3)
 	attributes:
 		definition -> Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
 		max -> 1
@@ -27,10 +27,10 @@ nodes:
 		short -> Unique id for inter-element referencing
 
 	node_type: ElementDefinition
-	node_hash: AE262
+	node_hash: 2F201
 	node_edges:
-		ElementDefinition -> type -> ElementDefinitionType (AE262 -> 771A8 -> B3F79)
-		StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 77622 -> AE262)
+		ElementDefinition -> type -> ElementDefinitionType (2F201 -> 771A8 -> FD1DC)
+		StructureDefinitionDifferential -> element -> ElementDefinition (97649 -> 31255 -> 2F201)
 	attributes:
 		comment -> There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
 		definition -> May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension.
@@ -40,9 +40,9 @@ nodes:
 		short -> Additional content defined by implementations
 
 	node_type: ElementDefinition
-	node_hash: DD3CE
+	node_hash: A01CD
 	node_edges:
-		StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 090EC -> DD3CE)
+		StructureDefinitionDifferential -> element -> ElementDefinition (97649 -> 6193F -> A01CD)
 	attributes:
 		definition -> Base definition for all elements in a resource.
 		max -> *
@@ -51,26 +51,34 @@ nodes:
 		short -> Base for all elements
 
 	node_type: ElementDefinitionType
-	node_hash: B3F79
+	node_hash: 412CF
 	node_edges:
-		ElementDefinition -> type -> ElementDefinitionType (AE262 -> 771A8 -> B3F79)
+		ElementDefinition -> type -> ElementDefinitionType (130B3 -> 34FFA -> 412CF)
+		ElementDefinitionType -> codeRef -> StructureDefinition (412CF -> 2C8CB -> 8BFE2)
+	attributes:
+		code -> http://hl7.org/fhirpath/System.String
+		targetProfile -> []
+
+	node_type: ElementDefinitionType
+	node_hash: FD1DC
+	node_edges:
+		ElementDefinition -> type -> ElementDefinitionType (2F201 -> 771A8 -> FD1DC)
+		ElementDefinitionType -> codeRef -> StructureDefinition (FD1DC -> F7AF5 -> 2E98A)
 	attributes:
 		code -> Extension
 		targetProfile -> []
 
-	node_type: ElementDefinitionType
-	node_hash: FB86E
+	node_type: StructureDefinition
+	node_hash: 2E98A
 	node_edges:
-		ElementDefinition -> type -> ElementDefinitionType (1388F -> 29DBB -> FB86E)
+		ElementDefinitionType -> codeRef -> StructureDefinition (FD1DC -> F7AF5 -> 2E98A)
 	attributes:
-		code -> string
-		targetProfile -> []
 
 	node_type: StructureDefinition
-	node_hash: 363DB
+	node_hash: 56387
 	node_edges:
-		StructureDefinition -> differential -> StructureDefinitionDifferential (363DB -> 378D2 -> B4114)
-		StructureDefinition -> jurisdiction -> CodeableConcept (363DB -> B955B -> FE358)
+		StructureDefinition -> differential -> StructureDefinitionDifferential (56387 -> B3C92 -> 97649)
+		StructureDefinition -> jurisdiction -> CodeableConcept (56387 -> B955B -> FE358)
 	attributes:
 		abstract -> true
 		description -> Base StructureDefinition for Element Type: Base definition for all elements in a resource.
@@ -79,53 +87,68 @@ nodes:
 		type -> Element
 		url -> http://hl7.org/fhir/StructureDefinition/Element
 
-	node_type: StructureDefinitionDifferential
-	node_hash: B4114
+	node_type: StructureDefinition
+	node_hash: 8BFE2
 	node_edges:
-		StructureDefinition -> differential -> StructureDefinitionDifferential (363DB -> 378D2 -> B4114)
-		StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 090EC -> DD3CE)
-		StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 4E804 -> 1388F)
-		StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 77622 -> AE262)
+		ElementDefinitionType -> codeRef -> StructureDefinition (412CF -> 2C8CB -> 8BFE2)
 	attributes:
-		parent -> Element
+
+	node_type: StructureDefinitionDifferential
+	node_hash: 97649
+	node_edges:
+		StructureDefinition -> differential -> StructureDefinitionDifferential (56387 -> B3C92 -> 97649)
+		StructureDefinitionDifferential -> element -> ElementDefinition (97649 -> 31255 -> 2F201)
+		StructureDefinitionDifferential -> element -> ElementDefinition (97649 -> 389D4 -> 130B3)
+		StructureDefinitionDifferential -> element -> ElementDefinition (97649 -> 6193F -> A01CD)
+	attributes:
 
 edges:
+	edge_type: codeRef
+	edge_hash: 2C8CB
+	ElementDefinitionType -> codeRef -> StructureDefinition (412CF -> 2C8CB -> 8BFE2)
+	attributes:
+
+	edge_type: codeRef
+	edge_hash: F7AF5
+	ElementDefinitionType -> codeRef -> StructureDefinition (FD1DC -> F7AF5 -> 2E98A)
+	attributes:
+
 	edge_type: coding
 	edge_hash: BC44A
 	CodeableConcept -> coding -> Coding (FE358 -> BC44A -> 014B5)
 	attributes:
 
 	edge_type: differential
-	edge_hash: 378D2
-	StructureDefinition -> differential -> StructureDefinitionDifferential (363DB -> 378D2 -> B4114)
+	edge_hash: B3C92
+	StructureDefinition -> differential -> StructureDefinitionDifferential (56387 -> B3C92 -> 97649)
 	attributes:
 
 	edge_type: element
-	edge_hash: 090EC
-	StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 090EC -> DD3CE)
+	edge_hash: 31255
+	StructureDefinitionDifferential -> element -> ElementDefinition (97649 -> 31255 -> 2F201)
 	attributes:
 
 	edge_type: element
-	edge_hash: 4E804
-	StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 4E804 -> 1388F)
+	edge_hash: 389D4
+	StructureDefinitionDifferential -> element -> ElementDefinition (97649 -> 389D4 -> 130B3)
 	attributes:
 
 	edge_type: element
-	edge_hash: 77622
-	StructureDefinitionDifferential -> element -> ElementDefinition (B4114 -> 77622 -> AE262)
+	edge_hash: 6193F
+	StructureDefinitionDifferential -> element -> ElementDefinition (97649 -> 6193F -> A01CD)
 	attributes:
 
 	edge_type: jurisdiction
 	edge_hash: B955B
-	StructureDefinition -> jurisdiction -> CodeableConcept (363DB -> B955B -> FE358)
+	StructureDefinition -> jurisdiction -> CodeableConcept (56387 -> B955B -> FE358)
 	attributes:
 
 	edge_type: type
-	edge_hash: 29DBB
-	ElementDefinition -> type -> ElementDefinitionType (1388F -> 29DBB -> FB86E)
+	edge_hash: 34FFA
+	ElementDefinition -> type -> ElementDefinitionType (130B3 -> 34FFA -> 412CF)
 	attributes:
 
 	edge_type: type
 	edge_hash: 771A8
-	ElementDefinition -> type -> ElementDefinitionType (AE262 -> 771A8 -> B3F79)
+	ElementDefinition -> type -> ElementDefinitionType (2F201 -> 771A8 -> FD1DC)
 	attributes:
