@@ -2,6 +2,8 @@ name: Deploy current snapshot
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [axon-driver-released]
 
 jobs:
   deploy-snapshot:
