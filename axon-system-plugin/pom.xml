@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>axon-system-plugin</artifactId>
+    <name>Stapi.ai System Plugin</name>
     
     <dependencies>
         <dependency>
@@ -18,10 +19,35 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <dependency>
             <groupId>ai.stapi</groupId>
             <artifactId>axon-test</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/src/test/resources</directory>
+            </testResource>
+            <testResource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </testResource>
+            <testResource>
+                <directory>${project.basedir}/src/main/java</directory>
+            </testResource>
+            <testResource>
+                <directory>${project.basedir}/src/test/java</directory>
+                <includes>
+                    <include>**/*.json</include>
+                </includes>
+            </testResource>
+        </testResources>
+    </build>
 </project>
