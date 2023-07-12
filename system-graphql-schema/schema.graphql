@@ -654,8 +654,6 @@ type ElementDefinition implements BackboneElement & Element {
   slicing: ElementDefinitionSlicing
   "The data type or resource that the value of this element is permitted to be."
   type(filter: [ElementDefinitionTypeLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ElementDefinitionTypeSortOption!]): [ElementDefinitionType!]!
-  "Reference to Data type or Resource that is a(or the) type used for this element. e.g. \"string\" is a reference to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only allowed in logical models."
-  typeReference: StructureDefinition
 }
 
 "Type for anonymous field contained in ElementDefinition"
@@ -770,6 +768,8 @@ type ElementDefinitionType implements Element {
   aggregation: [code!]!
   "URL of Data type or Resource that is a(or the) type used for this element. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition e.g. \"string\" is a reference to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only allowed in logical models."
   code: uri!
+  "Reference Data type or Resource that is a(or the) type used for this element. References are URLs that are relative to http://hl7.org/fhir/StructureDefinition e.g. \"string\" is a reference to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are only allowed in logical models."
+  codeRef: StructureDefinition!
   "May be used to represent additional information that is not part of the basic definition of the element. To make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer can define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension."
   extension(filter: [ExtensionLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExtensionSortOption!]): [Extension!]!
   "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces."
@@ -778,6 +778,8 @@ type ElementDefinitionType implements Element {
   profile: [canonical!]!
   "Used when the type is \"Reference\" or \"canonical\", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide."
   targetProfile: [canonical!]!
+  "Used when the type is \"Reference\" or \"canonical\", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide."
+  targetProfileRef(filter: [StructureDefinitionLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [StructureDefinitionSortOption!]): [StructureDefinition!]!
   "Whether this reference needs to be version specific or version independent, or whether either can be used."
   versioning: code
 }
@@ -1177,7 +1179,7 @@ type Mutation {
   addTargetProfileOnOperationDefinitionParameter(id: ID, payload: AddTargetProfileOnOperationDefinitionParameterCommandPayloadInput!): MutationResponse
   addTargetProfileOnStructureDefinitionDifferentialElementType(id: ID, payload: AddTargetProfileOnStructureDefinitionDifferentialElementTypeCommandPayloadInput!): MutationResponse
   addTargetProfileOnStructureDefinitionSnapshotElementType(id: ID, payload: AddTargetProfileOnStructureDefinitionSnapshotElementTypeCommandPayloadInput!): MutationResponse
-  addTargetProfileReferenceOnOperationDefinitionParameter(id: ID, payload: AddTargetProfileReferenceOnOperationDefinitionParameterCommandPayloadInput!): MutationResponse
+  addTargetProfileRefOnOperationDefinitionParameter(id: ID, payload: AddTargetProfileRefOnOperationDefinitionParameterCommandPayloadInput!): MutationResponse
   addTelecomOnValueSetContact(id: ID, payload: AddTelecomOnValueSetContactCommandPayloadInput!): MutationResponse
   addTimeOfDayOnDomainResourceExtensionValueTimingRepeat(id: ID, payload: AddTimeOfDayOnDomainResourceExtensionValueTimingRepeatCommandPayloadInput!): MutationResponse
   addTimeOfDayOnDomainResourceModifierExtensionValueTimingRepeat(id: ID, payload: AddTimeOfDayOnDomainResourceModifierExtensionValueTimingRepeatCommandPayloadInput!): MutationResponse
@@ -1357,7 +1359,7 @@ type OperationDefinitionParameter implements BackboneElement & Element {
   "Used when the type is \"Reference\" or \"canonical\", and identifies a profile structure or implementation Guide that applies to the target of the reference this parameter refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide."
   targetProfile: [canonical!]!
   "If type is Reference | canonical, allowed targets. If type is 'Resource', then this constrains the allowed resource types"
-  targetProfileReference(filter: [StructureDefinitionLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [StructureDefinitionSortOption!]): [StructureDefinition!]!
+  targetProfileRef(filter: [StructureDefinitionLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [StructureDefinitionSortOption!]): [StructureDefinition!]!
   "The type for this parameter."
   type: code
   "Whether this is an input or an output parameter."
@@ -1622,7 +1624,7 @@ type StructureDefinition implements DomainResource & Resource {
   "An absolute URI that is the base structure from which this type is derived, either by specialization or constraint."
   baseDefinition: canonical
   "A Reference to StructureDefinition that is the base structure from which this type is derived, either by specialization or constraint."
-  baseDefinitionReference: StructureDefinition
+  baseDefinitionRef: StructureDefinition
   "These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope."
   contained(filter: [ResourceLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ResourceSortOption!]): [Resource!]!
   "Identifies the types of resource or data type elements to which the extension can be applied."
@@ -1725,8 +1727,6 @@ type StructureDefinitionDifferential implements BackboneElement & Element {
   Modifier extensions SHALL NOT change the meaning of any elements on Resource or DomainResource (including cannot change the meaning of modifierExtension itself).
   """
   modifierExtension(filter: [ExtensionLogicalFilterOption!], pagination: OffsetPaginationOption, sort: [ExtensionSortOption!]): [Extension!]!
-  "The id of the parent StructureDefinition of this Differential."
-  parent: String!
 }
 
 "Type for anonymous field contained in StructureDefinition"
@@ -3985,10 +3985,10 @@ input AddTargetProfileOnStructureDefinitionSnapshotElementTypeCommandPayloadInpu
   typeId: ID!
 }
 
-"Generated command for adding targetProfileReference(Reference) on OperationDefinition Aggregate"
-input AddTargetProfileReferenceOnOperationDefinitionParameterCommandPayloadInput {
+"Generated command for adding targetProfileRef(Reference) on OperationDefinition Aggregate"
+input AddTargetProfileRefOnOperationDefinitionParameterCommandPayloadInput {
   parameterId: ID!
-  targetProfileReference: [ID!]!
+  targetProfileRef: [ID!]!
 }
 
 "Generated command for adding telecom(ContactPoint) on ValueSet Aggregate"
@@ -7344,7 +7344,6 @@ input ElementDefinitionCommandInput {
   sliceName: String
   slicing: ElementDefinitionSlicingCommandInput
   type: [ElementDefinitionTypeCommandInput!]
-  typeReference: ID
 }
 
 "Generated Input Type, which works as a Union type. Only one field should be filled."
@@ -7932,7 +7931,6 @@ input ElementDefinitionFilterOption {
   sliceName_NOT_EQUALS: String
   sliceName_STARTS_WITH: String
   slicing: ElementDefinitionSlicingFilterOption
-  typeReference: StructureDefinitionFilterOption
   type_ALL_MATCH: ElementDefinitionTypeFilterOption
   type_ANY_MATCH: ElementDefinitionTypeFilterOption
   type_NONE_MATCH: ElementDefinitionTypeFilterOption
@@ -8115,7 +8113,6 @@ input ElementDefinitionLogicalFilterOption {
   sliceName_NOT_EQUALS: String
   sliceName_STARTS_WITH: String
   slicing: ElementDefinitionSlicingFilterOption
-  typeReference: StructureDefinitionFilterOption
   type_ALL_MATCH: ElementDefinitionTypeFilterOption
   type_ANY_MATCH: ElementDefinitionTypeFilterOption
   type_NONE_MATCH: ElementDefinitionTypeFilterOption
@@ -8471,7 +8468,6 @@ input ElementDefinitionSortOption {
   sliceName: SortDirection
   slicing: ElementDefinitionSlicingSortOption
   type: ElementDefinitionTypeSortOption
-  typeReference: StructureDefinitionSortOption
 }
 
 input ElementDefinitionTypeAggregationChildFilterOption {
@@ -8489,10 +8485,12 @@ input ElementDefinitionTypeAggregationChildFilterOption {
 input ElementDefinitionTypeCommandInput {
   aggregation: [code!]
   code: uri!
+  codeRef: ID!
   extension: [ExtensionCommandInput!]
   id: String
   profile: [canonical!]
   targetProfile: [canonical!]
+  targetProfileRef: [ID!]
   versioning: code
 }
 
@@ -8502,6 +8500,7 @@ input ElementDefinitionTypeFilterOption {
   aggregation_EQUALS: [code!]
   aggregation_NONE_MATCH: ElementDefinitionTypeAggregationChildFilterOption
   aggregation_NOT_EQUALS: [code!]
+  codeRef: StructureDefinitionFilterOption
   code_CONTAINS: uri
   code_ENDS_WITH: uri
   code_EQUALS: uri
@@ -8528,6 +8527,9 @@ input ElementDefinitionTypeFilterOption {
   profile_EQUALS: [canonical!]
   profile_NONE_MATCH: ElementDefinitionTypeProfileChildFilterOption
   profile_NOT_EQUALS: [canonical!]
+  targetProfileRef_ALL_MATCH: StructureDefinitionFilterOption
+  targetProfileRef_ANY_MATCH: StructureDefinitionFilterOption
+  targetProfileRef_NONE_MATCH: StructureDefinitionFilterOption
   targetProfile_ALL_MATCH: ElementDefinitionTypeTargetProfileChildFilterOption
   targetProfile_ANY_MATCH: ElementDefinitionTypeTargetProfileChildFilterOption
   targetProfile_EQUALS: [canonical!]
@@ -8553,6 +8555,7 @@ input ElementDefinitionTypeLogicalFilterOption {
   aggregation_EQUALS: [code!]
   aggregation_NONE_MATCH: ElementDefinitionTypeAggregationChildFilterOption
   aggregation_NOT_EQUALS: [code!]
+  codeRef: StructureDefinitionFilterOption
   code_CONTAINS: uri
   code_ENDS_WITH: uri
   code_EQUALS: uri
@@ -8579,6 +8582,9 @@ input ElementDefinitionTypeLogicalFilterOption {
   profile_EQUALS: [canonical!]
   profile_NONE_MATCH: ElementDefinitionTypeProfileChildFilterOption
   profile_NOT_EQUALS: [canonical!]
+  targetProfileRef_ALL_MATCH: StructureDefinitionFilterOption
+  targetProfileRef_ANY_MATCH: StructureDefinitionFilterOption
+  targetProfileRef_NONE_MATCH: StructureDefinitionFilterOption
   targetProfile_ALL_MATCH: ElementDefinitionTypeTargetProfileChildFilterOption
   targetProfile_ANY_MATCH: ElementDefinitionTypeTargetProfileChildFilterOption
   targetProfile_EQUALS: [canonical!]
@@ -8610,10 +8616,12 @@ input ElementDefinitionTypeProfileChildFilterOption {
 input ElementDefinitionTypeSortOption {
   aggregation: SortDirection
   code: SortDirection
+  codeRef: StructureDefinitionSortOption
   extension: ExtensionSortOption
   id: SortDirection
   profile: SortDirection
   targetProfile: SortDirection
+  targetProfileRef: StructureDefinitionSortOption
   versioning: SortDirection
 }
 
@@ -9964,7 +9972,7 @@ input OperationDefinitionParameterCommandInput {
   referencedFrom: [OperationDefinitionParameterReferencedFromCommandInput!]
   searchType: code
   targetProfile: [canonical!]
-  targetProfileReference: [ID!]
+  targetProfileRef: [ID!]
   type: code
   use: code!
 }
@@ -10034,9 +10042,9 @@ input OperationDefinitionParameterFilterOption {
   searchType_LOWER_THAN_OR_EQUALS: code
   searchType_NOT_EQUALS: code
   searchType_STARTS_WITH: code
-  targetProfileReference_ALL_MATCH: StructureDefinitionFilterOption
-  targetProfileReference_ANY_MATCH: StructureDefinitionFilterOption
-  targetProfileReference_NONE_MATCH: StructureDefinitionFilterOption
+  targetProfileRef_ALL_MATCH: StructureDefinitionFilterOption
+  targetProfileRef_ANY_MATCH: StructureDefinitionFilterOption
+  targetProfileRef_NONE_MATCH: StructureDefinitionFilterOption
   targetProfile_ALL_MATCH: OperationDefinitionParameterTargetProfileChildFilterOption
   targetProfile_ANY_MATCH: OperationDefinitionParameterTargetProfileChildFilterOption
   targetProfile_EQUALS: [canonical!]
@@ -10130,9 +10138,9 @@ input OperationDefinitionParameterLogicalFilterOption {
   searchType_LOWER_THAN_OR_EQUALS: code
   searchType_NOT_EQUALS: code
   searchType_STARTS_WITH: code
-  targetProfileReference_ALL_MATCH: StructureDefinitionFilterOption
-  targetProfileReference_ANY_MATCH: StructureDefinitionFilterOption
-  targetProfileReference_NONE_MATCH: StructureDefinitionFilterOption
+  targetProfileRef_ALL_MATCH: StructureDefinitionFilterOption
+  targetProfileRef_ANY_MATCH: StructureDefinitionFilterOption
+  targetProfileRef_NONE_MATCH: StructureDefinitionFilterOption
   targetProfile_ALL_MATCH: OperationDefinitionParameterTargetProfileChildFilterOption
   targetProfile_ANY_MATCH: OperationDefinitionParameterTargetProfileChildFilterOption
   targetProfile_EQUALS: [canonical!]
@@ -10262,7 +10270,7 @@ input OperationDefinitionParameterSortOption {
   referencedFrom: OperationDefinitionParameterReferencedFromSortOption
   searchType: SortDirection
   targetProfile: SortDirection
-  targetProfileReference: StructureDefinitionSortOption
+  targetProfileRef: StructureDefinitionSortOption
   type: SortDirection
   use: SortDirection
 }
@@ -11636,7 +11644,6 @@ input StructureDefinitionDifferentialCommandInput {
   extension: [ExtensionCommandInput!]
   id: String
   modifierExtension: [ExtensionCommandInput!]
-  parent: String!
 }
 
 input StructureDefinitionDifferentialFilterOption {
@@ -11658,15 +11665,6 @@ input StructureDefinitionDifferentialFilterOption {
   modifierExtension_ALL_MATCH: ExtensionFilterOption
   modifierExtension_ANY_MATCH: ExtensionFilterOption
   modifierExtension_NONE_MATCH: ExtensionFilterOption
-  parent_CONTAINS: String
-  parent_ENDS_WITH: String
-  parent_EQUALS: String
-  parent_GREATER_THAN: String
-  parent_GREATER_THAN_OR_EQUALS: String
-  parent_LOWER_THAN: String
-  parent_LOWER_THAN_OR_EQUALS: String
-  parent_NOT_EQUALS: String
-  parent_STARTS_WITH: String
 }
 
 input StructureDefinitionDifferentialLogicalFilterOption {
@@ -11691,15 +11689,6 @@ input StructureDefinitionDifferentialLogicalFilterOption {
   modifierExtension_ALL_MATCH: ExtensionFilterOption
   modifierExtension_ANY_MATCH: ExtensionFilterOption
   modifierExtension_NONE_MATCH: ExtensionFilterOption
-  parent_CONTAINS: String
-  parent_ENDS_WITH: String
-  parent_EQUALS: String
-  parent_GREATER_THAN: String
-  parent_GREATER_THAN_OR_EQUALS: String
-  parent_LOWER_THAN: String
-  parent_LOWER_THAN_OR_EQUALS: String
-  parent_NOT_EQUALS: String
-  parent_STARTS_WITH: String
 }
 
 input StructureDefinitionDifferentialSortOption {
@@ -11707,13 +11696,12 @@ input StructureDefinitionDifferentialSortOption {
   extension: ExtensionSortOption
   id: SortDirection
   modifierExtension: ExtensionSortOption
-  parent: SortDirection
 }
 
 input StructureDefinitionFilterOption {
   abstract_EQUALS: Boolean
   abstract_NOT_EQUALS: Boolean
-  baseDefinitionReference: StructureDefinitionFilterOption
+  baseDefinitionRef: StructureDefinitionFilterOption
   baseDefinition_CONTAINS: canonical
   baseDefinition_ENDS_WITH: canonical
   baseDefinition_EQUALS: canonical
@@ -11919,7 +11907,7 @@ input StructureDefinitionLogicalFilterOption {
   OR: [StructureDefinitionLogicalFilterOption!]
   abstract_EQUALS: Boolean
   abstract_NOT_EQUALS: Boolean
-  baseDefinitionReference: StructureDefinitionFilterOption
+  baseDefinitionRef: StructureDefinitionFilterOption
   baseDefinition_CONTAINS: canonical
   baseDefinition_ENDS_WITH: canonical
   baseDefinition_EQUALS: canonical
@@ -12312,7 +12300,7 @@ input StructureDefinitionSnapshotSortOption {
 input StructureDefinitionSortOption {
   abstract: SortDirection
   baseDefinition: SortDirection
-  baseDefinitionReference: StructureDefinitionSortOption
+  baseDefinitionRef: StructureDefinitionSortOption
   contained: ResourceSortOption
   context: StructureDefinitionContextSortOption
   contextInvariant: SortDirection
