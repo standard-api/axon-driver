@@ -141,14 +141,6 @@ jobs:
         with:
           bump: 'snapshot'
 
-      - name: Create snapshot commit using PR and automatic merge
-        uses: ./.github/actions/create-snapshot-commit
-        with:
-          github_token: ${{ secrets.GH_STAPI_BOT_TOKEN }}
-          version: ${{ steps.bumpedVersionSnapshot.outputs.version }}
-          repository: axon-driver
-          bump: 'snapshot'
-
       - name: Checkout updated master
         uses: actions/checkout@v3
         with:
@@ -157,7 +149,7 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GH_STAPI_BOT_TOKEN }}
           repository: ${{ matrix.repo }}
           event-type: axon-driver-released
           client-payload: '{"version": "${{ steps.bumpedVersion.outputs.version }}","snapshot_version": "${{ steps.bumpedVersionSnapshot.outputs.version }}"}'
@@ -183,3 +175,11 @@ jobs:
           github_token: ${{ secrets.GH_STAPI_BOT_TOKEN }}
           version: ${{ github.event.client_payload.snapshot_version }}
           repository: sandbox
+          
+      - name: Create snapshot commit using PR and automatic merge
+        uses: ./.github/actions/create-snapshot-commit
+        with:
+          github_token: ${{ secrets.GH_STAPI_BOT_TOKEN }}
+          version: ${{ steps.bumpedVersionSnapshot.outputs.version }}
+          repository: axon-driver
+          bump: 'snapshot'
