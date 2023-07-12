@@ -26,15 +26,15 @@ runs:
         git checkout -b dependency/${{ inputs.version }}
         git add **/pom.xml
         git add pom.xml
-        git commit -m "Increase version of Stapi axon driver dependency to ${{ inputs.version }}"
+        git commit -m "Increase version of standard-api/${{ inputs.repository }} dependency to ${{ inputs.version }}"
         git push https://${{ inputs.github_token }}@github.com/standard-api/${{ inputs.repository }}.git HEAD:dependency/${{ inputs.version }}
     - name: Create Pull Request
       shell: bash
       run: |
         gh auth login --with-token <<< ${{ inputs.github_token }}
         PR_URL=$(gh pr create --repo standard-api/${{ inputs.repository }} \
-          --title "Increase version of Stapi axon driver dependency to ${{ inputs.version }}" \
-          --body "Auto PR for dependency upgrade of of Stapi axon driver" \
+          --title "Increase version of standard-api/${{ inputs.repository }} dependency to ${{ inputs.version }}" \
+          --body "Auto PR for dependency upgrade of of standard-api/${{ inputs.repository }}" \
           --head dependency/${{ inputs.version }} \
           --base master)
         
@@ -45,7 +45,7 @@ runs:
       shell: bash
       run: |
         gh pr merge ${{ steps.createReleasePR.outputs.pr_number }} \
-        --subject "Increase version of Stapi axon driver dependency to ${{ inputs.version }}" \
+        --subject "Increase version of standard-api/${{ inputs.repository }} dependency to ${{ inputs.version }}" \
         --squash \
         --admin \
         --delete-branch

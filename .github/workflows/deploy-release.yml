@@ -141,14 +141,6 @@ jobs:
         with:
           bump: 'snapshot'
 
-      - name: Create snapshot commit using PR and automatic merge
-        uses: ./.github/actions/create-snapshot-commit
-        with:
-          github_token: ${{ secrets.GH_STAPI_BOT_TOKEN }}
-          version: ${{ steps.bumpedVersionSnapshot.outputs.version }}
-          repository: axon-driver
-          bump: 'snapshot'
-
       - name: Checkout updated master
         uses: actions/checkout@v3
         with:
@@ -157,12 +149,12 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GH_STAPI_BOT_TOKEN }}
           repository: ${{ matrix.repo }}
           event-type: axon-driver-released
           client-payload: '{"version": "${{ steps.bumpedVersion.outputs.version }}","snapshot_version": "${{ steps.bumpedVersionSnapshot.outputs.version }}"}'
 
-      - name: Checkout code
+      - name: Checkout stapi sandbox repository code
         uses: actions/checkout@v3
         with:
           repository: 'ai.stapi/sandbox'
@@ -171,15 +163,23 @@ jobs:
       - name: Install xmllint
         run: sudo apt-get install libxml2-utils
 
-      - name: Upgrade version of Stapi Axon Driver
+      - name: Upgrade version of Stapi Axon Driver in Sandbox app
         run: |
           old_version=$(xmllint --xpath "//*[local-name()='properties']/*[local-name()='stapi.axon.version']/text()" pom.xml)
-          new_version=${{ github.event.client_payload.version }}
+          new_version=${{ steps.bumpedVersion.outputs.version }}
           sed -i "s|<stapi.axon.version>$old_version</stapi.axon.version>|<stapi.axon.version>$new_version</stapi.axon.version>|g" pom.xml
 
       - name: Create commit, PR and automatic merge of pom upgrade in Sandbox
-        uses: ./.github/actions/commit-pr-merge-update-axon-driver
+        uses: ./.github/actions/commit-pr-merge-update-pom-version
         with:
           github_token: ${{ secrets.GH_STAPI_BOT_TOKEN }}
-          version: ${{ github.event.client_payload.snapshot_version }}
+          version: ${{ steps.bumpedVersion.outputs.version }}
           repository: sandbox
+          
+      - name: Create snapshot commit using PR and automatic merge
+        uses: ./.github/actions/create-snapshot-commit
+        with:
+          github_token: ${{ secrets.GH_STAPI_BOT_TOKEN }}
+          version: ${{ steps.bumpedVersionSnapshot.outputs.version }}
+          repository: axon-driver
+          bump: 'snapshot'
