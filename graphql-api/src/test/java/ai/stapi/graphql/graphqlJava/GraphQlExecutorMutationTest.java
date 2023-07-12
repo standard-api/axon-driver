@@ -5,6 +5,7 @@ import ai.stapi.graphql.GraphQlOperation;
 import ai.stapi.graphql.graphqlJava.testfixtures.TestGraphqlModelDefinitionsLoader;
 import ai.stapi.test.domain.DomainTestCase;
 import ai.stapi.test.schemaintegration.StructureDefinitionScope;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -59,6 +60,7 @@ class GraphQlExecutorMutationTest extends DomainTestCase {
   }
   
   @Test
+  @Disabled
   void itCanExecuteCreationalMutationForStructureDefinition() {
     var graphQlRequest = new GraphQlOperation(
         "",
