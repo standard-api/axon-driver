@@ -149,7 +149,8 @@ jobs:
       - name: Checkout stapi sandbox repository code
         uses: actions/checkout@v3
         with:
-          repository: 'ai.stapi/sandbox'
+          repository: standard-api/sandbox
+          path: ./sandbox
           token: ${{ secrets.GH_STAPI_BOT_TOKEN }}
       
       - name: Install xmllint
@@ -157,9 +158,9 @@ jobs:
 
       - name: Upgrade version of Stapi Axon Driver in Sandbox app
         run: |
-          old_version=$(xmllint --xpath "//*[local-name()='properties']/*[local-name()='stapi.axon.version']/text()" pom.xml)
+          old_version=$(xmllint --xpath "//*[local-name()='properties']/*[local-name()='stapi.axon.version']/text()" sandbox/pom.xml)
           new_version=${{ steps.bumpedVersion.outputs.version }}
-          sed -i "s|<stapi.axon.version>$old_version</stapi.axon.version>|<stapi.axon.version>$new_version</stapi.axon.version>|g" pom.xml
+          sed -i "s|<stapi.axon.version>$old_version</stapi.axon.version>|<stapi.axon.version>$new_version</stapi.axon.version>|g" sandbox/pom.xml
 
       - name: Create commit, PR and automatic merge of pom upgrade in Sandbox
         uses: ./.github/actions/commit-pr-merge-update-pom-version
@@ -167,6 +168,7 @@ jobs:
           github_token: ${{ secrets.GH_STAPI_BOT_TOKEN }}
           version: ${{ steps.bumpedVersion.outputs.version }}
           repository: sandbox
+          path: ./sandbox
           
       - name: Create snapshot commit using PR and automatic merge
         uses: ./.github/actions/create-snapshot-commit

@@ -11,6 +11,10 @@ inputs:
   repository:
     description: 'Repository name at github.com/standard-api'
     required: true
+  path:
+    description: 'path where is git root directory'
+    required: false
+    default: '.'
 
 outputs:
   pr_number:
@@ -23,6 +27,7 @@ runs:
     - name: Commit updated POM
       shell: bash
       run: |
+        cd ${{ inputs.path }}
         git checkout -b dependency/${{ inputs.version }}
         git add **/pom.xml
         git add pom.xml
@@ -31,6 +36,7 @@ runs:
     - name: Create Pull Request
       shell: bash
       run: |
+        cd ${{ inputs.path }}
         gh auth login --with-token <<< ${{ inputs.github_token }}
         PR_URL=$(gh pr create --repo standard-api/${{ inputs.repository }} \
           --title "Increase version of standard-api/${{ inputs.repository }} dependency to ${{ inputs.version }}" \
@@ -44,6 +50,7 @@ runs:
     - name: Automatically merge PR
       shell: bash
       run: |
+        cd ${{ inputs.path }}
         gh pr merge ${{ steps.createReleasePR.outputs.pr_number }} \
         --subject "Increase version of standard-api/${{ inputs.repository }} dependency to ${{ inputs.version }}" \
         --squash \
