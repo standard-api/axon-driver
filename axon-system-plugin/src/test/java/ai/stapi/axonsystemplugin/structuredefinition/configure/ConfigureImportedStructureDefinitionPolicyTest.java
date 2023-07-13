@@ -59,8 +59,7 @@ class ConfigureImportedStructureDefinitionPolicyTest extends DomainTestCase {
                         )
                     )
                 )
-            ),
-            ""
+            )
         )
     );
     this.whenCommandIsDispatched(
@@ -111,8 +110,7 @@ class ConfigureImportedStructureDefinitionPolicyTest extends DomainTestCase {
                         )
                     )
                 )
-            ),
-            ""
+            )
         )
     );
     this.givenCommandIsDispatched(
@@ -165,7 +163,7 @@ class ConfigureImportedStructureDefinitionPolicyTest extends DomainTestCase {
         false,
         "string",
         null,
-        new RawStructureDefinitionData.Differential(new ArrayList<>(), "")
+        new RawStructureDefinitionData.Differential(new ArrayList<>())
     );
     var testComplex = new RawStructureDefinitionData(
         "TestComplex",
@@ -196,8 +194,7 @@ class ConfigureImportedStructureDefinitionPolicyTest extends DomainTestCase {
                         )
                     )
                 )
-            ),
-            ""
+            )
         )
     );
     var testResource = new RawStructureDefinitionData(
@@ -245,8 +242,7 @@ class ConfigureImportedStructureDefinitionPolicyTest extends DomainTestCase {
                         )
                     )
                 )
-            ),
-            ""
+            )
         )
     );
     var element = new RawStructureDefinitionData(
@@ -258,7 +254,7 @@ class ConfigureImportedStructureDefinitionPolicyTest extends DomainTestCase {
         true,
         "Element",
         null,
-        new RawStructureDefinitionData.Differential(new ArrayList<>(), "")
+        new RawStructureDefinitionData.Differential(new ArrayList<>())
     );
     this.givenCommandIsDispatched(
         new ImportStructureDefinition(

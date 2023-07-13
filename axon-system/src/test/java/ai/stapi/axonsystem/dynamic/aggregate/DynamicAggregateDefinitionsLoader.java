@@ -36,7 +36,7 @@ public class DynamicAggregateDefinitionsLoader extends
                 List.of(
                     new ElementDefinition(
                         "ExampleDynamicAggregateType.exampleConstructorAttribute",
-                        List.of(new ElementDefinitionType("string", null)),
+                        List.of(new ElementDefinitionType("string")),
                         1,
                         "1",
                         "An example constructor attribute",
@@ -45,15 +45,14 @@ public class DynamicAggregateDefinitionsLoader extends
                     ),
                     new ElementDefinition(
                         "ExampleDynamicAggregateType.exampleMethodAttribute",
-                        List.of(new ElementDefinitionType("string", null)),
+                        List.of(new ElementDefinitionType("string")),
                         1,
                         "1",
                         "An example method attribute",
                         "An example method attribute for the dynamic aggregate type",
                         null
                     )
-                ),
-                "ExampleDynamicAggregateType"
+                )
             )
         ),
         new StructureDefinitionData(
@@ -71,8 +70,8 @@ public class DynamicAggregateDefinitionsLoader extends
                     new ElementDefinition(
                         "ExampleDynamicAggregateTypeWithUnion.exampleUnionField",
                         List.of(
-                            new ElementDefinitionType("string", null),
-                            new ElementDefinitionType("Timing", null)
+                            new ElementDefinitionType("string"),
+                            new ElementDefinitionType("Timing")
                         ),
                         1,
                         "1",
@@ -80,8 +79,7 @@ public class DynamicAggregateDefinitionsLoader extends
                         "An example union field",
                         null
                     )
-                ),
-                "ExampleDynamicAggregateTypeWithUnion"
+                )
             )
         )
     );

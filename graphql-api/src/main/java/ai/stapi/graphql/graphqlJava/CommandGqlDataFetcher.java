@@ -174,8 +174,7 @@ public class CommandGqlDataFetcher implements DataFetcher<CommandGqlDataFetcher.
         );
       }
 
-      if (structure instanceof PrimitiveStructureType || fieldDefinition.getTypes().get(0)
-          .isReference()) {
+      if (structure instanceof PrimitiveStructureType) {
         if (originalValue instanceof List<?> listValue) {
           finalPayload.put(fieldName, listValue);
           return;
@@ -183,7 +182,15 @@ public class CommandGqlDataFetcher implements DataFetcher<CommandGqlDataFetcher.
           finalPayload.put(fieldName, originalValue);
           return;
         }
-
+      }
+      if (fieldDefinition.getTypes().get(0).isReference()) {
+        if (originalValue instanceof List<?> listValue) {
+          finalPayload.put(fieldName, listValue.stream().map(id -> Map.of("id", id)));
+          return;
+        } else {
+          finalPayload.put(fieldName, Map.of("id", originalValue));
+          return;
+        }
       }
       if (structure instanceof ComplexStructureType complexStructureType) {
         if (originalValue instanceof Map<?, ?> objectOriginalParameter) {
