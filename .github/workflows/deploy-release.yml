@@ -147,11 +147,11 @@ jobs:
 
       - name: Upgrade version of Stapi Axon Driver in Sandbox app
         run: |
-          ls -la
           cd ./sandbox
-          ls -la
           old_version=$(xmllint --xpath "//*[local-name()='properties']/*[local-name()='stapi.axon.version']/text()" pom.xml)
+          echo "Old version is $old_version"
           new_version=${{ steps.bumpedVersion.outputs.version }}
+          echo "New version is ${{ steps.bumpedVersion.outputs.version }}"
           sed -i "s|<stapi.axon.version>$old_version</stapi.axon.version>|<stapi.axon.version>$new_version</stapi.axon.version>|g" pom.xml
 
       - name: Create commit, PR and automatic merge of pom upgrade in Sandbox

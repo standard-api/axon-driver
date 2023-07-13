@@ -31,11 +31,15 @@ runs:
       shell: bash
       run: |
         cd ${{ inputs.path }}
+        echo "checking out dependency/${{ inputs.version }}"
         git checkout -b dependency/${{ inputs.version }}
+        echo "Adding pom.xml"
         git add pom.xml
         if git diff --quiet --exit-code; then
+          echo "Nothing commited"
           echo "committed=false" >> $GITHUB_OUTPUT
         else
+          echo "Creating commit"
           git commit -m "Increase version of standard-api/${{ inputs.repository }} dependency to ${{ inputs.version }}"
           git push https://${{ inputs.github_token }}@github.com/standard-api/${{ inputs.repository }}.git HEAD:dependency/${{ inputs.version }}
           echo "committed=true" >> $GITHUB_OUTPUT
@@ -45,6 +49,7 @@ runs:
       if: ${{ steps.commit.outputs.committed == 'true' }}
       run: |
         cd ${{ inputs.path }}
+        echo "Creating pull request"
         gh auth login --with-token <<< ${{ inputs.github_token }}
         PR_URL=$(gh pr create --repo standard-api/${{ inputs.repository }} \
           --title "Increase version of standard-api/${{ inputs.repository }} dependency to ${{ inputs.version }}" \
