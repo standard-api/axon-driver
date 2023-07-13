@@ -56,7 +56,7 @@ public abstract class AbstractCreateCRUDCommandHandlerPolicy {
   @DynamicEventHandler(messageName = "AggregateDefinitionCreated")
   public void on(DynamicGraphUpdatedEvent event) {
     var aggregateType = event.getSynchronizedGraph().traversable()
-        .loadNode(event.getIdentity())
+        .loadNode(event.getIdentity(), "AggregateDefinition")
         .getEdges("structure")
         .get(0)
         .getNodeTo()
