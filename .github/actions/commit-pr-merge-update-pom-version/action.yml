@@ -24,17 +24,25 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: Set git user and email
+      uses: ./.github/actions/set-git-username
     - name: Commit updated POM
+      id: commit
       shell: bash
       run: |
         cd ${{ inputs.path }}
         git checkout -b dependency/${{ inputs.version }}
-        git add **/pom.xml
         git add pom.xml
-        git commit -m "Increase version of standard-api/${{ inputs.repository }} dependency to ${{ inputs.version }}"
-        git push https://${{ inputs.github_token }}@github.com/standard-api/${{ inputs.repository }}.git HEAD:dependency/${{ inputs.version }}
+        if git diff --quiet --exit-code; then
+          echo "committed=false" >> $GITHUB_OUTPUT
+        else
+          git commit -m "Increase version of standard-api/${{ inputs.repository }} dependency to ${{ inputs.version }}"
+          git push https://${{ inputs.github_token }}@github.com/standard-api/${{ inputs.repository }}.git HEAD:dependency/${{ inputs.version }}
+          echo "committed=true" >> $GITHUB_OUTPUT
+        fi
     - name: Create Pull Request
       shell: bash
+      if: ${{ steps.commit.outputs.committed == 'true' }}
       run: |
         cd ${{ inputs.path }}
         gh auth login --with-token <<< ${{ inputs.github_token }}
@@ -49,6 +57,7 @@ runs:
 
     - name: Automatically merge PR
       shell: bash
+      if: ${{ steps.commit.outputs.committed == 'true' }}
       run: |
         cd ${{ inputs.path }}
         gh pr merge ${{ steps.createReleasePR.outputs.pr_number }} \
@@ -58,3 +67,7 @@ runs:
         --delete-branch
       env:
         GH_TOKEN: ${{ inputs.github_token }}
+    - name: Delete sandbox repository
+      shell: bash
+      run: |
+        rm -rf ./sandbox
