@@ -70,6 +70,7 @@ class GraphQlExecutorMutationTest extends DomainTestCase {
                       abstract: false,
                       baseDefinition: "http://hl7.org/fhir/StructureDefinition/DomainResource",
                       baseDefinitionRef: "DomainResource",
+                      date: "2023-06-11T12:47:40",
                       description: "An example entity",
                       differential: {
                         element: [
