@@ -146,14 +146,6 @@ jobs:
         with:
           ref: master
 
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{ secrets.GH_STAPI_BOT_TOKEN }}
-          repository: ${{ matrix.repo }}
-          event-type: axon-driver-released
-          client-payload: '{"version": "${{ steps.bumpedVersion.outputs.version }}","snapshot_version": "${{ steps.bumpedVersionSnapshot.outputs.version }}"}'
-
       - name: Checkout stapi sandbox repository code
         uses: actions/checkout@v3
         with:
@@ -183,3 +175,11 @@ jobs:
           version: ${{ steps.bumpedVersionSnapshot.outputs.version }}
           repository: axon-driver
           bump: 'snapshot'
+          
+      - name: Dispatch Event about succesfull release
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.GH_STAPI_BOT_TOKEN }}
+          repository: ${{ matrix.repo }}
+          event-type: axon-driver-released
+          client-payload: '{"version": "${{ steps.bumpedVersion.outputs.version }}","snapshot_version": "${{ steps.bumpedVersionSnapshot.outputs.version }}"}'
