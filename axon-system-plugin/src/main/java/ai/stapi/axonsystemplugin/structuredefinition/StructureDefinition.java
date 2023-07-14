@@ -3,7 +3,6 @@ package ai.stapi.axonsystemplugin.structuredefinition;
 import ai.stapi.axonsystem.graphaggregate.AggregateWithDynamicGraph;
 import ai.stapi.graphoperations.objectGraphMapper.model.MissingFieldResolvingStrategy;
 import ai.stapi.graphsystem.dynamiccommandprocessor.DynamicCommandProcessor;
-import ai.stapi.graphsystem.structuredefinition.command.importStructureDefinitionFromSource.FixedImportStructureDefinition;
 import ai.stapi.graphsystem.structuredefinition.command.importStructureDefinitionFromSource.ImportStructureDefinition;
 import ai.stapi.graphsystem.structuredefinition.command.importStructureDefinitionFromSource.StructureDefinitionImported;
 import ai.stapi.schema.structuredefinition.StructureDefinitionId;
@@ -26,7 +25,7 @@ public class StructureDefinition extends AggregateWithDynamicGraph<StructureDefi
   ) {
     this.commandProcessor = commandProcessor;
     this.processCommandDynamically(
-        new FixedImportStructureDefinition(
+        new ImportStructureDefinition(
             command.getTargetIdentifier(),
             StructureDefinitionNormalizer.normalize(command.getStructureDefinitionSource())
         ),
