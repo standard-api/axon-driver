@@ -18,6 +18,23 @@ jobs:
       - name: Install xmllint
         run: sudo apt-get install libxml2-utils
 
+      - name: Install jq
+        run: sudo apt-get install jq
+
+      - name: Wait for new version on Sonatype
+        run: |
+          while :
+          do
+             echo "Checking for version ${{ github.event.client_payload.new_version }} on Sonatype..."
+             versionExists=$(curl -s "https://repo1.maven.org/maven2/ai/stapi/core/maven-metadata.xml" | xmllint --xpath "//*[local-name()='versions']/*[local-name()='version']/text()" - | jq -r --arg ${{ github.event.client_payload.new_version }} "${{ github.event.client_payload.new_version }}" 'contains(${{ github.event.client_payload.new_version }})')
+             if [ "$versionExists" = "true" ]; then
+               echo "Version ${{ github.event.client_payload.new_version }} found!"
+               break
+             fi
+             echo "Version not found on sonatype yet, waiting for 1 minute..."
+             sleep 60
+          done
+
       - name: Upgrade version of Stapi Core
         run: |
           old_version=$(xmllint --xpath "//*[local-name()='properties']/*[local-name()='stapi.core.version']/text()" pom.xml)
