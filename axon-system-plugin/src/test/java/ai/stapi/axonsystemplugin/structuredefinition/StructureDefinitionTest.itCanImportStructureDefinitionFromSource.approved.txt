@@ -5,7 +5,7 @@ nodes:
 		ElementDefinition -> mapping -> ElementDefinitionMapping (4DCE1 -> 18167 -> 928F3)
 		ElementDefinition -> slicing -> ElementDefinitionSlicing (4DCE1 -> 6E4A9 -> 3F60D)
 		ElementDefinition -> type -> ElementDefinitionType (4DCE1 -> AB28A -> E57DB)
-		StructureDefinitionDifferential -> element -> ElementDefinition (A57A4 -> 0DAF7 -> 4DCE1)
+		StructureDefinitionDifferential -> element -> ElementDefinition (81CD0 -> 0DAF7 -> 4DCE1)
 	attributes:
 		alias -> [extensions, user content]
 		comment -> There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone.
@@ -20,7 +20,7 @@ nodes:
 	node_edges:
 		ElementDefinition -> mapping -> ElementDefinitionMapping (B0098 -> C3087 -> 78C8B)
 		ElementDefinition -> type -> ElementDefinitionType (B0098 -> C0E23 -> B083E)
-		StructureDefinitionDifferential -> element -> ElementDefinition (A57A4 -> 22A38 -> B0098)
+		StructureDefinitionDifferential -> element -> ElementDefinition (81CD0 -> 22A38 -> B0098)
 	attributes:
 		definition -> Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.
 		max -> 1
@@ -30,17 +30,17 @@ nodes:
 		short -> Unique id for inter-element referencing
 
 	node_type: ElementDefinition
-	node_hash: EFB86
+	node_hash: CA2AB
 	node_edges:
-		ElementDefinition -> constraint -> ElementDefinitionConstraint (EFB86 -> 21042 -> 4D49D)
-		ElementDefinition -> extension -> Extension (EFB86 -> 20875 -> 9658B)
-		ElementDefinition -> extension -> Extension (EFB86 -> 7E222 -> 95301)
-		ElementDefinition -> mapping -> ElementDefinitionMapping (EFB86 -> 46EAE -> 83EC2)
-		StructureDefinition -> differential -> StructureDefinitionDifferential (E5E06 -> 94FD7 -> A57A4)
-		StructureDefinition -> extension -> Extension (E5E06 -> 2C93A -> 504F0)
-		StructureDefinition -> extension -> Extension (E5E06 -> 7936D -> F0EF2)
-		StructureDefinition -> mapping -> StructureDefinitionMapping (E5E06 -> FD7C9 -> 06028)
-		StructureDefinitionDifferential -> element -> ElementDefinition (A57A4 -> 8CEBB -> EFB86)
+		ElementDefinition -> constraint -> ElementDefinitionConstraint (CA2AB -> 21042 -> 4D49D)
+		ElementDefinition -> extension -> Extension (CA2AB -> 20875 -> 9658B)
+		ElementDefinition -> extension -> Extension (CA2AB -> 7E222 -> 95301)
+		ElementDefinition -> mapping -> ElementDefinitionMapping (CA2AB -> 46EAE -> 83EC2)
+		StructureDefinition -> differential -> StructureDefinitionDifferential (4FA2E -> 219AC -> 81CD0)
+		StructureDefinition -> extension -> Extension (4FA2E -> 807B1 -> D6021)
+		StructureDefinition -> extension -> Extension (4FA2E -> E6293 -> 18CF7)
+		StructureDefinition -> mapping -> StructureDefinitionMapping (4FA2E -> 17020 -> 05878)
+		StructureDefinitionDifferential -> element -> ElementDefinition (81CD0 -> 8CEBB -> CA2AB)
 	attributes:
 		condition -> [ele-1]
 		definition -> Base definition for all elements in a resource.
@@ -52,7 +52,7 @@ nodes:
 	node_type: ElementDefinitionConstraint
 	node_hash: 4D49D
 	node_edges:
-		ElementDefinition -> constraint -> ElementDefinitionConstraint (EFB86 -> 21042 -> 4D49D)
+		ElementDefinition -> constraint -> ElementDefinitionConstraint (CA2AB -> 21042 -> 4D49D)
 	attributes:
 		expression -> hasValue() or (children().count() > id.count()) or $this is Parameters
 		human -> All FHIR elements must have a @value or children unless an empty Parameters resource
@@ -72,7 +72,7 @@ nodes:
 	node_type: ElementDefinitionMapping
 	node_hash: 83EC2
 	node_edges:
-		ElementDefinition -> mapping -> ElementDefinitionMapping (EFB86 -> 46EAE -> 83EC2)
+		ElementDefinition -> mapping -> ElementDefinitionMapping (CA2AB -> 46EAE -> 83EC2)
 	attributes:
 		identity -> rim
 		map -> n/a
@@ -120,30 +120,30 @@ nodes:
 		code -> Extension
 
 	node_type: Extension
-	node_hash: 504F0
+	node_hash: 18CF7
 	node_edges:
-		StructureDefinition -> extension -> Extension (E5E06 -> 2C93A -> 504F0)
+		StructureDefinition -> extension -> Extension (4FA2E -> E6293 -> 18CF7)
 	attributes:
 		url -> http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version
 
 	node_type: Extension
 	node_hash: 95301
 	node_edges:
-		ElementDefinition -> extension -> Extension (EFB86 -> 7E222 -> 95301)
+		ElementDefinition -> extension -> Extension (CA2AB -> 7E222 -> 95301)
 	attributes:
 		url -> http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version
 
 	node_type: Extension
 	node_hash: 9658B
 	node_edges:
-		ElementDefinition -> extension -> Extension (EFB86 -> 20875 -> 9658B)
+		ElementDefinition -> extension -> Extension (CA2AB -> 20875 -> 9658B)
 	attributes:
 		url -> http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
 
 	node_type: Extension
-	node_hash: F0EF2
+	node_hash: D6021
 	node_edges:
-		StructureDefinition -> extension -> Extension (E5E06 -> 7936D -> F0EF2)
+		StructureDefinition -> extension -> Extension (4FA2E -> 807B1 -> D6021)
 	attributes:
 		url -> http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status
 
@@ -153,6 +153,32 @@ nodes:
 		ElementDefinitionType -> extension -> Extension (B083E -> 185EA -> F3CAF)
 	attributes:
 		url -> http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type
+
+	node_type: StructureDefinition
+	node_hash: 4FA2E
+	node_edges:
+		ElementDefinition -> constraint -> ElementDefinitionConstraint (CA2AB -> 21042 -> 4D49D)
+		ElementDefinition -> extension -> Extension (CA2AB -> 20875 -> 9658B)
+		ElementDefinition -> extension -> Extension (CA2AB -> 7E222 -> 95301)
+		ElementDefinition -> mapping -> ElementDefinitionMapping (CA2AB -> 46EAE -> 83EC2)
+		StructureDefinition -> differential -> StructureDefinitionDifferential (4FA2E -> 219AC -> 81CD0)
+		StructureDefinition -> extension -> Extension (4FA2E -> 807B1 -> D6021)
+		StructureDefinition -> extension -> Extension (4FA2E -> E6293 -> 18CF7)
+		StructureDefinition -> mapping -> StructureDefinitionMapping (4FA2E -> 17020 -> 05878)
+		StructureDefinitionDifferential -> element -> ElementDefinition (81CD0 -> 8CEBB -> CA2AB)
+	attributes:
+		abstract -> true
+		date -> 2022-05-28T02:47:40Z
+		description -> Base StructureDefinition for Element Type: Base definition for all elements in a resource.
+		experimental -> false
+		fhirVersion -> 4.3.0
+		kind -> complex-type
+		name -> Element
+		publisher -> HL7 FHIR Standard
+		status -> active
+		type -> Element
+		url -> http://hl7.org/fhir/StructureDefinition/Element
+		version -> 4.3.0
 
 	node_type: StructureDefinition
 	node_hash: 951DC
@@ -166,45 +192,19 @@ nodes:
 		ElementDefinitionType -> codeRef -> StructureDefinition (E57DB -> 90618 -> C7EE9)
 	attributes:
 
-	node_type: StructureDefinition
-	node_hash: E5E06
-	node_edges:
-		ElementDefinition -> constraint -> ElementDefinitionConstraint (EFB86 -> 21042 -> 4D49D)
-		ElementDefinition -> extension -> Extension (EFB86 -> 20875 -> 9658B)
-		ElementDefinition -> extension -> Extension (EFB86 -> 7E222 -> 95301)
-		ElementDefinition -> mapping -> ElementDefinitionMapping (EFB86 -> 46EAE -> 83EC2)
-		StructureDefinition -> differential -> StructureDefinitionDifferential (E5E06 -> 94FD7 -> A57A4)
-		StructureDefinition -> extension -> Extension (E5E06 -> 2C93A -> 504F0)
-		StructureDefinition -> extension -> Extension (E5E06 -> 7936D -> F0EF2)
-		StructureDefinition -> mapping -> StructureDefinitionMapping (E5E06 -> FD7C9 -> 06028)
-		StructureDefinitionDifferential -> element -> ElementDefinition (A57A4 -> 8CEBB -> EFB86)
-	attributes:
-		abstract -> true
-		date -> 2022-05-28 12:47:40.0
-		description -> Base StructureDefinition for Element Type: Base definition for all elements in a resource.
-		experimental -> false
-		fhirVersion -> 4.3.0
-		kind -> complex-type
-		name -> Element
-		publisher -> HL7 FHIR Standard
-		status -> active
-		type -> Element
-		url -> http://hl7.org/fhir/StructureDefinition/Element
-		version -> 4.3.0
-
 	node_type: StructureDefinitionDifferential
-	node_hash: A57A4
+	node_hash: 81CD0
 	node_edges:
-		StructureDefinition -> differential -> StructureDefinitionDifferential (E5E06 -> 94FD7 -> A57A4)
-		StructureDefinitionDifferential -> element -> ElementDefinition (A57A4 -> 0DAF7 -> 4DCE1)
-		StructureDefinitionDifferential -> element -> ElementDefinition (A57A4 -> 22A38 -> B0098)
-		StructureDefinitionDifferential -> element -> ElementDefinition (A57A4 -> 8CEBB -> EFB86)
+		StructureDefinition -> differential -> StructureDefinitionDifferential (4FA2E -> 219AC -> 81CD0)
+		StructureDefinitionDifferential -> element -> ElementDefinition (81CD0 -> 0DAF7 -> 4DCE1)
+		StructureDefinitionDifferential -> element -> ElementDefinition (81CD0 -> 22A38 -> B0098)
+		StructureDefinitionDifferential -> element -> ElementDefinition (81CD0 -> 8CEBB -> CA2AB)
 	attributes:
 
 	node_type: StructureDefinitionMapping
-	node_hash: 06028
+	node_hash: 05878
 	node_edges:
-		StructureDefinition -> mapping -> StructureDefinitionMapping (E5E06 -> FD7C9 -> 06028)
+		StructureDefinition -> mapping -> StructureDefinitionMapping (4FA2E -> 17020 -> 05878)
 	attributes:
 		identity -> rim
 		name -> RIM Mapping
@@ -223,12 +223,12 @@ edges:
 
 	edge_type: constraint
 	edge_hash: 21042
-	ElementDefinition -> constraint -> ElementDefinitionConstraint (EFB86 -> 21042 -> 4D49D)
+	ElementDefinition -> constraint -> ElementDefinitionConstraint (CA2AB -> 21042 -> 4D49D)
 	attributes:
 
 	edge_type: differential
-	edge_hash: 94FD7
-	StructureDefinition -> differential -> StructureDefinitionDifferential (E5E06 -> 94FD7 -> A57A4)
+	edge_hash: 219AC
+	StructureDefinition -> differential -> StructureDefinitionDifferential (4FA2E -> 219AC -> 81CD0)
 	attributes:
 
 	edge_type: discriminator
@@ -238,17 +238,17 @@ edges:
 
 	edge_type: element
 	edge_hash: 0DAF7
-	StructureDefinitionDifferential -> element -> ElementDefinition (A57A4 -> 0DAF7 -> 4DCE1)
+	StructureDefinitionDifferential -> element -> ElementDefinition (81CD0 -> 0DAF7 -> 4DCE1)
 	attributes:
 
 	edge_type: element
 	edge_hash: 22A38
-	StructureDefinitionDifferential -> element -> ElementDefinition (A57A4 -> 22A38 -> B0098)
+	StructureDefinitionDifferential -> element -> ElementDefinition (81CD0 -> 22A38 -> B0098)
 	attributes:
 
 	edge_type: element
 	edge_hash: 8CEBB
-	StructureDefinitionDifferential -> element -> ElementDefinition (A57A4 -> 8CEBB -> EFB86)
+	StructureDefinitionDifferential -> element -> ElementDefinition (81CD0 -> 8CEBB -> CA2AB)
 	attributes:
 
 	edge_type: extension
@@ -258,22 +258,27 @@ edges:
 
 	edge_type: extension
 	edge_hash: 20875
-	ElementDefinition -> extension -> Extension (EFB86 -> 20875 -> 9658B)
-	attributes:
-
-	edge_type: extension
-	edge_hash: 2C93A
-	StructureDefinition -> extension -> Extension (E5E06 -> 2C93A -> 504F0)
-	attributes:
-
-	edge_type: extension
-	edge_hash: 7936D
-	StructureDefinition -> extension -> Extension (E5E06 -> 7936D -> F0EF2)
+	ElementDefinition -> extension -> Extension (CA2AB -> 20875 -> 9658B)
 	attributes:
 
 	edge_type: extension
 	edge_hash: 7E222
-	ElementDefinition -> extension -> Extension (EFB86 -> 7E222 -> 95301)
+	ElementDefinition -> extension -> Extension (CA2AB -> 7E222 -> 95301)
+	attributes:
+
+	edge_type: extension
+	edge_hash: 807B1
+	StructureDefinition -> extension -> Extension (4FA2E -> 807B1 -> D6021)
+	attributes:
+
+	edge_type: extension
+	edge_hash: E6293
+	StructureDefinition -> extension -> Extension (4FA2E -> E6293 -> 18CF7)
+	attributes:
+
+	edge_type: mapping
+	edge_hash: 17020
+	StructureDefinition -> mapping -> StructureDefinitionMapping (4FA2E -> 17020 -> 05878)
 	attributes:
 
 	edge_type: mapping
@@ -283,17 +288,12 @@ edges:
 
 	edge_type: mapping
 	edge_hash: 46EAE
-	ElementDefinition -> mapping -> ElementDefinitionMapping (EFB86 -> 46EAE -> 83EC2)
+	ElementDefinition -> mapping -> ElementDefinitionMapping (CA2AB -> 46EAE -> 83EC2)
 	attributes:
 
 	edge_type: mapping
 	edge_hash: C3087
 	ElementDefinition -> mapping -> ElementDefinitionMapping (B0098 -> C3087 -> 78C8B)
-	attributes:
-
-	edge_type: mapping
-	edge_hash: FD7C9
-	StructureDefinition -> mapping -> StructureDefinitionMapping (E5E06 -> FD7C9 -> 06028)
 	attributes:
 
 	edge_type: slicing
