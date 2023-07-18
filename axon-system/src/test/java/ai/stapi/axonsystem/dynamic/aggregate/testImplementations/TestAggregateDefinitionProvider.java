@@ -5,8 +5,8 @@ import ai.stapi.graphsystem.aggregatedefinition.model.AggregateDefinitionProvide
 import ai.stapi.graphsystem.aggregatedefinition.model.CommandHandlerDefinitionDTO;
 import ai.stapi.graphsystem.aggregatedefinition.model.CommandHandlerDefinitionDTO.CreationPolicy;
 import ai.stapi.graphsystem.aggregatedefinition.model.CommandHandlerDefinitionDTO.EventFactory.EventFactoryModification;
-import ai.stapi.schema.structuredefinition.StructureDefinitionId;
 import ai.stapi.graphsystem.eventdefinition.EventMessageDefinitionData;
+import ai.stapi.schema.structuredefinition.StructureDefinitionId;
 import java.util.List;
 import java.util.Map;
 
@@ -38,7 +38,8 @@ public class TestAggregateDefinitionProvider implements AggregateDefinitionProvi
                           ),
                           List.of(
                               EventFactoryModification.add(
-                                  "ValueSet.name",
+                                  "name",
+                                  null,
                                   "name"
                               )
                           )
@@ -58,7 +59,8 @@ public class TestAggregateDefinitionProvider implements AggregateDefinitionProvi
                           ),
                           List.of(
                               EventFactoryModification.add(
-                                  "ValueSet.name",
+                                  "name",
+                                  null,
                                   "name"
                               )
                           )
@@ -80,7 +82,8 @@ public class TestAggregateDefinitionProvider implements AggregateDefinitionProvi
                           ),
                           List.of(
                               EventFactoryModification.add(
-                                  "ValueSet.name",
+                                  "name",
+                                  null,
                                   "name"
                               )
                           )
