@@ -19,7 +19,7 @@ public class DynamicCommandDispatchInterceptor  implements MessageDispatchInterc
     return (integer, commandMessage) -> {
       if (commandMessage.getPayload() instanceof DynamicCommand dynamicCommand) {
         return new GenericCommandMessage<>(
-            new GenericMessage<>(dynamicCommand),
+            new GenericMessage<>(dynamicCommand, commandMessage.getMetaData()),
             dynamicCommand.getSerializationType()
         );
       }

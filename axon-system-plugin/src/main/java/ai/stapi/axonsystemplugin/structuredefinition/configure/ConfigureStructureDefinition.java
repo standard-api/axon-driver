@@ -18,7 +18,7 @@ public class ConfigureStructureDefinition extends AbstractCommand<UniqueIdentifi
     this.structureDefinitionData = structureDefinitionData;
   }
 
-  public StructureDefinitionData getStructureDefinitionDTO() {
+  public StructureDefinitionData getStructureDefinitionData() {
     return structureDefinitionData;
   }
 }
