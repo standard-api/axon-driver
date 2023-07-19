@@ -28,7 +28,7 @@ public class ConfigureStructureDefinitionHandler {
 
   @CommandHandler
   public void handle(ConfigureStructureDefinition command) {
-    var structureDefinitionDTO = command.getStructureDefinitionDTO();
+    var structureDefinitionDTO = command.getStructureDefinitionData();
     this.structureSchemaProvider.add(structureDefinitionDTO);
     this.eventGateway.publish(
         new StructureDefinitionConfigured(
