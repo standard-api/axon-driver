@@ -13,7 +13,7 @@ nodes:
 	node_hash: D1A1B
 	node_edges:
 		AggregateDefinition -> command -> CommandHandlerDefinition (4CA35 -> 9A2C1 -> D1A1B)
-		CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (D1A1B -> 54A69 -> 50A73)
+		CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (D1A1B -> 54A69 -> 5C13E)
 		CommandHandlerDefinition -> operation -> OperationDefinition (D1A1B -> E728B -> 8103B)
 	attributes:
 		creationalPolicy -> if_missing
@@ -22,155 +22,155 @@ nodes:
 	node_hash: EC773
 	node_edges:
 		AggregateDefinition -> command -> CommandHandlerDefinition (4CA35 -> 5EFB4 -> EC773)
-		CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (EC773 -> 43A0B -> 3C29D)
+		CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (EC773 -> 43A0B -> 51932)
 		CommandHandlerDefinition -> operation -> OperationDefinition (EC773 -> DA318 -> 4DE01)
 	attributes:
 		creationalPolicy -> never
 
 	node_type: CommandHandlerDefinitionEventFactory
-	node_hash: 3C29D
+	node_hash: 51932
 	node_edges:
-		CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (EC773 -> 43A0B -> 3C29D)
-		CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (3C29D -> FE71B -> BBC49)
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (3C29D -> DB6E5 -> 240E2)
+		CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (EC773 -> 43A0B -> 51932)
+		CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (51932 -> FE71B -> BBC49)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (51932 -> 58078 -> 9E2DE)
 	attributes:
 
 	node_type: CommandHandlerDefinitionEventFactory
-	node_hash: 50A73
+	node_hash: 5C13E
 	node_edges:
-		CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (D1A1B -> 54A69 -> 50A73)
-		CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (50A73 -> FE71B -> BBC49)
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> 5AA4A -> 5BB04)
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> 60CB2 -> DE20B)
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> 6A5A1 -> C071F)
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> A10F7 -> 072AD)
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> A52D0 -> 061A2)
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> C11B2 -> 42544)
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> CCEA9 -> 54D91)
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> DB6E5 -> 240E2)
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> DD9B0 -> 70FDB)
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> E450E -> 72EAA)
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> E8179 -> 86BB8)
+		CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (D1A1B -> 54A69 -> 5C13E)
+		CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (5C13E -> FE71B -> BBC49)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 056BF -> BC65A)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 16A40 -> 95423)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 37A4E -> 45724)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 4144C -> B029A)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 49412 -> A5196)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 4B593 -> 98EC2)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 58078 -> 9E2DE)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 6D621 -> F0318)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 989F7 -> BD30E)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 9FDD8 -> 1DDC6)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> B86E8 -> F6DF5)
 	attributes:
 
 	node_type: CommandHandlerDefinitionEventFactoryModification
-	node_hash: 061A2
+	node_hash: 1DDC6
 	node_edges:
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> A52D0 -> 061A2)
-	attributes:
-		inputValueParameterName -> name
-		kind -> add
-		modificationPath -> ExampleTestResource.name
-
-	node_type: CommandHandlerDefinitionEventFactoryModification
-	node_hash: 072AD
-	node_edges:
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> A10F7 -> 072AD)
-	attributes:
-		inputValueParameterName -> extension
-		kind -> add
-		modificationPath -> ExampleTestResource.extension
-
-	node_type: CommandHandlerDefinitionEventFactoryModification
-	node_hash: 240E2
-	node_edges:
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (3C29D -> DB6E5 -> 240E2)
-	attributes:
-		inputValueParameterName -> tag
-		kind -> add
-		modificationPath -> ExampleTestResource.tag
-
-	node_type: CommandHandlerDefinitionEventFactoryModification
-	node_hash: 240E2
-	node_edges:
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> DB6E5 -> 240E2)
-	attributes:
-		inputValueParameterName -> tag
-		kind -> add
-		modificationPath -> ExampleTestResource.tag
-
-	node_type: CommandHandlerDefinitionEventFactoryModification
-	node_hash: 42544
-	node_edges:
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> C11B2 -> 42544)
-	attributes:
-		inputValueParameterName -> meta
-		kind -> add
-		modificationPath -> ExampleTestResource.meta
-
-	node_type: CommandHandlerDefinitionEventFactoryModification
-	node_hash: 54D91
-	node_edges:
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> CCEA9 -> 54D91)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 9FDD8 -> 1DDC6)
 	attributes:
 		inputValueParameterName -> language
 		kind -> add
-		modificationPath -> ExampleTestResource.language
+		modificationPath -> language
 
 	node_type: CommandHandlerDefinitionEventFactoryModification
-	node_hash: 5BB04
+	node_hash: 45724
 	node_edges:
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> 5AA4A -> 5BB04)
-	attributes:
-		inputValueParameterName -> text
-		kind -> add
-		modificationPath -> ExampleTestResource.text
-
-	node_type: CommandHandlerDefinitionEventFactoryModification
-	node_hash: 70FDB
-	node_edges:
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> DD9B0 -> 70FDB)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 37A4E -> 45724)
 	attributes:
 		inputValueParameterName -> modifierExtension
 		kind -> add
-		modificationPath -> ExampleTestResource.modifierExtension
+		modificationPath -> modifierExtension
 
 	node_type: CommandHandlerDefinitionEventFactoryModification
-	node_hash: 72EAA
+	node_hash: 95423
 	node_edges:
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> E450E -> 72EAA)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 16A40 -> 95423)
 	attributes:
-		inputValueParameterName -> contained
+		inputValueParameterName -> extension
 		kind -> add
-		modificationPath -> ExampleTestResource.contained
+		modificationPath -> extension
 
 	node_type: CommandHandlerDefinitionEventFactoryModification
-	node_hash: 86BB8
+	node_hash: 98EC2
 	node_edges:
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> E8179 -> 86BB8)
-	attributes:
-		inputValueParameterName -> structure
-		kind -> add
-		modificationPath -> ExampleTestResource.structure
-
-	node_type: CommandHandlerDefinitionEventFactoryModification
-	node_hash: C071F
-	node_edges:
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> 6A5A1 -> C071F)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 4B593 -> 98EC2)
 	attributes:
 		inputValueParameterName -> implicitRules
 		kind -> add
-		modificationPath -> ExampleTestResource.implicitRules
+		modificationPath -> implicitRules
 
 	node_type: CommandHandlerDefinitionEventFactoryModification
-	node_hash: DE20B
+	node_hash: 9E2DE
 	node_edges:
-		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> 60CB2 -> DE20B)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (51932 -> 58078 -> 9E2DE)
+	attributes:
+		inputValueParameterName -> tag
+		kind -> add
+		modificationPath -> tag
+
+	node_type: CommandHandlerDefinitionEventFactoryModification
+	node_hash: 9E2DE
+	node_edges:
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 58078 -> 9E2DE)
+	attributes:
+		inputValueParameterName -> tag
+		kind -> add
+		modificationPath -> tag
+
+	node_type: CommandHandlerDefinitionEventFactoryModification
+	node_hash: A5196
+	node_edges:
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 49412 -> A5196)
+	attributes:
+		inputValueParameterName -> name
+		kind -> add
+		modificationPath -> name
+
+	node_type: CommandHandlerDefinitionEventFactoryModification
+	node_hash: B029A
+	node_edges:
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 4144C -> B029A)
+	attributes:
+		inputValueParameterName -> structure
+		kind -> add
+		modificationPath -> structure
+
+	node_type: CommandHandlerDefinitionEventFactoryModification
+	node_hash: BC65A
+	node_edges:
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 056BF -> BC65A)
+	attributes:
+		inputValueParameterName -> contained
+		kind -> add
+		modificationPath -> contained
+
+	node_type: CommandHandlerDefinitionEventFactoryModification
+	node_hash: BD30E
+	node_edges:
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 989F7 -> BD30E)
 	attributes:
 		inputValueParameterName -> description
 		kind -> add
-		modificationPath -> ExampleTestResource.description
+		modificationPath -> description
+
+	node_type: CommandHandlerDefinitionEventFactoryModification
+	node_hash: F0318
+	node_edges:
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 6D621 -> F0318)
+	attributes:
+		inputValueParameterName -> text
+		kind -> add
+		modificationPath -> text
+
+	node_type: CommandHandlerDefinitionEventFactoryModification
+	node_hash: F6DF5
+	node_edges:
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> B86E8 -> F6DF5)
+	attributes:
+		inputValueParameterName -> meta
+		kind -> add
+		modificationPath -> meta
 
 	node_type: EventMessageDefinition
 	node_hash: BBC49
 	node_edges:
-		CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (3C29D -> FE71B -> BBC49)
+		CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (51932 -> FE71B -> BBC49)
 	attributes:
 
 	node_type: EventMessageDefinition
 	node_hash: BBC49
 	node_edges:
-		CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (50A73 -> FE71B -> BBC49)
+		CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (5C13E -> FE71B -> BBC49)
 	attributes:
 
 	node_type: OperationDefinition
@@ -204,82 +204,82 @@ edges:
 
 	edge_type: event
 	edge_hash: FE71B
-	CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (3C29D -> FE71B -> BBC49)
+	CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (51932 -> FE71B -> BBC49)
 	attributes:
 
 	edge_type: event
 	edge_hash: FE71B
-	CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (50A73 -> FE71B -> BBC49)
+	CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (5C13E -> FE71B -> BBC49)
 	attributes:
 
 	edge_type: eventFactory
 	edge_hash: 43A0B
-	CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (EC773 -> 43A0B -> 3C29D)
+	CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (EC773 -> 43A0B -> 51932)
 	attributes:
 
 	edge_type: eventFactory
 	edge_hash: 54A69
-	CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (D1A1B -> 54A69 -> 50A73)
+	CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (D1A1B -> 54A69 -> 5C13E)
 	attributes:
 
 	edge_type: modification
-	edge_hash: 5AA4A
-	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> 5AA4A -> 5BB04)
+	edge_hash: 056BF
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 056BF -> BC65A)
 	attributes:
 
 	edge_type: modification
-	edge_hash: 60CB2
-	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> 60CB2 -> DE20B)
+	edge_hash: 16A40
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 16A40 -> 95423)
 	attributes:
 
 	edge_type: modification
-	edge_hash: 6A5A1
-	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> 6A5A1 -> C071F)
+	edge_hash: 37A4E
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 37A4E -> 45724)
 	attributes:
 
 	edge_type: modification
-	edge_hash: A10F7
-	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> A10F7 -> 072AD)
+	edge_hash: 4144C
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 4144C -> B029A)
 	attributes:
 
 	edge_type: modification
-	edge_hash: A52D0
-	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> A52D0 -> 061A2)
+	edge_hash: 49412
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 49412 -> A5196)
 	attributes:
 
 	edge_type: modification
-	edge_hash: C11B2
-	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> C11B2 -> 42544)
+	edge_hash: 4B593
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 4B593 -> 98EC2)
 	attributes:
 
 	edge_type: modification
-	edge_hash: CCEA9
-	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> CCEA9 -> 54D91)
+	edge_hash: 58078
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (51932 -> 58078 -> 9E2DE)
 	attributes:
 
 	edge_type: modification
-	edge_hash: DB6E5
-	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (3C29D -> DB6E5 -> 240E2)
+	edge_hash: 58078
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 58078 -> 9E2DE)
 	attributes:
 
 	edge_type: modification
-	edge_hash: DB6E5
-	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> DB6E5 -> 240E2)
+	edge_hash: 6D621
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 6D621 -> F0318)
 	attributes:
 
 	edge_type: modification
-	edge_hash: DD9B0
-	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> DD9B0 -> 70FDB)
+	edge_hash: 989F7
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 989F7 -> BD30E)
 	attributes:
 
 	edge_type: modification
-	edge_hash: E450E
-	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> E450E -> 72EAA)
+	edge_hash: 9FDD8
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 9FDD8 -> 1DDC6)
 	attributes:
 
 	edge_type: modification
-	edge_hash: E8179
-	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (50A73 -> E8179 -> 86BB8)
+	edge_hash: B86E8
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> B86E8 -> F6DF5)
 	attributes:
 
 	edge_type: operation
