@@ -1,4 +1,4 @@
-Cannot add to aggregate state, because there is no node with id specified at start id parameter name.
+Cannot modify aggregate state, because there is no node with id specified at start id parameter name.
 Operation name: 'AddCodingOnStructureDefinitionJurisdiction'
 Id: 'Jurisdiction/NotExistingJurisdiction'
 Modification kind: 'add'

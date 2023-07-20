@@ -1,4 +1,4 @@
-Cannot add to aggregate state, because the node you are trying to modify should already exist. Please add it first with appropriate command.
+Cannot modify aggregate state, because the node you are trying to modify should already exist. Please add it first with appropriate command.
 Operation name: 'AddElementOnStructureDefinitionDifferential'
 Missing node path: 'differential'
 Modification kind: 'add'

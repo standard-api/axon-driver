@@ -58,7 +58,7 @@ public class TestAggregateDefinitionProvider implements AggregateDefinitionProvi
                               "Event that a Value Set has been changed"
                           ),
                           List.of(
-                              EventFactoryModification.add(
+                              EventFactoryModification.upsert(
                                   "name",
                                   null,
                                   "name"
@@ -68,9 +68,7 @@ public class TestAggregateDefinitionProvider implements AggregateDefinitionProvi
                   )
               ),
               new CommandHandlerDefinitionDTO(
-                  TestOperationDefinitionProvider.provideStatic(
-                      CREATE_IF_MISSING_VALUE_SET_COMMAND
-                  ),
+                  TestOperationDefinitionProvider.provideStatic(CREATE_IF_MISSING_VALUE_SET_COMMAND),
                   CreationPolicy.IF_MISSING,
                   List.of(
                       new CommandHandlerDefinitionDTO.EventFactory(

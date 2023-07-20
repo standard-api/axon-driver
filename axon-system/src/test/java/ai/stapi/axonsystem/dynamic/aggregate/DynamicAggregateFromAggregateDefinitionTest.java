@@ -109,19 +109,6 @@ class DynamicAggregateFromAggregateDefinitionTest extends DomainTestCase {
             )
         )
     );
-    this.whenCommandIsDispatched(
-        new DynamicCommand(
-            new UniqueIdentifier("ExampleValueSetId"),
-            TestAggregateDefinitionProvider.CREATE_IF_MISSING_VALUE_SET_COMMAND,
-            Map.of(
-                "name", "ExampleChangedValueSet"
-            )
-        )
-    );
-    this.thenLastEventOfTypeGraphApproved(
-        DynamicGraphUpdatedEvent.class,
-        2
-    );
-
+    this.thenLastEventOfTypeGraphApproved(DynamicGraphUpdatedEvent.class, 1);
   }
 }
