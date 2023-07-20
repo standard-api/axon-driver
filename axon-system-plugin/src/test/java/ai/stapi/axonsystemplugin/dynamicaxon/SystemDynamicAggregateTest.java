@@ -273,9 +273,10 @@ class SystemDynamicAggregateTest extends DomainTestCase {
   //TODO: uncomment after aggregate definition loaders
 //  @Test
 //  void itCanAddItemToListFieldOfUnionMember() {
+//    var structureId = new UniqueIdentifier("ExampleId");
 //    this.givenCommandIsDispatched(
 //        new DynamicCommand(
-//            new UniqueIdentifier("ExampleId"),
+//            structureId,
 //            "CreateExampleDynamicAggregateTypeWithUnion",
 //            Map.of(
 //                "exampleUnionField", new HashMap<>(Map.of(
@@ -289,7 +290,7 @@ class SystemDynamicAggregateTest extends DomainTestCase {
 //    );
 //    this.whenCommandIsDispatched(
 //        new DynamicCommand(
-//            new UniqueIdentifier("ExampleId"),
+//            structureId,
 //            "AddEventOnExampleDynamicAggregateTypeWithUnionExampleUnionField",
 //            Map.of(
 //                "exampleUnionField", new HashMap<>(Map.of(
@@ -298,7 +299,12 @@ class SystemDynamicAggregateTest extends DomainTestCase {
 //            )
 //        )
 //    );
-//
+//    this.thenExpectedDynamicEventsSaved(
+//        "ElementOnStructureDefinitionDifferentialAdded",
+//        "TypeOnStructureDefinitionDifferentialElementAdded",
+//        "TargetProfileOnStructureDefinitionDifferentialElementTypeAdded"
+//    );
+//    this.thenMergedGraphOfAggregateApproved(structureId);
 //  }
 
   private void givenStructureForElementCreated() throws IOException {

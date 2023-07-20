@@ -3,13 +3,16 @@ package ai.stapi.axonsystemplugin.configuration;
 import ai.stapi.axonsystemplugin.aggregatedefinition.CreateAggregateDefinitionPolicy;
 import ai.stapi.axonsystemplugin.aggregatedefinition.createCRUDCommandHandlers.CreateAddItemCommandHandlerPolicy;
 import ai.stapi.axonsystemplugin.aggregatedefinition.createCRUDCommandHandlers.CreateCreationalCommandHandlerPolicy;
+import ai.stapi.axonsystemplugin.aggregatedefinition.createCRUDCommandHandlers.CreateUpdateCommandHandlerPolicy;
 import ai.stapi.axonsystemplugin.structuredefinition.configure.ConfigureImportedStructureDefinitionPolicy;
 import ai.stapi.graphoperations.graphLoader.inmemory.InMemoryGraphLoaderProvider;
 import ai.stapi.graphsystem.aggregatedefinition.model.ResourceAggregateDefinitionMapper;
 import ai.stapi.graphsystem.aggregatedefinition.model.eventFactory.CreatedOperationEventFactoriesMapper;
 import ai.stapi.graphsystem.aggregatedefinition.model.eventFactory.ItemAddedOperationEventFactoriesMapper;
+import ai.stapi.graphsystem.aggregatedefinition.model.eventFactory.UpdatedOperationEventFactoriesMapper;
 import ai.stapi.graphsystem.operationdefinition.model.resourceStructureTypeOperationsMapper.AddItemOnResourceOperationsMapper;
 import ai.stapi.graphsystem.operationdefinition.model.resourceStructureTypeOperationsMapper.CreationalResourceOperationMapper;
+import ai.stapi.graphsystem.operationdefinition.model.resourceStructureTypeOperationsMapper.UpdateResourceOperationMapper;
 import ai.stapi.schema.structureSchemaMapper.StructureDefinitionToSSMapper;
 import ai.stapi.schema.structureSchemaProvider.StructureSchemaFinder;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -83,6 +86,25 @@ public class DevAxonSystemPluginConfiguration {
         structureDefinitionToSSMapper,
         addItemOnResourceOperationsMapper,
         itemAddedOperationEventMessageMapper
+    );
+  }
+
+  @Bean
+  public CreateUpdateCommandHandlerPolicy createUpdateCommandHandlerPolicy(
+      CommandGateway commandGateway,
+      StructureSchemaFinder structureSchemaFinder,
+      ObjectMapper objectMapper,
+      StructureDefinitionToSSMapper structureDefinitionToSSMapper,
+      UpdateResourceOperationMapper updateResourceOperationMapper,
+      UpdatedOperationEventFactoriesMapper updatedOperationEventFactoriesMapper
+  ) {
+    return new CreateUpdateCommandHandlerPolicy(
+        commandGateway,
+        structureSchemaFinder,
+        objectMapper,
+        structureDefinitionToSSMapper,
+        updateResourceOperationMapper,
+        updatedOperationEventFactoriesMapper
     );
   }
 }
