@@ -150,7 +150,7 @@ class SystemDynamicAggregateTest extends DomainTestCase {
                     "code", "Some Jurisdiction Code"
                 ))
             )),
-            "jurisdictionId", "NotExistingJurisdiction"
+            "jurisdictionId", "Jurisdiction/NotExistingJurisdiction"
         ))
     );
     Executable executable = () -> this.whenCommandIsDispatched(command);
@@ -184,7 +184,7 @@ class SystemDynamicAggregateTest extends DomainTestCase {
                     "code", "Some Jurisdiction Code"
                 ))
             )),
-            "jurisdictionId", jurisdictionId
+            "jurisdictionId", String.format("CodeableConcept/%s", jurisdictionId)
         ))
     );
     this.whenCommandIsDispatched(command);
@@ -235,7 +235,7 @@ class SystemDynamicAggregateTest extends DomainTestCase {
         structureId,
         "AddTypeOnStructureDefinitionDifferentialElement",
         new HashMap<>(Map.of(
-            "elementId", exampleElementId,
+            "elementId", String.format("ElementDefinition/%s", exampleElementId),
             "type", new ArrayList<>(List.of(
                 Map.of(
                     "id", exampleTypeId,
@@ -249,7 +249,7 @@ class SystemDynamicAggregateTest extends DomainTestCase {
         structureId,
         "AddTargetProfileOnStructureDefinitionDifferentialElementType",
         new HashMap<>(Map.of(
-            "typeId", exampleTypeId,
+            "typeId", String.format("ElementDefinitionType/%s", exampleTypeId),
             "targetProfile", new ArrayList<>(List.of(
                 "SomeTargetProfile"
             ))

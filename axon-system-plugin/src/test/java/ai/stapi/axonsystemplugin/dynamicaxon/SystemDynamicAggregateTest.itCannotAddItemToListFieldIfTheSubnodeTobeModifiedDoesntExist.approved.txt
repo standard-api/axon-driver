@@ -1,5 +1,5 @@
 Cannot add to aggregate state, because the node you are trying to modify should already exist. Please add it first with appropriate command.
 Operation name: 'AddElementOnStructureDefinitionDifferential'
-Missing node path: 'StructureDefinition.differential'
+Missing node path: 'differential'
 Modification kind: 'add'
-Modification path: 'StructureDefinition.differential.element'
+Modification path: 'differential.element'

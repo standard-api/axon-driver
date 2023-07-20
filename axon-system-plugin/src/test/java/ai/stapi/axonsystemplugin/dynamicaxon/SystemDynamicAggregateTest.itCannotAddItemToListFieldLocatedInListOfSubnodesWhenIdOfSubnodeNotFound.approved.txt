@@ -1,6 +1,5 @@
-Cannot add to aggregate state, because there is no node with id specified at source path.
+Cannot add to aggregate state, because there is no node with id specified at start id parameter name.
 Operation name: 'AddCodingOnStructureDefinitionJurisdiction'
-Node path: 'StructureDefinition.jurisdiction'
-Id: 'NotExistingJurisdiction'
+Id: 'Jurisdiction/NotExistingJurisdiction'
 Modification kind: 'add'
-Modification path: 'StructureDefinition.jurisdiction.coding'
+Start id parameter name: 'jurisdictionId'
