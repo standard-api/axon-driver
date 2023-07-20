@@ -1,10 +1,11 @@
 nodes:
 	node_type: AggregateDefinition
-	node_hash: 4CA35
+	node_hash: 43A8D
 	node_edges:
-		AggregateDefinition -> command -> CommandHandlerDefinition (4CA35 -> 5EFB4 -> EC773)
-		AggregateDefinition -> command -> CommandHandlerDefinition (4CA35 -> 9A2C1 -> D1A1B)
-		AggregateDefinition -> structure -> StructureDefinition (4CA35 -> 1D20A -> DABF6)
+		AggregateDefinition -> command -> CommandHandlerDefinition (43A8D -> 5EFB4 -> EC773)
+		AggregateDefinition -> command -> CommandHandlerDefinition (43A8D -> 5EFB4 -> EC773)
+		AggregateDefinition -> command -> CommandHandlerDefinition (43A8D -> 9A2C1 -> D1A1B)
+		AggregateDefinition -> structure -> StructureDefinition (43A8D -> 1D20A -> DABF6)
 	attributes:
 		description -> This is a example test aggregate.
 		name -> ExampleTestResource
@@ -12,7 +13,7 @@ nodes:
 	node_type: CommandHandlerDefinition
 	node_hash: D1A1B
 	node_edges:
-		AggregateDefinition -> command -> CommandHandlerDefinition (4CA35 -> 9A2C1 -> D1A1B)
+		AggregateDefinition -> command -> CommandHandlerDefinition (43A8D -> 9A2C1 -> D1A1B)
 		CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (D1A1B -> 54A69 -> 5C13E)
 		CommandHandlerDefinition -> operation -> OperationDefinition (D1A1B -> E728B -> 8103B)
 	attributes:
@@ -21,8 +22,17 @@ nodes:
 	node_type: CommandHandlerDefinition
 	node_hash: EC773
 	node_edges:
-		AggregateDefinition -> command -> CommandHandlerDefinition (4CA35 -> 5EFB4 -> EC773)
+		AggregateDefinition -> command -> CommandHandlerDefinition (43A8D -> 5EFB4 -> EC773)
 		CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (EC773 -> 43A0B -> 51932)
+		CommandHandlerDefinition -> operation -> OperationDefinition (EC773 -> DA318 -> 4DE01)
+	attributes:
+		creationalPolicy -> never
+
+	node_type: CommandHandlerDefinition
+	node_hash: EC773
+	node_edges:
+		AggregateDefinition -> command -> CommandHandlerDefinition (43A8D -> 5EFB4 -> EC773)
+		CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (EC773 -> 43A0B -> 6E9EE)
 		CommandHandlerDefinition -> operation -> OperationDefinition (EC773 -> DA318 -> 4DE01)
 	attributes:
 		creationalPolicy -> never
@@ -53,6 +63,17 @@ nodes:
 		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> B86E8 -> F6DF5)
 	attributes:
 
+	node_type: CommandHandlerDefinitionEventFactory
+	node_hash: 6E9EE
+	node_edges:
+		CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (EC773 -> 43A0B -> 6E9EE)
+		CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (6E9EE -> FE71B -> BBC49)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (6E9EE -> 1293F -> C4E46)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (6E9EE -> 30F6B -> 7DC0E)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (6E9EE -> 9573C -> F909B)
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (6E9EE -> FB708 -> 41A83)
+	attributes:
+
 	node_type: CommandHandlerDefinitionEventFactoryModification
 	node_hash: 1DDC6
 	node_edges:
@@ -63,6 +84,15 @@ nodes:
 		modificationPath -> language
 
 	node_type: CommandHandlerDefinitionEventFactoryModification
+	node_hash: 41A83
+	node_edges:
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (6E9EE -> FB708 -> 41A83)
+	attributes:
+		inputValueParameterName -> implicitRules
+		kind -> upsert
+		modificationPath -> implicitRules
+
+	node_type: CommandHandlerDefinitionEventFactoryModification
 	node_hash: 45724
 	node_edges:
 		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 37A4E -> 45724)
@@ -70,6 +100,15 @@ nodes:
 		inputValueParameterName -> modifierExtension
 		kind -> add
 		modificationPath -> modifierExtension
+
+	node_type: CommandHandlerDefinitionEventFactoryModification
+	node_hash: 7DC0E
+	node_edges:
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (6E9EE -> 30F6B -> 7DC0E)
+	attributes:
+		inputValueParameterName -> description
+		kind -> upsert
+		modificationPath -> description
 
 	node_type: CommandHandlerDefinitionEventFactoryModification
 	node_hash: 95423
@@ -144,6 +183,15 @@ nodes:
 		modificationPath -> description
 
 	node_type: CommandHandlerDefinitionEventFactoryModification
+	node_hash: C4E46
+	node_edges:
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (6E9EE -> 1293F -> C4E46)
+	attributes:
+		inputValueParameterName -> name
+		kind -> upsert
+		modificationPath -> name
+
+	node_type: CommandHandlerDefinitionEventFactoryModification
 	node_hash: F0318
 	node_edges:
 		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 6D621 -> F0318)
@@ -161,6 +209,15 @@ nodes:
 		kind -> add
 		modificationPath -> meta
 
+	node_type: CommandHandlerDefinitionEventFactoryModification
+	node_hash: F909B
+	node_edges:
+		CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (6E9EE -> 9573C -> F909B)
+	attributes:
+		inputValueParameterName -> language
+		kind -> upsert
+		modificationPath -> language
+
 	node_type: EventMessageDefinition
 	node_hash: BBC49
 	node_edges:
@@ -171,6 +228,18 @@ nodes:
 	node_hash: BBC49
 	node_edges:
 		CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (5C13E -> FE71B -> BBC49)
+	attributes:
+
+	node_type: EventMessageDefinition
+	node_hash: BBC49
+	node_edges:
+		CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (6E9EE -> FE71B -> BBC49)
+	attributes:
+
+	node_type: OperationDefinition
+	node_hash: 4DE01
+	node_edges:
+		CommandHandlerDefinition -> operation -> OperationDefinition (EC773 -> DA318 -> 4DE01)
 	attributes:
 
 	node_type: OperationDefinition
@@ -188,18 +257,23 @@ nodes:
 	node_type: StructureDefinition
 	node_hash: DABF6
 	node_edges:
-		AggregateDefinition -> structure -> StructureDefinition (4CA35 -> 1D20A -> DABF6)
+		AggregateDefinition -> structure -> StructureDefinition (43A8D -> 1D20A -> DABF6)
 	attributes:
 
 edges:
 	edge_type: command
 	edge_hash: 5EFB4
-	AggregateDefinition -> command -> CommandHandlerDefinition (4CA35 -> 5EFB4 -> EC773)
+	AggregateDefinition -> command -> CommandHandlerDefinition (43A8D -> 5EFB4 -> EC773)
+	attributes:
+
+	edge_type: command
+	edge_hash: 5EFB4
+	AggregateDefinition -> command -> CommandHandlerDefinition (43A8D -> 5EFB4 -> EC773)
 	attributes:
 
 	edge_type: command
 	edge_hash: 9A2C1
-	AggregateDefinition -> command -> CommandHandlerDefinition (4CA35 -> 9A2C1 -> D1A1B)
+	AggregateDefinition -> command -> CommandHandlerDefinition (43A8D -> 9A2C1 -> D1A1B)
 	attributes:
 
 	edge_type: event
@@ -212,9 +286,19 @@ edges:
 	CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (5C13E -> FE71B -> BBC49)
 	attributes:
 
+	edge_type: event
+	edge_hash: FE71B
+	CommandHandlerDefinitionEventFactory -> event -> EventMessageDefinition (6E9EE -> FE71B -> BBC49)
+	attributes:
+
 	edge_type: eventFactory
 	edge_hash: 43A0B
 	CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (EC773 -> 43A0B -> 51932)
+	attributes:
+
+	edge_type: eventFactory
+	edge_hash: 43A0B
+	CommandHandlerDefinition -> eventFactory -> CommandHandlerDefinitionEventFactory (EC773 -> 43A0B -> 6E9EE)
 	attributes:
 
 	edge_type: eventFactory
@@ -228,8 +312,18 @@ edges:
 	attributes:
 
 	edge_type: modification
+	edge_hash: 1293F
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (6E9EE -> 1293F -> C4E46)
+	attributes:
+
+	edge_type: modification
 	edge_hash: 16A40
 	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 16A40 -> 95423)
+	attributes:
+
+	edge_type: modification
+	edge_hash: 30F6B
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (6E9EE -> 30F6B -> 7DC0E)
 	attributes:
 
 	edge_type: modification
@@ -268,6 +362,11 @@ edges:
 	attributes:
 
 	edge_type: modification
+	edge_hash: 9573C
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (6E9EE -> 9573C -> F909B)
+	attributes:
+
+	edge_type: modification
 	edge_hash: 989F7
 	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> 989F7 -> BD30E)
 	attributes:
@@ -282,6 +381,16 @@ edges:
 	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (5C13E -> B86E8 -> F6DF5)
 	attributes:
 
+	edge_type: modification
+	edge_hash: FB708
+	CommandHandlerDefinitionEventFactory -> modification -> CommandHandlerDefinitionEventFactoryModification (6E9EE -> FB708 -> 41A83)
+	attributes:
+
+	edge_type: operation
+	edge_hash: DA318
+	CommandHandlerDefinition -> operation -> OperationDefinition (EC773 -> DA318 -> 4DE01)
+	attributes:
+
 	edge_type: operation
 	edge_hash: DA318
 	CommandHandlerDefinition -> operation -> OperationDefinition (EC773 -> DA318 -> 4DE01)
@@ -294,5 +403,5 @@ edges:
 
 	edge_type: structure
 	edge_hash: 1D20A
-	AggregateDefinition -> structure -> StructureDefinition (4CA35 -> 1D20A -> DABF6)
+	AggregateDefinition -> structure -> StructureDefinition (43A8D -> 1D20A -> DABF6)
 	attributes:

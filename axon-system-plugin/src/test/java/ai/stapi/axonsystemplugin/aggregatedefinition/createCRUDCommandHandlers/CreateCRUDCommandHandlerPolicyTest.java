@@ -40,6 +40,9 @@ class CreateCRUDCommandHandlerPolicyTest extends DomainTestCase {
         "CommandOnAggregateDefinitionAdded",
         "OperationDefinitionCreated",
         "EventMessageDefinitionCreated",
+        "CommandOnAggregateDefinitionAdded",
+        "OperationDefinitionCreated",
+        "EventMessageDefinitionCreated",
         "CommandOnAggregateDefinitionAdded"
     );
     this.thenMergedGraphOfAggregateApproved(expectedAggregateIdentifier);
