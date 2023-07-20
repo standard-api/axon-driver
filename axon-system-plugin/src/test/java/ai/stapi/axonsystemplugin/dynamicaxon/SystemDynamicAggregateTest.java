@@ -1,6 +1,7 @@
 package ai.stapi.axonsystemplugin.dynamicaxon;
 
 import ai.stapi.graphsystem.aggregategraphstatemodifier.exceptions.CannotAddToAggregateState;
+import ai.stapi.graphsystem.aggregategraphstatemodifier.exceptions.CannotModifyAggregateState;
 import ai.stapi.graphsystem.messaging.command.DynamicCommand;
 import ai.stapi.graphsystem.messaging.event.DynamicGraphUpdatedEvent;
 import ai.stapi.graphsystem.structuredefinition.command.importStructureDefinitionFromSource.ImportStructureDefinition;
@@ -54,7 +55,7 @@ class SystemDynamicAggregateTest extends DomainTestCase {
         ))
     );
     Executable executable = () -> this.whenCommandIsDispatched(command);
-    this.thenExceptionMessageApproved(CannotAddToAggregateState.class, executable);
+    this.thenExceptionMessageApproved(CannotModifyAggregateState.class, executable);
   }
 
   @Test
@@ -154,7 +155,7 @@ class SystemDynamicAggregateTest extends DomainTestCase {
         ))
     );
     Executable executable = () -> this.whenCommandIsDispatched(command);
-    this.thenExceptionMessageApproved(CannotAddToAggregateState.class, executable);
+    this.thenExceptionMessageApproved(CannotModifyAggregateState.class, executable);
   }
 
   @Test

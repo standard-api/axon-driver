@@ -18,7 +18,7 @@
           "source": "Organization.extension"
         }
       ],
-      "targetProfileReference": []
+      "targetProfileRef": []
     },
     {
       "name": "address",
@@ -31,7 +31,7 @@
           "source": "Organization.address"
         }
       ],
-      "targetProfileReference": []
+      "targetProfileRef": []
     },
     {
       "name": "type",
@@ -44,7 +44,7 @@
           "source": "Organization.type"
         }
       ],
-      "targetProfileReference": []
+      "targetProfileRef": []
     },
     {
       "name": "name",
@@ -57,7 +57,7 @@
           "source": "Organization.name"
         }
       ],
-      "targetProfileReference": []
+      "targetProfileRef": []
     },
     {
       "name": "levelString",
@@ -70,7 +70,7 @@
           "source": "Organization.level"
         }
       ],
-      "targetProfileReference": []
+      "targetProfileRef": []
     },
     {
       "name": "levelInteger",
@@ -83,7 +83,7 @@
           "source": "Organization.level"
         }
       ],
-      "targetProfileReference": []
+      "targetProfileRef": []
     },
     {
       "name": "telecom",
@@ -96,7 +96,7 @@
           "source": "Organization.telecom"
         }
       ],
-      "targetProfileReference": []
+      "targetProfileRef": []
     }
   ],
   "name": "Create Organization",

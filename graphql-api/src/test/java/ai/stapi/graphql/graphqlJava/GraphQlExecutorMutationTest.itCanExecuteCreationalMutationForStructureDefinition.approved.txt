@@ -1,11 +1,24 @@
 nodes:
 	node_type: ElementDefinition
-	node_hash: 54C0E
+	node_hash: 94153
 	node_edges:
-		ElementDefinition -> type -> ElementDefinitionType (54C0E -> 4ADD1 -> 1B113)
-		ElementDefinition -> type -> ElementDefinitionType (54C0E -> 4ADD1 -> 1B113)
-		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 7B170 -> 54C0E)
-		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 7B170 -> 54C0E)
+		StructureDefinition -> baseDefinitionRef -> StructureDefinition (8FA13 -> AB561 -> 825FF)
+		StructureDefinition -> differential -> StructureDefinitionDifferential (8FA13 -> 8C339 -> 12F17)
+		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 1760B -> 94153)
+	attributes:
+		definition -> This is long description of an example entity (in most common language), or aggregate (in domain-driven design language), or resource (in HL7 FHIR standard). It will appear in graphQL documentation.
+		isModifier -> false
+		max -> *
+		min -> 0
+		mustSupport -> false
+		path -> MyEntity
+		short -> his is long description of MyEntity
+
+	node_type: ElementDefinition
+	node_hash: D197D
+	node_edges:
+		ElementDefinition -> type -> ElementDefinitionType (D197D -> 4ADD1 -> 1B113)
+		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 7B170 -> D197D)
 	attributes:
 		definition -> A name associated with the MyEntity.
 		isModifier -> false
@@ -17,63 +30,32 @@ nodes:
 		requirements -> Need to use the name as the label of the MyEntity.
 		short -> Name used for the MyEntity resource
 
-	node_type: ElementDefinition
-	node_hash: A32E8
-	node_edges:
-		StructureDefinition -> baseDefinitionRef -> StructureDefinition (E6888 -> AB561 -> 552A9)
-		StructureDefinition -> baseDefinitionRef -> StructureDefinition (E6888 -> AB561 -> 552A9)
-		StructureDefinition -> differential -> StructureDefinitionDifferential (E6888 -> 8C339 -> 12F17)
-		StructureDefinition -> differential -> StructureDefinitionDifferential (E6888 -> 8C339 -> 12F17)
-		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 1760B -> A32E8)
-		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 1760B -> A32E8)
-	attributes:
-		definition -> This is long description of an example entity (in most common language), or aggregate (in domain-driven design language), or resource (in HL7 FHIR standard). It will appear in graphQL documentation.
-		isModifier -> false
-		max -> *
-		min -> 0
-		mustSupport -> false
-		path -> MyEntity
-		short -> his is long description of MyEntity
-
 	node_type: ElementDefinitionType
 	node_hash: 1B113
 	node_edges:
-		ElementDefinition -> type -> ElementDefinitionType (54C0E -> 4ADD1 -> 1B113)
-		ElementDefinitionType -> codeRef -> StructureDefinition (1B113 -> 0E763 -> 233E3)
-	attributes:
-		code -> string
-
-	node_type: ElementDefinitionType
-	node_hash: 1B113
-	node_edges:
-		ElementDefinition -> type -> ElementDefinitionType (54C0E -> 4ADD1 -> 1B113)
-		ElementDefinitionType -> codeRef -> StructureDefinition (1B113 -> 0E763 -> 233E3)
+		ElementDefinition -> type -> ElementDefinitionType (D197D -> 4ADD1 -> 1B113)
+		ElementDefinitionType -> codeRef -> StructureDefinition (1B113 -> 0E763 -> 65CF7)
 	attributes:
 		code -> string
 
 	node_type: StructureDefinition
-	node_hash: 233E3
+	node_hash: 65CF7
 	node_edges:
-		ElementDefinitionType -> codeRef -> StructureDefinition (1B113 -> 0E763 -> 233E3)
-		ElementDefinitionType -> codeRef -> StructureDefinition (1B113 -> 0E763 -> 233E3)
+		ElementDefinitionType -> codeRef -> StructureDefinition (1B113 -> 0E763 -> 65CF7)
 	attributes:
 
 	node_type: StructureDefinition
-	node_hash: 552A9
+	node_hash: 825FF
 	node_edges:
-		StructureDefinition -> baseDefinitionRef -> StructureDefinition (E6888 -> AB561 -> 552A9)
-		StructureDefinition -> baseDefinitionRef -> StructureDefinition (E6888 -> AB561 -> 552A9)
+		StructureDefinition -> baseDefinitionRef -> StructureDefinition (8FA13 -> AB561 -> 825FF)
 	attributes:
 
 	node_type: StructureDefinition
-	node_hash: E6888
+	node_hash: 8FA13
 	node_edges:
-		StructureDefinition -> baseDefinitionRef -> StructureDefinition (E6888 -> AB561 -> 552A9)
-		StructureDefinition -> baseDefinitionRef -> StructureDefinition (E6888 -> AB561 -> 552A9)
-		StructureDefinition -> differential -> StructureDefinitionDifferential (E6888 -> 8C339 -> 12F17)
-		StructureDefinition -> differential -> StructureDefinitionDifferential (E6888 -> 8C339 -> 12F17)
-		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 1760B -> A32E8)
-		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 1760B -> A32E8)
+		StructureDefinition -> baseDefinitionRef -> StructureDefinition (8FA13 -> AB561 -> 825FF)
+		StructureDefinition -> differential -> StructureDefinitionDifferential (8FA13 -> 8C339 -> 12F17)
+		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 1760B -> 94153)
 	attributes:
 		abstract -> false
 		baseDefinition -> http://hl7.org/fhir/StructureDefinition/DomainResource
@@ -89,76 +71,38 @@ nodes:
 	node_type: StructureDefinitionDifferential
 	node_hash: 12F17
 	node_edges:
-		StructureDefinition -> differential -> StructureDefinitionDifferential (E6888 -> 8C339 -> 12F17)
-		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 1760B -> A32E8)
-		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 7B170 -> 54C0E)
-	attributes:
-
-	node_type: StructureDefinitionDifferential
-	node_hash: 12F17
-	node_edges:
-		StructureDefinition -> differential -> StructureDefinitionDifferential (E6888 -> 8C339 -> 12F17)
-		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 1760B -> A32E8)
-		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 7B170 -> 54C0E)
+		StructureDefinition -> differential -> StructureDefinitionDifferential (8FA13 -> 8C339 -> 12F17)
+		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 1760B -> 94153)
+		StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 7B170 -> D197D)
 	attributes:
 
 edges:
 	edge_type: baseDefinitionRef
 	edge_hash: AB561
-	StructureDefinition -> baseDefinitionRef -> StructureDefinition (E6888 -> AB561 -> 552A9)
-	attributes:
-
-	edge_type: baseDefinitionRef
-	edge_hash: AB561
-	StructureDefinition -> baseDefinitionRef -> StructureDefinition (E6888 -> AB561 -> 552A9)
+	StructureDefinition -> baseDefinitionRef -> StructureDefinition (8FA13 -> AB561 -> 825FF)
 	attributes:
 
 	edge_type: codeRef
 	edge_hash: 0E763
-	ElementDefinitionType -> codeRef -> StructureDefinition (1B113 -> 0E763 -> 233E3)
-	attributes:
-
-	edge_type: codeRef
-	edge_hash: 0E763
-	ElementDefinitionType -> codeRef -> StructureDefinition (1B113 -> 0E763 -> 233E3)
+	ElementDefinitionType -> codeRef -> StructureDefinition (1B113 -> 0E763 -> 65CF7)
 	attributes:
 
 	edge_type: differential
 	edge_hash: 8C339
-	StructureDefinition -> differential -> StructureDefinitionDifferential (E6888 -> 8C339 -> 12F17)
-	attributes:
-
-	edge_type: differential
-	edge_hash: 8C339
-	StructureDefinition -> differential -> StructureDefinitionDifferential (E6888 -> 8C339 -> 12F17)
+	StructureDefinition -> differential -> StructureDefinitionDifferential (8FA13 -> 8C339 -> 12F17)
 	attributes:
 
 	edge_type: element
 	edge_hash: 1760B
-	StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 1760B -> A32E8)
-	attributes:
-
-	edge_type: element
-	edge_hash: 1760B
-	StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 1760B -> A32E8)
+	StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 1760B -> 94153)
 	attributes:
 
 	edge_type: element
 	edge_hash: 7B170
-	StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 7B170 -> 54C0E)
-	attributes:
-
-	edge_type: element
-	edge_hash: 7B170
-	StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 7B170 -> 54C0E)
+	StructureDefinitionDifferential -> element -> ElementDefinition (12F17 -> 7B170 -> D197D)
 	attributes:
 
 	edge_type: type
 	edge_hash: 4ADD1
-	ElementDefinition -> type -> ElementDefinitionType (54C0E -> 4ADD1 -> 1B113)
-	attributes:
-
-	edge_type: type
-	edge_hash: 4ADD1
-	ElementDefinition -> type -> ElementDefinitionType (54C0E -> 4ADD1 -> 1B113)
+	ElementDefinition -> type -> ElementDefinitionType (D197D -> 4ADD1 -> 1B113)
 	attributes:

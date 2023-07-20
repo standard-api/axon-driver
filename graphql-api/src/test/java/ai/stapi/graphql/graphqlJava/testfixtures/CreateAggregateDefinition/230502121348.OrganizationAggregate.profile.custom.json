@@ -17,32 +17,32 @@
             {
               "kind": "add",
               "inputValueParameterName": "extension",
-              "modificationPath": "Organization.extension"
+              "modificationPath": "extension"
             },
             {
               "kind": "add",
               "inputValueParameterName": "address",
-              "modificationPath": "Organization.address"
+              "modificationPath": "address"
             },
             {
               "kind": "add",
               "inputValueParameterName": "type",
-              "modificationPath": "Organization.type"
+              "modificationPath": "type"
             },
             {
               "kind": "add",
               "inputValueParameterName": "name",
-              "modificationPath": "Organization.name"
+              "modificationPath": "name"
             },
             {
               "kind": "add",
               "inputValueParameterName": "level",
-              "modificationPath": "Organization.level"
+              "modificationPath": "level"
             },
             {
               "kind": "add",
               "inputValueParameterName": "telecom",
-              "modificationPath": "Organization.telecom"
+              "modificationPath": "telecom"
             }
           ],
           "id": "0cb49601-e601-4125-942b-f2d9b9bca43d"
