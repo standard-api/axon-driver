@@ -33,7 +33,7 @@
     </issueManagement>
 
     <properties>
-        <stapi.core.version>0.1.7</stapi.core.version>
+        <stapi.core.version>0.2.0</stapi.core.version>
         <java.version>17</java.version>
         <maven-dependency-plugin.version>3.5.0</maven-dependency-plugin.version>
         <surefire-junit-platform.version>2.22.2</surefire-junit-platform.version>
