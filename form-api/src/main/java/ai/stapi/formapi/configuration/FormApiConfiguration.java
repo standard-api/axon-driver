@@ -1,12 +1,10 @@
 package ai.stapi.formapi.configuration;
 
-import ai.stapi.formapi.formmapper.FormDataLoader;
-import ai.stapi.formapi.formmapper.JsonSchemaMapper;
-import ai.stapi.formapi.formmapper.NullFormDataLoader;
-import ai.stapi.formapi.formmapper.NullUISchemaLoader;
-import ai.stapi.formapi.formmapper.UISchemaLoader;
+import ai.stapi.formapi.formmapper.*;
+import ai.stapi.graphsystem.aggregatedefinition.model.AggregateDefinitionProvider;
 import ai.stapi.graphsystem.operationdefinition.model.OperationDefinitionStructureTypeMapper;
 import ai.stapi.schema.structureSchemaProvider.StructureSchemaFinder;
+import org.axonframework.config.Configuration;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -32,8 +30,11 @@ public class FormApiConfiguration {
 
   @Bean
   @ConditionalOnMissingBean(FormDataLoader.class)
-  public FormDataLoader formDataLoader() {
-    return new NullFormDataLoader();
+  public AggregateRepositoryFormDataLoader formDataLoader(
+      Configuration configuration,
+      AggregateDefinitionProvider aggregateDefinitionProvider
+  ) {
+    return new AggregateRepositoryFormDataLoader(configuration, aggregateDefinitionProvider, eventFactoryModificationTraverser, operationDefinitionStructureTypeMapper);
   }
 
 }

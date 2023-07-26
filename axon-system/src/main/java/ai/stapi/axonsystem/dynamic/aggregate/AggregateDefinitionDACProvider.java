@@ -29,7 +29,6 @@ public class AggregateDefinitionDACProvider implements DynamicAggregateConfigura
   private final SpanFactory spanFactory;
   private final Configuration configuration;
   private final ParameterResolverFactory parameterResolverFactory;
-  
   private final CommandTargetResolver commandTargetResolver;
 
   public AggregateDefinitionDACProvider(

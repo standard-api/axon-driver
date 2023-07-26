@@ -8,8 +8,6 @@ public interface FormDataLoader {
   Map<String, Object> load(
       OperationDefinitionDTO operationDefinitionDTO,
       String resourceId,
-      String startModificationNodeIdAndType
-
+      Map<String, Object> possibleStartIds
   );
-
 }

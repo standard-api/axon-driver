@@ -4,7 +4,7 @@ import ai.stapi.graphsystem.aggregatedefinition.model.AggregateDefinitionDTO;
 import ai.stapi.graphsystem.aggregatedefinition.model.AggregateDefinitionProvider;
 import ai.stapi.graphsystem.aggregatedefinition.model.CommandHandlerDefinitionDTO;
 import ai.stapi.graphsystem.aggregatedefinition.model.CommandHandlerDefinitionDTO.CreationPolicy;
-import ai.stapi.graphsystem.aggregatedefinition.model.CommandHandlerDefinitionDTO.EventFactory.EventFactoryModification;
+import ai.stapi.graphsystem.aggregatedefinition.model.EventFactoryModification;
 import ai.stapi.graphsystem.eventdefinition.EventMessageDefinitionData;
 import ai.stapi.schema.structuredefinition.StructureDefinitionId;
 import java.util.List;

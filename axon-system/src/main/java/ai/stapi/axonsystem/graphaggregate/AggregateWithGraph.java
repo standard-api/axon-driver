@@ -16,4 +16,8 @@ public abstract class AggregateWithGraph {
     );
     this.inMemoryGraphRepository.merge(event.getSynchronizedGraph());
   }
+
+  public InMemoryGraphRepository getInMemoryGraphRepository() {
+    return inMemoryGraphRepository;
+  }
 }

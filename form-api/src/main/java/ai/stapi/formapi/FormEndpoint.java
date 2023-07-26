@@ -16,7 +16,7 @@ public class FormEndpoint {
 
   private final JsonSchemaMapper jsonSchemaMapper;
   private final UISchemaLoader uiSchemaLoader;
-  private FormDataLoader formDataLoader;
+  private final FormDataLoader formDataLoader;
   private final OperationDefinitionProvider operationDefinitionProvider;
 
   public FormEndpoint(
@@ -39,7 +39,7 @@ public class FormEndpoint {
   public Map<String, Object> form(
       @PathVariable String operationId,
       @PathVariable(required = false) String resourceId,
-      @RequestParam(required = false) String at,
+      @RequestParam(required = false) Map<String, Object> possibleStartIds,
       @RequestParam(required = false, defaultValue = "true") Boolean omitExtensions
   ) {
     var operation = this.operationDefinitionProvider.provide(operationId);
@@ -49,5 +49,20 @@ public class FormEndpoint {
         "uiSchema", this.uiSchemaLoader.load(operation),
         "formData", this.formDataLoader.load(operation, resourceId, at)
     );
+    var formSchema = new HashMap<String, Object>(Map.of(
+        "formSchema", this.jsonSchemaMapper.map(operation, omitExtension),
+        "uiSchema", this.uiSchemaLoader.load(operation)
+    ));
+    if (resourceId != null) {
+      formSchema.put(
+          "formData",
+          this.formDataLoader.load(
+              operation,
+              resourceId,
+              possibleStartIds
+          )
+      );
+    }
+    return formSchema;
   }
 }

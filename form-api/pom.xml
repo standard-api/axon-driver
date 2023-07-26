@@ -14,8 +14,8 @@
     <dependencies>
         <dependency>
             <groupId>ai.stapi</groupId>
-            <artifactId>graph-system</artifactId>
-            <version>${stapi.core.version}</version>
+            <artifactId>axon-system</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -34,8 +34,8 @@
         </dependency>
         <dependency>
             <groupId>ai.stapi</groupId>
-            <artifactId>base-test</artifactId>
-            <version>${stapi.core.version}</version>
+            <artifactId>axon-test</artifactId>
+            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
