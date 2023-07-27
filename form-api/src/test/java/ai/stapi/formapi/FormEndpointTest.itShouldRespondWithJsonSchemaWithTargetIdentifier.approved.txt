@@ -1,0 +1,65 @@
+{
+  "formData" : { },
+  "formSchema" : {
+    "description" : "Generated command for adding modification(CommandHandlerDefinitionEventFactoryModification) on AggregateDefinition Aggregate",
+    "title" : "AddModificationOnAggregateDefinitionCommandEventFactory",
+    "type" : "object",
+    "definitions" : {
+      "CommandHandlerDefinitionEventFactoryModification" : {
+        "description" : "Type for anonymous field contained in CommandHandlerDefinition",
+        "title" : "Modification",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "description" : "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
+            "title" : "Id",
+            "type" : "string"
+          },
+          "startIdParameterName" : {
+            "description" : "The parameter name on operation which will be used as starting node for modification.",
+            "title" : "Start Id Parameter Name",
+            "type" : "string"
+          },
+          "destinationIndexParameterName" : {
+            "description" : "The parameter name on operation which will be used as destination index for insert and move",
+            "title" : "Destination Index Parameter Name",
+            "type" : "string"
+          },
+          "inputValueParameterName" : {
+            "description" : "The parameter name on operation which will be used as input value for modification.",
+            "title" : "Input Value Parameter Name",
+            "type" : "string"
+          },
+          "kind" : {
+            "description" : "The kind of modification to be made. add | replace | move | remove | insert",
+            "title" : "Kind",
+            "type" : "string"
+          },
+          "modificationPath" : {
+            "description" : "The path on aggregate structure where the modification will be applied.",
+            "title" : "Modification Path",
+            "type" : "string"
+          }
+        },
+        "required" : [ "kind", "modificationPath" ]
+      }
+    },
+    "properties" : {
+      "eventFactoryId" : {
+        "description" : "",
+        "title" : "Event Factory Id",
+        "type" : "string"
+      },
+      "modification" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/definitions/CommandHandlerDefinitionEventFactoryModification",
+          "description" : "",
+          "title" : "Modification"
+        }
+      }
+    },
+    "required" : [ "eventFactoryId", "modification" ]
+  },
+  "uiSchema" : { }
+}
