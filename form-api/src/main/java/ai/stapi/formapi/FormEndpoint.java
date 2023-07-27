@@ -39,7 +39,7 @@ public class FormEndpoint {
   public Map<String, Object> form(
       @PathVariable String operationId,
       @PathVariable(required = false) String resourceId,
-      @RequestParam(required = false) String startModificationNodeIdAndType,
+      @RequestParam(required = false) String at,
       @RequestParam(required = false, defaultValue = "true") Boolean omitExtensions
   ) {
     var operation = this.operationDefinitionProvider.provide(operationId);
@@ -47,7 +47,7 @@ public class FormEndpoint {
     return Map.of(
         "formSchema", this.jsonSchemaMapper.map(operation, omitExtensions),
         "uiSchema", this.uiSchemaLoader.load(operation),
-        "formData", this.formDataLoader.load(operation, resourceId, startModificationNodeIdAndType)
+        "formData", this.formDataLoader.load(operation, resourceId, at)
     );
   }
 }
