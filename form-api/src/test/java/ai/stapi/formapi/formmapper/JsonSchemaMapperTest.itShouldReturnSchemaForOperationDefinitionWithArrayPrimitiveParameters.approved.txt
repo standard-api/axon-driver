@@ -8,7 +8,7 @@
       "type" : "array",
       "items" : {
         "description" : "",
-        "title" : "integer",
+        "title" : "exampleArrayIntegerField",
         "type" : "number"
       }
     },
@@ -16,7 +16,7 @@
       "type" : "array",
       "items" : {
         "description" : "",
-        "title" : "string",
+        "title" : "exampleArrayStringField",
         "type" : "string"
       }
     }

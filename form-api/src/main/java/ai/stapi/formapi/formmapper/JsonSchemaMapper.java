@@ -100,16 +100,30 @@ public class JsonSchemaMapper {
   }
 
   private ObjectSchema getObjectSchema(
-      ComplexStructureType complexStructureType,
+      ComplexStructureType structureType,
       FormMapperContext formMapperContext,
       Boolean omitExtension
   ) {
-    var builder = new ObjectSchema.Builder();
-    builder.title(complexStructureType.getDefinitionType());
-    builder.description(
-        complexStructureType.getDescription()
+    return this.getObjectSchemaWithTitle(
+        structureType,
+        formMapperContext,
+        omitExtension,
+        structureType.getDefinitionType()
     );
-    complexStructureType.getAllFields()
+  }
+
+  private ObjectSchema getObjectSchemaWithTitle(
+      ComplexStructureType structureType,
+      FormMapperContext formMapperContext, 
+      Boolean omitExtension,
+      String title
+  ) {
+    var builder = new ObjectSchema.Builder();
+    builder.title(title);
+    builder.description(
+        structureType.getDescription()
+    );
+    structureType.getAllFields()
         .values()
         .stream()
         .filter(field -> !omitExtension || (!field.getName().equals("extension") &&
@@ -168,18 +182,25 @@ public class JsonSchemaMapper {
     if (type.isPrimitiveType()) {
       return this.getPrimitiveSchema(typeName, fieldDefinition);
     } else if (type.isReference()) {
-      return new StringSchema.Builder().title(typeName).description(fieldDefinition.getDescription()).build();
+      return new StringSchema.Builder().title(fieldDefinition.getName()).description(
+          fieldDefinition.getDescription()).build();
     } else {
       if (!formMapperContext.hasType(typeName)) {
         formMapperContext.addType(typeName);
         var structureType = (ComplexStructureType) this.structureSchemaFinder.getStructureType(
-            typeName);
-        var objectSchema = this.getObjectSchema(structureType, formMapperContext, omitExtension);
+            typeName
+        );
+        var objectSchema = this.getObjectSchemaWithTitle(
+            structureType,
+            formMapperContext,
+            omitExtension,
+            fieldDefinition.getName()
+        );
         formMapperContext.putSchema(typeName, objectSchema);
       }
       return new ReferenceSchema.Builder()
           .refValue(String.format("#/definitions/%s", typeName))
-          .title(typeName)
+          .title(fieldDefinition.getName())
           .description(fieldDefinition.getDescription())
           .build();
     }
@@ -188,19 +209,19 @@ public class JsonSchemaMapper {
   private Schema getPrimitiveSchema(String type, FieldDefinition fieldDefinition) {
     if (STRING_LIKE_PRIMITIVES.contains(type)) {
       return new StringSchema.Builder()
-          .title(type)
+          .title(fieldDefinition.getName())
           .description(fieldDefinition.getDescription())
           .build();
     }
     if (NUMBER_LIKE_PRIMITIVES.contains(type)) {
       return new NumberSchema.Builder()
-          .title(type)
+          .title(fieldDefinition.getName())
           .description(fieldDefinition.getDescription())
           .build();
     }
     if (type.equals(BooleanAttributeValue.SERIALIZATION_TYPE)) {
       return new BooleanSchema.Builder()
-          .title(type)
+          .title(fieldDefinition.getName())
           .description(fieldDefinition.getDescription())
           .build();
     }
@@ -220,10 +241,12 @@ public class JsonSchemaMapper {
     );
   }
 
-  private Map<String, Object> printSchema(ObjectSchema schema, FormMapperContext formMapperContext) {
+  private Map<String, Object> printSchema(ObjectSchema schema,
+                                          FormMapperContext formMapperContext) {
     try {
-      var map = new ObjectMapper().readValue(schema.toString(), new TypeReference<HashMap<String, Object>>() {
-      });
+      var map = new ObjectMapper().readValue(
+          schema.toString(), new TypeReference<HashMap<String, Object>>() {
+          });
       var definitionsMap = new HashMap<String, Object>();
       formMapperContext.getComplexTypeSchemas().forEach(
           (typeName, definition) -> definitionsMap.put(typeName, this.printDefinition(definition))
@@ -237,8 +260,9 @@ public class JsonSchemaMapper {
 
   private Map<String, Object> printDefinition(ObjectSchema schema) {
     try {
-      return new ObjectMapper().readValue(schema.toString(), new TypeReference<HashMap<String, Object>>() {
-      });
+      return new ObjectMapper().readValue(
+          schema.toString(), new TypeReference<HashMap<String, Object>>() {
+          });
     } catch (JsonProcessingException e) {
       throw new CannotPrintJSONSchema(e);
     }

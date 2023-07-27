@@ -6,7 +6,7 @@
   "properties" : {
     "exampleReferenceField" : {
       "description" : "",
-      "title" : "StructureDefinition",
+      "title" : "exampleReferenceField",
       "type" : "string"
     }
   },
