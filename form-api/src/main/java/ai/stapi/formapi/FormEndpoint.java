@@ -3,8 +3,11 @@ package ai.stapi.formapi;
 import ai.stapi.formapi.formmapper.FormDataLoader;
 import ai.stapi.formapi.formmapper.JsonSchemaMapper;
 import ai.stapi.formapi.formmapper.UISchemaLoader;
-import ai.stapi.graphsystem.operationdefinition.model.OperationDefinitionProvider;
+
+import java.util.HashMap;
 import java.util.Map;
+
+import ai.stapi.graphsystem.operationdefinition.model.OperationDefinitionProvider;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,18 +42,13 @@ public class FormEndpoint {
   public Map<String, Object> form(
       @PathVariable String operationId,
       @PathVariable(required = false) String resourceId,
-      @RequestParam(required = false) Map<String, Object> possibleStartIds,
+      @RequestParam(required = false) Map<String, Object> targets,
       @RequestParam(required = false, defaultValue = "true") Boolean omitExtensions
   ) {
     var operation = this.operationDefinitionProvider.provide(operationId);
-
-    return Map.of(
-        "formSchema", this.jsonSchemaMapper.map(operation, omitExtensions),
-        "uiSchema", this.uiSchemaLoader.load(operation),
-        "formData", this.formDataLoader.load(operation, resourceId, at)
-    );
+    
     var formSchema = new HashMap<String, Object>(Map.of(
-        "formSchema", this.jsonSchemaMapper.map(operation, omitExtension),
+        "formSchema", this.jsonSchemaMapper.map(operation, omitExtensions),
         "uiSchema", this.uiSchemaLoader.load(operation)
     ));
     if (resourceId != null) {
@@ -59,7 +57,7 @@ public class FormEndpoint {
           this.formDataLoader.load(
               operation,
               resourceId,
-              possibleStartIds
+              targets
           )
       );
     }
