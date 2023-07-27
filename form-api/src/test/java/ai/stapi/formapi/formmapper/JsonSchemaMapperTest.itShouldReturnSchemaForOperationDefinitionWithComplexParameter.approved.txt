@@ -5,12 +5,12 @@
   "definitions" : {
     "TestObjectWithoutParent" : {
       "description" : "Test Object Without Parent",
-      "title" : "TestObjectWithoutParent",
+      "title" : "exampleObjectField",
       "type" : "object",
       "properties" : {
         "exampleStringField" : {
           "description" : "Example String Field",
-          "title" : "string",
+          "title" : "exampleStringField",
           "type" : "string"
         }
       },
@@ -21,7 +21,7 @@
     "exampleObjectField" : {
       "$ref" : "#/definitions/TestObjectWithoutParent",
       "description" : "",
-      "title" : "TestObjectWithoutParent"
+      "title" : "exampleObjectField"
     }
   },
   "required" : [ "exampleObjectField" ]
