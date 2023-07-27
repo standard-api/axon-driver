@@ -35,4 +35,22 @@ class FormEndpointTest extends SchemaIntegrationTestCase {
     this.thenObjectApproved(mapResponse);
   }
 
+
+  @Test
+  public void itShouldNotOmitExtensionsWhenOmitExtensionsIsExplicitlyFalse() throws Exception {
+    var result = this.mockMvc.perform(MockMvcRequestBuilders.get(
+            "/form/CreateStructureDefinition?omitExtensions=false"
+        ))
+        .andDo(print())
+        .andExpect(status().isOk())
+        .andReturn();
+
+    var stringResponse = result.getResponse().getContentAsString();
+    var mapResponse = new ObjectMapper().readValue(
+        stringResponse,
+        new TypeReference<Map<String, Object>>() {}
+    );
+    this.thenObjectApproved(mapResponse);
+  }
+
 }
