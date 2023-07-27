@@ -6,17 +6,17 @@
   "properties" : {
     "exampleBooleanField" : {
       "description" : "",
-      "title" : "exampleBooleanField",
+      "title" : "Example Boolean Field",
       "type" : "boolean"
     },
     "exampleIntegerField" : {
       "description" : "",
-      "title" : "exampleIntegerField",
+      "title" : "Example Integer Field",
       "type" : "number"
     },
     "exampleStringField" : {
       "description" : "",
-      "title" : "exampleStringField",
+      "title" : "Example String Field",
       "type" : "string"
     }
   },

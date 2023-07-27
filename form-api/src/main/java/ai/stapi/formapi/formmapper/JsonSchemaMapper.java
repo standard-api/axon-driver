@@ -114,7 +114,7 @@ public class JsonSchemaMapper {
 
   private ObjectSchema getObjectSchemaWithTitle(
       ComplexStructureType structureType,
-      FormMapperContext formMapperContext, 
+      FormMapperContext formMapperContext,
       Boolean omitExtension,
       String title
   ) {
@@ -181,47 +181,51 @@ public class JsonSchemaMapper {
     var typeName = type.getType();
     if (type.isPrimitiveType()) {
       return this.getPrimitiveSchema(typeName, fieldDefinition);
-    } else if (type.isReference()) {
-      return new StringSchema.Builder().title(fieldDefinition.getName()).description(
-          fieldDefinition.getDescription()).build();
     } else {
-      if (!formMapperContext.hasType(typeName)) {
-        formMapperContext.addType(typeName);
-        var structureType = (ComplexStructureType) this.structureSchemaFinder.getStructureType(
-            typeName
-        );
-        var objectSchema = this.getObjectSchemaWithTitle(
-            structureType,
-            formMapperContext,
-            omitExtension,
-            fieldDefinition.getName()
-        );
-        formMapperContext.putSchema(typeName, objectSchema);
+      var title = this.formatMachineReadableToHumanReadable(fieldDefinition.getName());
+      if (type.isReference()) {
+        return new StringSchema.Builder().title(title).description(
+            fieldDefinition.getDescription()).build();
+      } else {
+        if (!formMapperContext.hasType(typeName)) {
+          formMapperContext.addType(typeName);
+          var structureType = (ComplexStructureType) this.structureSchemaFinder.getStructureType(
+              typeName
+          );
+          var objectSchema = this.getObjectSchemaWithTitle(
+              structureType,
+              formMapperContext,
+              omitExtension,
+              title
+          );
+          formMapperContext.putSchema(typeName, objectSchema);
+        }
+        return new ReferenceSchema.Builder()
+            .refValue(String.format("#/definitions/%s", typeName))
+            .title(title)
+            .description(fieldDefinition.getDescription())
+            .build();
       }
-      return new ReferenceSchema.Builder()
-          .refValue(String.format("#/definitions/%s", typeName))
-          .title(fieldDefinition.getName())
-          .description(fieldDefinition.getDescription())
-          .build();
     }
   }
 
   private Schema getPrimitiveSchema(String type, FieldDefinition fieldDefinition) {
+    var title = this.formatMachineReadableToHumanReadable(fieldDefinition.getName());
     if (STRING_LIKE_PRIMITIVES.contains(type)) {
       return new StringSchema.Builder()
-          .title(fieldDefinition.getName())
+          .title(title)
           .description(fieldDefinition.getDescription())
           .build();
     }
     if (NUMBER_LIKE_PRIMITIVES.contains(type)) {
       return new NumberSchema.Builder()
-          .title(fieldDefinition.getName())
+          .title(title)
           .description(fieldDefinition.getDescription())
           .build();
     }
     if (type.equals(BooleanAttributeValue.SERIALIZATION_TYPE)) {
       return new BooleanSchema.Builder()
-          .title(fieldDefinition.getName())
+          .title(title)
           .description(fieldDefinition.getDescription())
           .build();
     }
@@ -266,6 +270,34 @@ public class JsonSchemaMapper {
     } catch (JsonProcessingException e) {
       throw new CannotPrintJSONSchema(e);
     }
+  }
+
+  private static String formatMachineReadableToHumanReadable(String string) {
+    StringBuilder result = new StringBuilder();
+    for (int i = 0; i < string.length(); i++) {
+      if (shouldInsertSpace(string, i)) {
+        result.append(" ");
+      }
+      result.append(i == 0 ? Character.toUpperCase(string.charAt(i)) : string.charAt(i));
+    }
+    return result.toString();
+  }
+
+  private static boolean shouldInsertSpace(String string, int index) {
+    return isUppercase(string, index) 
+        && (isStartOfWord(string, index) || isEndOfAcronym(string, index));
+  }
+
+  private static boolean isUppercase(String string, int index) {
+    return Character.isUpperCase(string.charAt(index));
+  }
+
+  private static boolean isStartOfWord(String string, int index) {
+    return index > 0 && !isUppercase(string, index - 1);
+  }
+
+  private static boolean isEndOfAcronym(String string, int index) {
+    return index < string.length() - 1 && !isUppercase(string, index + 1);
   }
 
   private static class FormMapperContext {

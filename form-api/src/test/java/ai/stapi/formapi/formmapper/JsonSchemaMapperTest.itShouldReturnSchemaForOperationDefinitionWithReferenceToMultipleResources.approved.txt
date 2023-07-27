@@ -7,11 +7,11 @@
     "exampleMultipleReferenceField" : {
       "oneOf" : [ {
         "description" : "",
-        "title" : "exampleMultipleReferenceField",
+        "title" : "Example Multiple Reference Field",
         "type" : "string"
       }, {
         "description" : "",
-        "title" : "exampleMultipleReferenceField",
+        "title" : "Example Multiple Reference Field",
         "type" : "string"
       } ]
     }
