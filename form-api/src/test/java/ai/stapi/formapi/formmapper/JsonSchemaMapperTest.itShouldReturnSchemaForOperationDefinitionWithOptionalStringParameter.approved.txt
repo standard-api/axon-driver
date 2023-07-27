@@ -6,7 +6,7 @@
   "properties" : {
     "exampleStringField" : {
       "description" : "",
-      "title" : "exampleStringField",
+      "title" : "Example String Field",
       "type" : "string"
     }
   }

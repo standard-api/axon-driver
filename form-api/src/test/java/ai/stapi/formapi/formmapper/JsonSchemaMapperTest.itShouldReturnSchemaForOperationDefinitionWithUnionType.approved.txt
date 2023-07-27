@@ -5,34 +5,34 @@
   "definitions" : {
     "BoxedInteger" : {
       "description" : "Base StructureDefinition for integer Type: A whole number",
-      "title" : "exampleUnionField",
+      "title" : "Example Union Field",
       "type" : "object",
       "properties" : {
         "id" : {
           "description" : "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "title" : "id",
+          "title" : "Id",
           "type" : "string"
         },
         "value" : {
           "description" : "Primitive value for BoxedInteger",
-          "title" : "value",
+          "title" : "Value",
           "type" : "number"
         }
       }
     },
     "BoxedString" : {
       "description" : "Base StructureDefinition for string Type: A sequence of Unicode characters",
-      "title" : "exampleUnionField",
+      "title" : "Example Union Field",
       "type" : "object",
       "properties" : {
         "id" : {
           "description" : "Unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces.",
-          "title" : "id",
+          "title" : "Id",
           "type" : "string"
         },
         "value" : {
           "description" : "Primitive value for BoxedString",
-          "title" : "value",
+          "title" : "Value",
           "type" : "string"
         }
       }
@@ -43,11 +43,11 @@
       "oneOf" : [ {
         "$ref" : "#/definitions/BoxedInteger",
         "description" : "",
-        "title" : "exampleUnionField"
+        "title" : "Example Union Field"
       }, {
         "$ref" : "#/definitions/BoxedString",
         "description" : "",
-        "title" : "exampleUnionField"
+        "title" : "Example Union Field"
       } ]
     }
   },

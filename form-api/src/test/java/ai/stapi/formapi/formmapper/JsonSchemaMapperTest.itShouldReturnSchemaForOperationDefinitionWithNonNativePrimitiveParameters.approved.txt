@@ -6,82 +6,82 @@
   "properties" : {
     "exampleIdField" : {
       "description" : "",
-      "title" : "exampleIdField",
+      "title" : "Example Id Field",
       "type" : "string"
     },
     "exampleBase64Field" : {
       "description" : "",
-      "title" : "exampleBase64Field",
+      "title" : "Example Base64 Field",
       "type" : "string"
     },
     "exampleCanonicalField" : {
       "description" : "",
-      "title" : "exampleCanonicalField",
+      "title" : "Example Canonical Field",
       "type" : "string"
     },
     "exampleCodeField" : {
       "description" : "",
-      "title" : "exampleCodeField",
+      "title" : "Example Code Field",
       "type" : "string"
     },
     "exampleDateField" : {
       "description" : "",
-      "title" : "exampleDateField",
+      "title" : "Example Date Field",
       "type" : "string"
     },
     "exampleDateTimeField" : {
       "description" : "",
-      "title" : "exampleDateTimeField",
+      "title" : "Example Date Time Field",
       "type" : "string"
     },
     "exampleDecimalField" : {
       "description" : "",
-      "title" : "exampleDecimalField",
+      "title" : "Example Decimal Field",
       "type" : "number"
     },
     "exampleInstantField" : {
       "description" : "",
-      "title" : "exampleInstantField",
+      "title" : "Example Instant Field",
       "type" : "string"
     },
     "exampleMarkdownField" : {
       "description" : "",
-      "title" : "exampleMarkdownField",
+      "title" : "Example Markdown Field",
       "type" : "string"
     },
     "exampleOidField" : {
       "description" : "",
-      "title" : "exampleOidField",
+      "title" : "Example Oid Field",
       "type" : "string"
     },
     "examplePositiveIntegerField" : {
       "description" : "",
-      "title" : "examplePositiveIntegerField",
+      "title" : "Example Positive Integer Field",
       "type" : "number"
     },
     "exampleUnsignedIntegerField" : {
       "description" : "",
-      "title" : "exampleUnsignedIntegerField",
+      "title" : "Example Unsigned Integer Field",
       "type" : "number"
     },
     "exampleUriField" : {
       "description" : "",
-      "title" : "exampleUriField",
+      "title" : "Example Uri Field",
       "type" : "string"
     },
     "exampleUrlField" : {
       "description" : "",
-      "title" : "exampleUrlField",
+      "title" : "Example Url Field",
       "type" : "string"
     },
     "exampleUuidField" : {
       "description" : "",
-      "title" : "exampleUuidField",
+      "title" : "Example Uuid Field",
       "type" : "string"
     },
     "exampleXhtmlField" : {
       "description" : "",
-      "title" : "exampleXhtmlField",
+      "title" : "Example Xhtml Field",
       "type" : "string"
     }
   },
