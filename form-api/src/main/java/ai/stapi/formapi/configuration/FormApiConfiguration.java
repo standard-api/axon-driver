@@ -1,7 +1,10 @@
 package ai.stapi.formapi.configuration;
 
 import ai.stapi.formapi.formmapper.*;
+import ai.stapi.graphoperations.graphLoader.inmemory.InMemoryGraphLoaderProvider;
 import ai.stapi.graphsystem.aggregatedefinition.model.AggregateDefinitionProvider;
+import ai.stapi.graphsystem.aggregategraphstatemodifier.EventFactoryModificationTraverser;
+import ai.stapi.graphsystem.aggregategraphstatemodifier.EventModificatorOgmProvider;
 import ai.stapi.graphsystem.operationdefinition.model.OperationDefinitionStructureTypeMapper;
 import ai.stapi.schema.structureSchemaProvider.StructureSchemaFinder;
 import org.axonframework.config.Configuration;
@@ -32,9 +35,20 @@ public class FormApiConfiguration {
   @ConditionalOnMissingBean(FormDataLoader.class)
   public AggregateRepositoryFormDataLoader formDataLoader(
       Configuration configuration,
-      AggregateDefinitionProvider aggregateDefinitionProvider
+      AggregateDefinitionProvider aggregateDefinitionProvider,
+      EventFactoryModificationTraverser eventFactoryModificationTraverser,
+      EventModificatorOgmProvider eventModificatorOgmProvider,
+      OperationDefinitionStructureTypeMapper operationDefinitionStructureTypeMapper,
+      InMemoryGraphLoaderProvider inMemoryGraphLoaderProvider
   ) {
-    return new AggregateRepositoryFormDataLoader(configuration, aggregateDefinitionProvider, eventFactoryModificationTraverser, operationDefinitionStructureTypeMapper);
+    return new AggregateRepositoryFormDataLoader(
+        configuration, 
+        aggregateDefinitionProvider, 
+        eventFactoryModificationTraverser, 
+        eventModificatorOgmProvider, 
+        operationDefinitionStructureTypeMapper,
+        inMemoryGraphLoaderProvider
+    );
   }
 
 }
