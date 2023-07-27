@@ -3,17 +3,11 @@ package ai.stapi.formapi.formmapper;
 import ai.stapi.axonsystem.dynamic.aggregate.DynamicAggregate;
 import ai.stapi.axonsystem.graphaggregate.AggregateWithGraph;
 import ai.stapi.formapi.formmapper.exceptions.CannotLoadFormData;
-import ai.stapi.graphoperations.graphLanguage.graphDescription.graphDescriptionBuilder.GraphDescriptionBuilder;
-import ai.stapi.graphoperations.graphLanguage.graphDescription.specific.positive.NodeDescriptionParameters;
-import ai.stapi.graphoperations.graphLanguage.graphDescription.specific.query.NodeQueryGraphDescription;
-import ai.stapi.graphoperations.graphLoader.inmemory.InMemoryGraphLoaderProvider;
-import ai.stapi.graphoperations.graphLoader.search.SearchQueryParameters;
-import ai.stapi.graphoperations.objectGraphLanguage.objectGraphMappingBuilder.GenericOGMBuilder;
+import ai.stapi.graphoperations.dagtoobjectconverter.DAGToObjectConverter;
 import ai.stapi.graphsystem.aggregatedefinition.model.AggregateDefinitionDTO;
 import ai.stapi.graphsystem.aggregatedefinition.model.AggregateDefinitionProvider;
 import ai.stapi.graphsystem.aggregatedefinition.model.exceptions.CannotProvideAggregateDefinition;
 import ai.stapi.graphsystem.aggregategraphstatemodifier.EventFactoryModificationTraverser;
-import ai.stapi.graphsystem.aggregategraphstatemodifier.EventModificatorOgmProvider;
 import ai.stapi.graphsystem.operationdefinition.model.OperationDefinitionDTO;
 import ai.stapi.graphsystem.operationdefinition.model.OperationDefinitionStructureTypeMapper;
 import ai.stapi.identity.UniqueIdentifier;
@@ -33,24 +27,22 @@ public class AggregateRepositoryFormDataLoader implements FormDataLoader {
     private final Repository<DynamicAggregate> repository;
     private final AggregateDefinitionProvider aggregateDefinitionProvider;
     private final EventFactoryModificationTraverser eventFactoryModificationTraverser;
-    private final EventModificatorOgmProvider eventModificatorOgmProvider;
     private final OperationDefinitionStructureTypeMapper operationDefinitionStructureTypeMapper;
-    private final InMemoryGraphLoaderProvider inMemoryGraphLoaderProvider;
+
+    private final DAGToObjectConverter dagToObjectConverter;
 
     public AggregateRepositoryFormDataLoader(
         Configuration configuration,
         AggregateDefinitionProvider aggregateDefinitionProvider,
         EventFactoryModificationTraverser eventFactoryModificationTraverser,
-        EventModificatorOgmProvider eventModificatorOgmProvider,
         OperationDefinitionStructureTypeMapper operationDefinitionStructureTypeMapper,
-        InMemoryGraphLoaderProvider inMemoryGraphLoaderProvider
+        DAGToObjectConverter dagToObjectConverter
     ) {
         this.repository = configuration.repository(DynamicAggregate.class);
         this.aggregateDefinitionProvider = aggregateDefinitionProvider;
         this.eventFactoryModificationTraverser = eventFactoryModificationTraverser;
-        this.eventModificatorOgmProvider = eventModificatorOgmProvider;
         this.operationDefinitionStructureTypeMapper = operationDefinitionStructureTypeMapper;
-        this.inMemoryGraphLoaderProvider = inMemoryGraphLoaderProvider;
+        this.dagToObjectConverter = dagToObjectConverter;
     }
 
     @Override
@@ -94,7 +86,6 @@ public class AggregateRepositoryFormDataLoader implements FormDataLoader {
         var operationStructureType = this.operationDefinitionStructureTypeMapper.map(operationDefinitionDTO);
 
         var state = aggregate.invoke(AggregateWithGraph::getInMemoryGraphRepository);
-        var loader = this.inMemoryGraphLoaderProvider.provide(state);
         var data = new HashMap<String, Object>();
         commandHandlerDefinition
             .getEventFactory()
@@ -118,27 +109,13 @@ public class AggregateRepositoryFormDataLoader implements FormDataLoader {
                     operationStructureType,
                     modification
                 );
-                var inputValueSchema = operationStructureType.getField(inputValueParameterName);
                 var fieldName = splitPath[splitPath.length - 1];
-                var ogm = this.eventModificatorOgmProvider.getOgm(
-                    modifiedNode,
-                    inputValueSchema,
-                    fieldName
-                );
-                var graphDescription = GenericOGMBuilder.getCompositeGraphDescriptionFromOgm(ogm);
-                var filtered = new GraphDescriptionBuilder().filterOutNullDescriptions(graphDescription);
-                var nodeQueryDescription = new NodeQueryGraphDescription(
-                    (NodeDescriptionParameters) filtered.getParameters(),
-                    SearchQueryParameters.from(),
-                    filtered.getChildGraphDescriptions()
-                );
-                var output = loader.get(
-                    modifiedNode.getId(),
-                    nodeQueryDescription,
-                    Map.class
-                );
-                var value = output.getData().get(fieldName);
-                data.put(inputValueParameterName, value);
+                var object = this.dagToObjectConverter.convert(modifiedNode);
+                var value = object.get(fieldName);
+                if (value != null) {
+                    data.put(inputValueParameterName, value);
+                }
+
             });
 
         return data;
