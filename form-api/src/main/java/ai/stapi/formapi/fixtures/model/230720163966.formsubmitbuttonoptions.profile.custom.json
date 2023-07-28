@@ -1,0 +1,93 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "FormSubmitButtonOptions",
+  "type": "FormSubmitButtonOptions",
+  "url": "http://stapi.ai/fhir/StructureDefinition/FormSubmitButtonOptions",
+  "name": "FormSubmitButtonOptions",
+  "kind": "complex-type",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "status": "active",
+  "publisher": "Stapi.ai: standard-api",
+  "description": "UI options for submit button rendering",
+  "differential": {
+    "element": [
+      {
+        "id": "FormSubmitButtonOptions",
+        "path": "FormSubmitButtonOptions",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "FormSubmitButtonOptions.props",
+        "path": "FormSubmitButtonOptions.props",
+        "short": "Properties of the submit button",
+        "definition": "Properties for customizing the submit button.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "BackboneElement"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormSubmitButtonOptions.props.disabled",
+        "path": "FormSubmitButtonOptions.props.disabled",
+        "short": "Disabled status of the submit button",
+        "definition": "If true, the submit button will be disabled.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormSubmitButtonOptions.props.className",
+        "path": "FormSubmitButtonOptions.props.className",
+        "short": "CSS class name of the submit button",
+        "definition": "The CSS class name for the submit button.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormSubmitButtonOptions.norender",
+        "path": "FormSubmitButtonOptions.norender",
+        "short": "Render submit button option",
+        "definition": "If true, the submit button will not be rendered.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormSubmitButtonOptions.submitText",
+        "path": "FormSubmitButtonOptions.submitText",
+        "short": "Submit button text option",
+        "definition": "The text to display on the submit button.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      }
+    ]
+  }
+}

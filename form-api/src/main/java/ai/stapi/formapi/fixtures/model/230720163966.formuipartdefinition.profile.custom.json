@@ -1,0 +1,54 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "FormUIPartDefinition",
+  "type": "FormUIPartDefinition",
+  "url": "http://stapi.ai/fhir/StructureDefinition/FormUIPartDefinition",
+  "name": "FormUIPartDefinition",
+  "kind": "complex-type",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "status": "active",
+  "publisher": "Stapi.ai: standard-api",
+  "description": "UI options for form rendering",
+  "differential": {
+    "element": [
+      {
+        "id": "FormUIPartDefinition",
+        "path": "Element",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "FormUIPartDefinition.options",
+        "path": "FormUIPartDefinition.options",
+        "short": "Options for UI part",
+        "definition": "Options for customizing the UI part - in case on primitive.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "UIOptions"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIPartDefinition.formReference",
+        "path": "FormUIPartDefinition.formReference",
+        "short": "Reference to FormUIDefinition",
+        "definition": "Reference to the FormUIDefinition that this UI part is associated with - in case of complex type.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "Reference",
+            "targetProfile": [
+              "http://example.com/fhir/StructureDefinition/FormUIDefinition"
+            ]
+          }
+        ],
+        "isModifier": false
+      }
+    ]
+  }
+}
