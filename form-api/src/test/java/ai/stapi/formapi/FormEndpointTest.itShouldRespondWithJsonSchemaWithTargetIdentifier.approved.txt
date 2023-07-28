@@ -51,6 +51,7 @@
         "type" : "string"
       },
       "modification" : {
+        "title" : "List of Modification",
         "type" : "array",
         "items" : {
           "$ref" : "#/definitions/CommandHandlerDefinitionEventFactoryModification",

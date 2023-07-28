@@ -5,6 +5,7 @@
   "definitions" : { },
   "properties" : {
     "exampleArrayIntegerField" : {
+      "title" : "List of Example Array Integer Field",
       "type" : "array",
       "items" : {
         "description" : "",
@@ -13,6 +14,7 @@
       }
     },
     "exampleArrayStringField" : {
+      "title" : "List of Example Array String Field",
       "type" : "array",
       "items" : {
         "description" : "",
