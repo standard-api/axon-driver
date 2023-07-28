@@ -9,7 +9,7 @@ public class NullFormDataLoader implements FormDataLoader {
   public Map<String, Object> load(
       OperationDefinitionDTO operationDefinitionDTO,
       String resourceId,
-      String startModificationNodeIdAndType
+      Map<String, Object> possibleStartIds
   ) {
     return Map.of();
   }

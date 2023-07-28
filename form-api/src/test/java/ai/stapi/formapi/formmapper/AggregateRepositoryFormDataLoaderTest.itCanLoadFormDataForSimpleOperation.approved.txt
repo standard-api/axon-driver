@@ -1,0 +1,4 @@
+{
+  "implicitRules" : "http://some.uri.com",
+  "language" : "cz"
+}

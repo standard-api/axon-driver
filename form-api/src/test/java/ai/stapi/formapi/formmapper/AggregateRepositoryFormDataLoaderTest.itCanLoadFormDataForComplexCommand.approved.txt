@@ -1,0 +1,25 @@
+{
+  "abstract" : false,
+  "description" : "Example Description",
+  "kind" : "complex-type",
+  "status" : "draft",
+  "type" : "SomeStructureId",
+  "url" : "http://some.url/SomeStructureId",
+  "differential" : {
+    "id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+    "element" : [ {
+      "id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+      "comment" : "Example field description",
+      "definition" : "Example field description",
+      "max" : "1",
+      "min" : 1,
+      "path" : "SomeStructureId.exampleField",
+      "short" : "Example field description",
+      "type" : [ {
+        "id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        "code" : "string",
+        "targetProfile" : [ ]
+      } ]
+    } ]
+  }
+}
