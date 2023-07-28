@@ -6,13 +6,10 @@ import ai.stapi.formapi.formmapper.UISchemaLoader;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import ai.stapi.graphsystem.operationdefinition.model.OperationDefinitionProvider;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FormEndpoint {
@@ -34,30 +31,28 @@ public class FormEndpoint {
     this.operationDefinitionProvider = operationDefinitionProvider;
   }
 
-  @GetMapping({
-      "/form/{operationId}",
-      "/form/{operationId}/{resourceId}",
-  })
+  @PostMapping("/form/{operationId}")
   @ResponseBody
   public Map<String, Object> form(
       @PathVariable String operationId,
-      @PathVariable(required = false) String resourceId,
-      @RequestParam(required = false) Map<String, Object> targets,
-      @RequestParam(required = false, defaultValue = "true") Boolean omitExtensions
+      @RequestBody(required = false) FormRequest formRequest
   ) {
     var operation = this.operationDefinitionProvider.provide(operationId);
-    
+    var finalRequest = Objects.requireNonNullElseGet(
+        formRequest, 
+        () -> new FormRequest(null, null, null)
+    );
     var formSchema = new HashMap<String, Object>(Map.of(
-        "formSchema", this.jsonSchemaMapper.map(operation, omitExtensions),
+        "formSchema", this.jsonSchemaMapper.map(operation, finalRequest.getOmitExtension()),
         "uiSchema", this.uiSchemaLoader.load(operation)
     ));
-    if (resourceId != null) {
+    if (finalRequest.getResourceId() != null) {
       formSchema.put(
           "formData",
           this.formDataLoader.load(
               operation,
-              resourceId,
-              targets
+              finalRequest.getResourceId(),
+              finalRequest.getTargets()
           )
       );
     }

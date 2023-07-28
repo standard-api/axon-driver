@@ -4,11 +4,9 @@ import ai.stapi.formapi.formmapper.exceptions.CannotLoadFormData;
 import ai.stapi.graphsystem.messaging.command.DynamicCommand;
 import ai.stapi.graphsystem.operationdefinition.model.OperationDefinitionDTO;
 import ai.stapi.graphsystem.operationdefinition.model.OperationDefinitionProvider;
-import ai.stapi.graphsystem.structuredefinition.command.importStructureDefinitionFromSource.ImportStructureDefinition;
 import ai.stapi.identity.UniqueIdentifier;
 import ai.stapi.schema.structuredefinition.RawStructureDefinitionData;
 import ai.stapi.schema.structuredefinition.RawStructureDefinitionElementDefinition;
-import ai.stapi.schema.structuredefinition.StructureDefinitionId;
 import ai.stapi.test.domain.DomainTestCase;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -89,11 +87,11 @@ class AggregateRepositoryFormDataLoaderTest extends DomainTestCase {
     @Test
     void itCanLoadFormDataForComplexCommand() {
         var operationId = "CreateStructureDefinition";
-        var resourceId = "SomeId";
+        var resourceId = "SomeStructureId";
         var data = new ObjectMapper().convertValue(
             new RawStructureDefinitionData(
                 resourceId,
-                "http://some.url/SomeId",
+                "http://some.url/SomeStructureId",
                 "draft",
                 "Example Description",
                 "complex-type",
@@ -103,7 +101,7 @@ class AggregateRepositoryFormDataLoaderTest extends DomainTestCase {
                 new RawStructureDefinitionData.Differential(
                     new ArrayList<>(List.of(
                         new RawStructureDefinitionElementDefinition(
-                            "ExampleComplex.exampleField",
+                            "SomeStructureId.exampleField",
                             1,
                             "1",
                             "Example field description",

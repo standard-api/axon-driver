@@ -3,8 +3,8 @@
   "description" : "Example Description",
   "kind" : "complex-type",
   "status" : "draft",
-  "type" : "SomeId",
-  "url" : "http://some.url/SomeId",
+  "type" : "SomeStructureId",
+  "url" : "http://some.url/SomeStructureId",
   "differential" : {
     "id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
     "element" : [ {
@@ -13,7 +13,7 @@
       "definition" : "Example field description",
       "max" : "1",
       "min" : 1,
-      "path" : "ExampleComplex.exampleField",
+      "path" : "SomeStructureId.exampleField",
       "short" : "Example field description",
       "type" : [ {
         "id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
