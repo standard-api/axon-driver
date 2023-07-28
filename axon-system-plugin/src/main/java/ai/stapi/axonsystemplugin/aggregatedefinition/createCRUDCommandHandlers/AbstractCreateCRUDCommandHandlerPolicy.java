@@ -223,7 +223,7 @@ public abstract class AbstractCreateCRUDCommandHandlerPolicy {
         new UniqueIdentifier(resourceId),
         "AddModificationOnAggregateDefinitionCommandEventFactory",
         Map.of(
-            "eventFactoryId", result.getEventFactoryId(),
+            "eventFactoryId", String.format("AggregateDefinitionCommandEventFactory/%s", result.getEventFactoryId()),
             "modification", this.objectMapper.convertValue(
                 result.getEventFactoryModifications(),
                 new TypeReference<List<HashMap<String, Object>>>() {
