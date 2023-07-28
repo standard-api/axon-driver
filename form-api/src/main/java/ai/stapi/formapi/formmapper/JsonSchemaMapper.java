@@ -239,9 +239,12 @@ public class JsonSchemaMapper {
       Boolean omitExtension
   ) {
     var itemSchema = this.getSchema(field, formMapperContext, omitExtension);
+    String title = String.format("List of %s", formatMachineReadableToHumanReadable(field.getName()));
     builder.addPropertySchema(
         field.getName(),
-        new ArraySchema.Builder().allItemSchema(itemSchema).build()
+        new ArraySchema.Builder()
+            .allItemSchema(itemSchema)
+            .title(title).build()
     );
   }
 

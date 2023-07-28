@@ -376,6 +376,7 @@
             "type" : "string"
           },
           "coding" : {
+            "title" : "List of Coding",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/Coding",
@@ -460,6 +461,7 @@
             "type" : "string"
           },
           "codeFilter" : {
+            "title" : "List of Code Filter",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/DataRequirementCodeFilter",
@@ -468,6 +470,7 @@
             }
           },
           "dateFilter" : {
+            "title" : "List of Date Filter",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/DataRequirementDateFilter",
@@ -481,6 +484,7 @@
             "type" : "number"
           },
           "mustSupport" : {
+            "title" : "List of Must Support",
             "type" : "array",
             "items" : {
               "description" : "Indicates that specific elements of the type are referenced by the knowledge module and must be supported by the consumer in order to obtain an effective evaluation. This does not mean that a value is required for this element, only that the consuming system must understand the element and be able to provide values for it if they are available. 
@@ -491,6 +495,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
             }
           },
           "profile" : {
+            "title" : "List of Profile",
             "type" : "array",
             "items" : {
               "description" : "The profile of the required data, specified as the uri of the profile definition.",
@@ -499,6 +504,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
             }
           },
           "sort" : {
+            "title" : "List of Sort",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/DataRequirementSort",
@@ -530,6 +536,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
             "type" : "string"
           },
           "code" : {
+            "title" : "List of Code",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/Coding",
@@ -662,6 +669,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
             "type" : "string"
           },
           "alias" : {
+            "title" : "List of Alias",
             "type" : "array",
             "items" : {
               "description" : "Identifies additional names by which this element might also be known.",
@@ -680,6 +688,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
             "title" : "Binding"
           },
           "code" : {
+            "title" : "List of Code",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/Coding",
@@ -693,6 +702,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
             "type" : "string"
           },
           "condition" : {
+            "title" : "List of Condition",
             "type" : "array",
             "items" : {
               "description" : "A reference to an invariant that may make additional statements about the cardinality or value in the instance.",
@@ -701,6 +711,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
             }
           },
           "constraint" : {
+            "title" : "List of Constraint",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/ElementDefinitionConstraint",
@@ -834,6 +845,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
             "type" : "string"
           },
           "example" : {
+            "title" : "List of Example",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/ElementDefinitionExample",
@@ -977,6 +989,7 @@ The value of mustSupport SHALL be a FHIRPath resolveable on the type of the Data
             "type" : "string"
           },
           "mapping" : {
+            "title" : "List of Mapping",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/ElementDefinitionMapping",
@@ -1485,6 +1498,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             } ]
           },
           "representation" : {
+            "title" : "List of Representation",
             "type" : "array",
             "items" : {
               "description" : "Codes that define how this element is represented in instances, when the deviation varies from the normal case.",
@@ -1518,6 +1532,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             "title" : "Slicing"
           },
           "type" : {
+            "title" : "List of Type",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/ElementDefinitionType",
@@ -1814,6 +1829,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             "type" : "string"
           },
           "discriminator" : {
+            "title" : "List of Discriminator",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/ElementDefinitionSlicingDiscriminator",
@@ -1868,6 +1884,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             "type" : "string"
           },
           "aggregation" : {
+            "title" : "List of Aggregation",
             "type" : "array",
             "items" : {
               "description" : "If the type is a reference to another resource, how the resource is or can be aggregated - is it a contained resource, or a reference, and if the context is a bundle, is it included in the bundle.",
@@ -1886,6 +1903,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             "type" : "string"
           },
           "profile" : {
+            "title" : "List of Profile",
             "type" : "array",
             "items" : {
               "description" : "Identifies a profile structure or implementation Guide that applies to the datatype this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the type SHALL conform to at least one profile defined in the implementation guide.",
@@ -1894,6 +1912,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             }
           },
           "targetProfile" : {
+            "title" : "List of Target Profile",
             "type" : "array",
             "items" : {
               "description" : "Used when the type is \"Reference\" or \"canonical\", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide.",
@@ -1902,6 +1921,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             }
           },
           "targetProfileRef" : {
+            "title" : "List of Target Profile Ref",
             "type" : "array",
             "items" : {
               "description" : "Used when the type is \"Reference\" or \"canonical\", and identifies a profile structure or implementation Guide that applies to the target of the reference this element refers to. If any profiles are specified, then the content must conform to at least one of them. The URL can be a local reference - to a contained StructureDefinition, or a reference to another StructureDefinition or Implementation Guide by a canonical URL. When an implementation guide is specified, the target resource SHALL conform to at least one profile defined in the implementation guide.",
@@ -1976,6 +1996,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             "type" : "string"
           },
           "profile" : {
+            "title" : "List of Profile",
             "type" : "array",
             "items" : {
               "description" : "A list of profiles (references to [StructureDefinition](structuredefinition.html#) resources) that this resource claims to conform to. The URL is a reference to [StructureDefinition.url](structuredefinition-definitions.html#StructureDefinition.url).",
@@ -1984,6 +2005,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             }
           },
           "security" : {
+            "title" : "List of Security",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/Coding",
@@ -1997,6 +2019,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             "type" : "string"
           },
           "tag" : {
+            "title" : "List of Tag",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/Coding",
@@ -2219,6 +2242,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             "type" : "string"
           },
           "element" : {
+            "title" : "List of Element",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/ElementDefinition",
@@ -2273,6 +2297,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             "type" : "string"
           },
           "element" : {
+            "title" : "List of Element",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/ElementDefinition",
@@ -2299,6 +2324,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             "title" : "Code"
           },
           "event" : {
+            "title" : "List of Event",
             "type" : "array",
             "items" : {
               "description" : "Identifies specific times when the event occurs.",
@@ -2349,6 +2375,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             "type" : "number"
           },
           "dayOfWeek" : {
+            "title" : "List of Day Of Week",
             "type" : "array",
             "items" : {
               "description" : "If one or more days of week is provided, then the action happens only on the specified day(s).",
@@ -2402,6 +2429,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             "type" : "string"
           },
           "timeOfDay" : {
+            "title" : "List of Time Of Day",
             "type" : "array",
             "items" : {
               "description" : "Specified time of day for action to take place.",
@@ -2410,6 +2438,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             }
           },
           "when" : {
+            "title" : "List of When",
             "type" : "array",
             "items" : {
               "description" : "An approximate time period during the day, potentially linked to an event of daily living that indicates when the action should occur.",
@@ -2435,6 +2464,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
             "title" : "Condition"
           },
           "data" : {
+            "title" : "List of Data",
             "type" : "array",
             "items" : {
               "$ref" : "#/definitions/DataRequirement",
@@ -2521,6 +2551,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
         "type" : "string"
       },
       "contained" : {
+        "title" : "List of Contained",
         "type" : "array",
         "items" : {
           "$ref" : "#/definitions/Resource",
@@ -2529,6 +2560,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
         }
       },
       "context" : {
+        "title" : "List of Context",
         "type" : "array",
         "items" : {
           "$ref" : "#/definitions/StructureDefinitionContext",
@@ -2537,6 +2569,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
         }
       },
       "contextInvariant" : {
+        "title" : "List of Context Invariant",
         "type" : "array",
         "items" : {
           "description" : "",
@@ -2580,6 +2613,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
         "type" : "string"
       },
       "identifier" : {
+        "title" : "List of Identifier",
         "type" : "array",
         "items" : {
           "$ref" : "#/definitions/Identifier",
@@ -2593,6 +2627,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
         "type" : "string"
       },
       "jurisdiction" : {
+        "title" : "List of Jurisdiction",
         "type" : "array",
         "items" : {
           "$ref" : "#/definitions/CodeableConcept",
@@ -2601,6 +2636,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
         }
       },
       "keyword" : {
+        "title" : "List of Keyword",
         "type" : "array",
         "items" : {
           "$ref" : "#/definitions/Coding",
@@ -2619,6 +2655,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
         "type" : "string"
       },
       "mapping" : {
+        "title" : "List of Mapping",
         "type" : "array",
         "items" : {
           "$ref" : "#/definitions/StructureDefinitionMapping",
@@ -2677,6 +2714,7 @@ When pattern[x] is used to constrain a complex object, it means that each proper
         "type" : "string"
       },
       "useContext" : {
+        "title" : "List of Use Context",
         "type" : "array",
         "items" : {
           "$ref" : "#/definitions/UsageContext",
