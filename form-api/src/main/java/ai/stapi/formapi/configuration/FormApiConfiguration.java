@@ -4,6 +4,7 @@ import ai.stapi.formapi.formmapper.*;
 import ai.stapi.graphoperations.dagtoobjectconverter.DAGToObjectConverter;
 import ai.stapi.graphsystem.aggregatedefinition.model.AggregateDefinitionProvider;
 import ai.stapi.graphsystem.aggregategraphstatemodifier.EventFactoryModificationTraverser;
+import ai.stapi.graphsystem.operationdefinition.model.OperationDefinitionProvider;
 import ai.stapi.graphsystem.operationdefinition.model.OperationDefinitionStructureTypeMapper;
 import ai.stapi.schema.structureSchemaProvider.StructureSchemaFinder;
 import org.axonframework.config.Configuration;
@@ -15,6 +16,21 @@ import org.springframework.context.annotation.ComponentScan;
 @AutoConfiguration
 @ComponentScan("ai.stapi.formapi")
 public class FormApiConfiguration {
+  
+  @Bean
+  public FormMapper formMapper(
+      JsonSchemaMapper jsonSchemaMapper,
+      UISchemaLoader uiSchemaLoader,
+      FormDataLoader formDataLoader,
+      OperationDefinitionProvider operationDefinitionProvider
+  ) {
+    return new FormMapper(
+        jsonSchemaMapper,
+        uiSchemaLoader,
+        formDataLoader,
+        operationDefinitionProvider
+    );
+  }
 
   @Bean
   public JsonSchemaMapper jsonSchemaMapper(

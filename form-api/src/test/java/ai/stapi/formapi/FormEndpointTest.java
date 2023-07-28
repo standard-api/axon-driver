@@ -3,8 +3,6 @@ package ai.stapi.formapi;
 import ai.stapi.graphsystem.messaging.command.DynamicCommand;
 import ai.stapi.graphsystem.systemfixtures.model.SystemModelDefinitionsLoader;
 import ai.stapi.identity.UniqueIdentifier;
-import ai.stapi.schema.structuredefinition.RawStructureDefinitionData;
-import ai.stapi.schema.structuredefinition.RawStructureDefinitionElementDefinition;
 import ai.stapi.test.domain.DomainTestCase;
 import ai.stapi.test.schemaintegration.StructureDefinitionScope;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -14,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

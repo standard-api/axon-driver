@@ -1,4 +1,5 @@
 {
+  "formData" : { },
   "formSchema" : {
     "description" : "Generated command for creating StructureDefinition with all fields.",
     "title" : "CreateStructureDefinition",

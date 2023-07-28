@@ -1,0 +1,114 @@
+{
+  "formData" : {
+    "abstract" : false,
+    "description" : "Example Description",
+    "kind" : "complex-type",
+    "status" : "draft",
+    "type" : "ExampleStructure",
+    "url" : "http://some.url/ExampleStructure"
+  },
+  "formSchema" : {
+    "description" : "Generated command for updating StructureDefinition with only primitive fields.",
+    "title" : "UpdateStructureDefinition",
+    "type" : "object",
+    "definitions" : { },
+    "properties" : {
+      "abstract" : {
+        "description" : "",
+        "title" : "Abstract",
+        "type" : "boolean"
+      },
+      "baseDefinition" : {
+        "description" : "",
+        "title" : "Base Definition",
+        "type" : "string"
+      },
+      "copyright" : {
+        "description" : "",
+        "title" : "Copyright",
+        "type" : "string"
+      },
+      "date" : {
+        "description" : "",
+        "title" : "Date",
+        "type" : "string"
+      },
+      "derivation" : {
+        "description" : "",
+        "title" : "Derivation",
+        "type" : "string"
+      },
+      "description" : {
+        "description" : "",
+        "title" : "Description",
+        "type" : "string"
+      },
+      "experimental" : {
+        "description" : "",
+        "title" : "Experimental",
+        "type" : "boolean"
+      },
+      "fhirVersion" : {
+        "description" : "",
+        "title" : "Fhir Version",
+        "type" : "string"
+      },
+      "implicitRules" : {
+        "description" : "",
+        "title" : "Implicit Rules",
+        "type" : "string"
+      },
+      "kind" : {
+        "description" : "",
+        "title" : "Kind",
+        "type" : "string"
+      },
+      "language" : {
+        "description" : "",
+        "title" : "Language",
+        "type" : "string"
+      },
+      "name" : {
+        "description" : "",
+        "title" : "Name",
+        "type" : "string"
+      },
+      "publisher" : {
+        "description" : "",
+        "title" : "Publisher",
+        "type" : "string"
+      },
+      "purpose" : {
+        "description" : "",
+        "title" : "Purpose",
+        "type" : "string"
+      },
+      "status" : {
+        "description" : "",
+        "title" : "Status",
+        "type" : "string"
+      },
+      "title" : {
+        "description" : "",
+        "title" : "Title",
+        "type" : "string"
+      },
+      "type" : {
+        "description" : "",
+        "title" : "Type",
+        "type" : "string"
+      },
+      "url" : {
+        "description" : "",
+        "title" : "Url",
+        "type" : "string"
+      },
+      "version" : {
+        "description" : "",
+        "title" : "Version",
+        "type" : "string"
+      }
+    }
+  },
+  "uiSchema" : { }
+}
