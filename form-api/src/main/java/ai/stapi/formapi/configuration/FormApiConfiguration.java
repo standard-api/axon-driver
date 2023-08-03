@@ -1,5 +1,6 @@
 package ai.stapi.formapi.configuration;
 
+import ai.stapi.formapi.forminfo.FormInfoMapper;
 import ai.stapi.formapi.formmapper.*;
 import ai.stapi.graphoperations.dagtoobjectconverter.DAGToObjectConverter;
 import ai.stapi.graphsystem.aggregatedefinition.model.AggregateDefinitionProvider;
@@ -64,4 +65,16 @@ public class FormApiConfiguration {
     );
   }
 
+  @Bean
+  public FormInfoMapper formInfoMapper(
+      AggregateDefinitionProvider aggregateDefinitionProvider,
+      OperationDefinitionProvider operationDefinitionProvider,
+      StructureSchemaFinder structureSchemaFinder
+  ) {
+    return new FormInfoMapper(
+        aggregateDefinitionProvider,
+        operationDefinitionProvider,
+        structureSchemaFinder
+    );
+  }
 }
