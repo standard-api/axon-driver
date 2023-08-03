@@ -1,0 +1,79 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "FormUIDefinition",
+  "type": "StructureDefinition",
+  "url": "http://stapi.ai/fhir/StructureDefinition/FormUIDefinition",
+  "name": "FormUIDefinition",
+  "kind": "resource",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Resource",
+  "status": "active",
+  "publisher": "Stapi.ai: standard-api",
+  "description": "Definition of Form UI Schema for resource or complex type.",
+  "differential": {
+    "element": [
+      {
+        "id": "FormUIDefinition",
+        "path": "FormUIDefinition",
+        "min": 0,
+        "max": "*"
+      },
+      {
+        "id": "FormUIDefinition.globalOptions",
+        "path": "FormUIDefinition.globalOptions",
+        "short": "Global options for the UI form",
+        "definition": "Global options for customizing the UI form.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "UIOptions"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIDefinition.rootFieldId",
+        "path": "FormUIDefinition.rootFieldId",
+        "short": "Root field ID for the UI form",
+        "definition": "Root field ID for the UI form.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIDefinition.submitButtonOptions",
+        "path": "FormUIDefinition.submitButtonOptions",
+        "short": "Submit button options for the UI form",
+        "definition": "Submit button options for the UI form.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "SubmitButtonOptions"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIDefinition.formParts",
+        "path": "FormUIDefinition.formParts",
+        "short": "Form parts definition for the UI form",
+        "definition": "Form parts definition for the UI form.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "FormUIPartDefinition"
+          }
+        ],
+        "isModifier": false
+      }
+    ]
+  }
+}

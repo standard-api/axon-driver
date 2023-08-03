@@ -1,0 +1,278 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "FormUIOptions",
+  "type": "FormUIOptions",
+  "url": "http://stapi.ai/fhir/StructureDefinition/FormUIOptions",
+  "name": "FormUIOptions",
+  "kind": "complex-type",
+  "abstract": false,
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Element",
+  "status": "active",
+  "publisher": "Stapi.ai: standard-api",
+  "description": "UI options for form rendering",
+  "differential": {
+    "element": [
+      {
+        "id": "FormUIOptions",
+        "path": "FormUIOptions",
+        "short": "UI options for form rendering",
+        "definition": "Options for controlling how a form element is rendered.",
+        "min": 0,
+        "max": "1",
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.autofocus",
+        "path": "FormUIOptions.autofocus",
+        "short": "Autofocus option",
+        "definition": "If true, the form input will be automatically focused.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.emptyValue",
+        "path": "FormUIOptions.emptyValue",
+        "short": "Empty value option",
+        "definition": "The value to use when the form input is empty.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.autocomplete",
+        "path": "FormUIOptions.autocomplete",
+        "short": "Autocomplete option",
+        "definition": "If 'on', the browser will automatically complete the input based on earlier typed values.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.title",
+        "path": "FormUIOptions.title",
+        "short": "Title option",
+        "definition": "The title of the form input.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.description",
+        "path": "FormUIOptions.description",
+        "short": "Description option",
+        "definition": "A description for the form input.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.widget",
+        "path": "FormUIOptions.widget",
+        "short": "Widget option",
+        "definition": "The name of the widget to use for rendering the form input.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.help",
+        "path": "FormUIOptions.help",
+        "short": "Help option",
+        "definition": "Help text for the form input.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.disabled",
+        "path": "FormUIOptions.disabled",
+        "short": "Disabled option",
+        "definition": "If true, the form input will be disabled.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.readonly",
+        "path": "FormUIOptions.readonly",
+        "short": "Readonly option",
+        "definition": "If true, the form input will be read-only.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.placeholder",
+        "path": "FormUIOptions.placeholder",
+        "short": "Placeholder option",
+        "definition": "Placeholder text for the form input.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.field",
+        "path": "FormUIOptions.field",
+        "short": "Field option",
+        "definition": "The name of the field to use for rendering the form input.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.fieldReplacesAnyOrOneOf",
+        "path": "FormUIOptions.fieldReplacesAnyOrOneOf",
+        "short": "Field replaces any or one of option",
+        "definition": "If true, the field replaces any or one of the form input.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.classNames",
+        "path": "FormUIOptions.classNames",
+        "short": "Class names option",
+        "definition": "CSS class names for the form input.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.style",
+        "path": "FormUIOptions.style",
+        "short": "Style option",
+        "definition": "Inline styles for the form input.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.inputType",
+        "path": "FormUIOptions.inputType",
+        "short": "Input type option",
+        "definition": "The HTML input type for the form input.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.label",
+        "path": "FormUIOptions.label",
+        "short": "Label option",
+        "definition": "If true, a label will be rendered for the form input. If false, no label will be rendered.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "boolean"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.order",
+        "path": "FormUIOptions.order",
+        "short": "Order option",
+        "definition": "An array of strings that specifies the order of form inputs.",
+        "min": 0,
+        "max": "*",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      },
+      {
+        "id": "FormUIOptions.duplicateKeySuffixSeparator",
+        "path": "FormUIOptions.duplicateKeySuffixSeparator",
+        "short": "Duplicate key suffix separator option",
+        "definition": "The separator to use when appending a unique integer suffix to a duplicate key.",
+        "min": 0,
+        "max": "1",
+        "type": [
+          {
+            "code": "string"
+          }
+        ],
+        "isModifier": false
+      }
+    ]
+  }
+}
