@@ -1,0 +1,7 @@
+{
+  "requiresResourceId" : true,
+  "resourceType" : "StructureDefinition",
+  "possibleTargets" : {
+    "elementId" : [ "ElementDefinition" ]
+  }
+}

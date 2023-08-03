@@ -1,0 +1,5 @@
+{
+  "requiresResourceId" : true,
+  "resourceType" : "StructureDefinition",
+  "possibleTargets" : { }
+}
